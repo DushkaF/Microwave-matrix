@@ -1,0 +1,816 @@
+//2020.05.29 ir control test
+//2020.05.30 +procedure DrawGrid2
+//06.09 gvr +timage/picture.load(png)
+//06.28 +ComPortNumberSpinEdit/connectbutton +synaser
+//2020.07.01 +comport connect, etc
+//2020.09.02 +LabelByteToBinary +formclose +comport open/close fixes
+//           +bmp2x2 +ButtonSend2x2Click
+//2020.09.03 itmo 2x2 rotate  +tests
+//09.06 +csvarray +load/save-csv
+//09.10 refactoring, +load/bmpimage
+//09.11 refactoring, +AddrModule? +SendTo2x2Module
+//09.12 fix - send addr+128
+
+unit ircontrolunit1;
+
+{$mode objfpc}{$H+}
+
+
+interface
+
+uses
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls,
+  ComCtrls, PairSplitter, Spin, EditBtn, StdCtrls, SynaSer, csvarray, Types; //FPReadPNG;
+
+
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    ButtonLoad: TButton;
+    ButtonSave: TButton;
+    ButtonSendAllPhaseShifts: TButton;
+    ButtonTestAddr: TButton;
+    ButtonTestLED: TButton;
+    ButtonSend2x2: TButton;
+    ComPortSendButton: TButton;
+    ComPortDisconnectButon: TButton;
+    ComPort: TBlockSerial; //synaser
+
+    ComPortConnectButton: TButton;
+    Image1: TImage;
+    ComPortNumberLabel: TLabel;
+    Label1: TLabel;
+    LabelAddress: TLabel;
+    LabelLED: TLabel;
+    LabelConnectedDisconnected: TLabel;
+    LabelByteToBinary: TLabel;
+    MainMenu1: TMainMenu;
+    MenuItemFile: TMenuItem;
+    MenuItemImageOpen: TMenuItem;
+    OpenDialogImage: TOpenDialog;
+    OpenDialogCSV: TOpenDialog;
+    SaveDialogCSV: TSaveDialog;
+    PageControl1: TPageControl;
+    PaintBox1: TPaintBox;
+    PaintBox2x2: TPaintBox;
+    PairSplitter1: TPairSplitter;
+    PairSplitterSide1: TPairSplitterSide;
+    PairSplitterSide2: TPairSplitterSide;
+    ComPortNumberSpinEdit: TSpinEdit;
+    ComPortSendByteSpinEdit: TSpinEdit;
+    SpinEditAddress: TSpinEdit;
+    StatusBar1: TStatusBar;
+    TabSheetTest: TTabSheet;
+    TabSheet20x20: TTabSheet;
+    TabSheetImage: TTabSheet;
+    TabSheetComPort: TTabSheet;
+    TabSheet2x2: TTabSheet;
+    procedure ButtonLoadCSVClick0(Sender: TObject);
+    procedure ButtonLoadCSVClick(Sender: TObject);
+    procedure ButtonLoadImageClick(Sender: TObject);
+    procedure ButtonSaveCSVClick(Sender: TObject);
+    procedure ButtonSendAllPhaseShiftsClick(Sender: TObject);
+    procedure ButtonTestAddrClick(Sender: TObject);
+    procedure ButtonSend2x2Click(Sender: TObject);
+    procedure ButtonTestLEDClick(Sender: TObject);
+    procedure ComPortConnectButtonClick(Sender: TObject);
+    procedure ComPortDisconnectButonClick(Sender: TObject);
+    procedure ComPortNumberSpinEditChange(Sender: TObject);
+    procedure ComPortSendButtonClick(Sender: TObject);
+    procedure ComPortSendByteSpinEditChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure Image1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
+      );
+    procedure MenuItemImageOpenClick(Sender: TObject);
+    procedure PaintBox1Click(Sender: TObject);
+    procedure PaintBox1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure PaintBox1Paint(Sender: TObject);
+    procedure PaintBox1Resize(Sender: TObject);
+
+    procedure DrawGrid0(Rows, Columns: Integer; Ctrl: TGraphicControl; Col: TColor; W: Integer; Style: TPenStyle);
+    procedure DrawGrid(Rows, Columns: Integer; Ctrl: TGraphicControl; Col: TColor; W: Integer; Style: TPenStyle);
+
+    procedure PaintBox2x2Click(Sender: TObject);
+    procedure PaintBox2x2MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure PaintBox2x2Paint(Sender: TObject);
+    function SendTo2x2Module(const Addr: Integer): Boolean;
+
+
+  private
+    BmpArray: TBitmap;
+    BmpArrayStretched: TBitmap;
+
+    bmp2x2: TBitmap;
+    bmp2x2stretched: TBitmap;
+
+    BmpImage: TBitmap;
+    BmpImageStretched: TBitmap;
+
+    MouseXPos: Integer;
+    MouseYPos: Integer;
+    ComPortName: String;
+    CSVArr: TCSVArray;
+    CSVArrTemp: TCSVArray;
+
+  public
+
+  end;  //TForm1
+
+
+const
+  reflectarraysize = 20;   //number of patches along the side of the array
+  BmpColorZero = clBlue;   //varactor U0
+  BmpColorOne = clYellow;  //varactor U1
+  AddressBroadcast = 128;  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+
+
+var
+  Form1: TForm1;
+
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+
+procedure TForm1.DrawGrid0(Rows, Columns: Integer; Ctrl: TGraphicControl; Col: TColor; W: Integer; Style: TPenStyle);
+var
+  ii: Integer;
+begin
+  // Set the grid color
+  Ctrl.Canvas.Pen.Color := Col;
+  Ctrl.Canvas.Pen.Width := W;
+  Ctrl.Canvas.Pen.Style := psSolid;
+
+  //ok
+  Ctrl.Canvas.Pen.Width := 1;  //diagonal lines
+  Ctrl.Canvas.Line(0,0, Ctrl.Width-1,Ctrl.Height-1); //ok
+  Ctrl.Canvas.Line(0, Ctrl.Height-1, Ctrl.Width-1, 0); //ok
+  Ctrl.Canvas.Pen.Width := W;
+
+  for ii:=0 to Columns-1 do
+  begin
+    Ctrl.Canvas.Line(trunc(ii*Ctrl.Width/(Columns-0)), 0, trunc(ii*Ctrl.Width/(Columns-0)),Ctrl.Height-1); //ok
+  end;
+
+  for ii:=0 to Rows-1 do
+  begin
+    Ctrl.Canvas.Line(0,trunc(ii*Ctrl.Height/(Rows-0)), Ctrl.Width-1, trunc(ii*Ctrl.Height/(Rows-0))); //ok
+  end;
+
+end;  //DrawGrid0
+
+
+procedure TForm1.DrawGrid(Rows, Columns: Integer; Ctrl: TGraphicControl; Col: TColor; W: Integer; Style: TPenStyle);
+const WThin = 2;
+var
+  ii: Integer;
+begin
+  // Set the grid color
+  Ctrl.Canvas.Pen.Color := Col;
+  Ctrl.Canvas.Pen.Width := W;
+  Ctrl.Canvas.Pen.Style := psSolid;
+
+  //ok
+  Ctrl.Canvas.Pen.Width := 1;  //diagonal lines
+  Ctrl.Canvas.Line(0,0, Ctrl.Width-1,Ctrl.Height-1); //ok
+  Ctrl.Canvas.Line(0, Ctrl.Height-1, Ctrl.Width-1, 0); //ok
+  Ctrl.Canvas.Pen.Width := W;
+
+  for ii:=0 to Columns-1 do
+  begin
+    if (ii mod 2 = 0) then Ctrl.Canvas.Pen.Width := W else Ctrl.Canvas.Pen.Width := WThin;
+    Ctrl.Canvas.Line(trunc(ii*Ctrl.Width/(Columns-0)), 0, trunc(ii*Ctrl.Width/(Columns-0)),Ctrl.Height-1); //ok
+  end;
+
+  for ii:=0 to Rows-1 do
+  begin
+    if (ii mod 2 = 0) then Ctrl.Canvas.Pen.Width := W else Ctrl.Canvas.Pen.Width := WThin;
+    Ctrl.Canvas.Line(0,trunc(ii*Ctrl.Height/(Rows-0)), Ctrl.Width-1, trunc(ii*Ctrl.Height/(Rows-0))); //ok
+  end;
+
+end;  //DrawGrid
+
+
+
+procedure TForm1.PaintBox2x2Click(Sender: TObject);
+var
+  cx, cy: Real;
+  Xn, Yn: Integer;
+begin
+  cx := 2*(1/(PaintBox2x2.Width-1));
+  cy := 2*(1/(PaintBox2x2.Height-1));
+
+  xn := trunc(cx*MouseXPos);
+  yn := trunc(cy*MouseYPos);
+
+  if (bmp2x2.Canvas.Pixels[xn, yn]<>BmpColorZero)
+  then bmp2x2.Canvas.Pixels[xn, yn]:=BmpColorZero
+  else bmp2x2.Canvas.Pixels[xn, yn]:=BmpColorOne;
+
+  PaintBox2x2.Invalidate;
+
+  StatusBar1.SimpleText:=IntToStr(Xn+1) +', ' + IntToStr(Yn+1);
+end;  //PaintBox2x2Click
+
+
+procedure TForm1.PaintBox2x2MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+var
+  cx, cy: Real;
+  xn, yn: Integer;
+begin
+  MouseXPos := X;
+  MouseYPos := Y;
+
+  cx := 2*(1/(PaintBox2x2.Width-1));
+  cy := 2*(1/(PaintBox2x2.Height-1));
+
+  xn := trunc(cx*MouseXPos)+0;
+  yn := trunc(cy*MouseYPos)+0;
+
+  StatusBar1.SimpleText:=
+   IntToStr(Xn+1) +', ' + IntToStr(Yn+1) +
+   '  ( ' + IntToStr(X) +', ' + IntToStr(Y) + ' ) ';
+end;  //PaintBox2x2MouseMove
+
+
+procedure TForm1.PaintBox2x2Paint(Sender: TObject);
+begin
+  PaintBox2x2.Canvas.StretchDraw( PaintBox2x2.ClientRect, bmp2x2 );
+  DrawGrid(2, 2, PaintBox2x2, clBlack, 3, psSolid);  //ok
+end;  //PaintBox2x2Paint
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  BmpArray := TBitmap.Create;  //reflectarray bmp
+  BmpArray.SetSize(reflectarraysize, reflectarraysize);
+  // Set the fill color
+  BmpArray.Canvas.Brush.Style := bsSolid;
+  //BmpArray.Canvas.Brush.Color := clRed;
+  BmpArray.Canvas.Brush.Color := BmpColorZero;
+  BmpArray.Canvas.FillRect(0, 0, BmpArray.Width, BmpArray.Height);
+
+  BmpArrayStretched := TBitmap.Create;  //for painting BmpArray on screen
+  BmpArrayStretched.SetSize(PaintBox1.Width, PaintBox1.Height);
+  BmpArrayStretched.Canvas.StretchDraw( Rect(0, 0, BmpArrayStretched.Width, BmpArrayStretched.Height), BmpArray);
+
+  bmp2x2 := TBitmap.Create;  //one module 2x2 bmp
+  bmp2x2.SetSize(2, 2);
+  // Set the fill color
+  bmp2x2.Canvas.Brush.Style := bsSolid;
+  bmp2x2.Canvas.Brush.Color := BmpColorZero;
+  bmp2x2.Canvas.FillRect(0, 0, bmp2x2.Width, bmp2x2.Height);
+
+  bmp2x2stretched := TBitmap.Create;  //for painting bmp2x2 on screen
+  bmp2x2stretched.SetSize(PaintBox2x2.Width, PaintBox2x2.Height);
+  bmp2x2stretched.Canvas.StretchDraw( Rect(0, 0, bmp2x2.Width, bmp2x2.Height), BmpArrayStretched);
+
+  BmpImage := TBitmap.Create;  //load image from file into BmpImage
+  BmpImageStretched := TBitmap.Create;
+  BmpImageStretched.SetSize(reflectarraysize, reflectarraysize);
+
+  ComPort:=TBlockSerial.Create;
+  ComPort.RaiseExcept:=True;
+  //LogStr('TBlockSerial.Create - ok');
+  ComPortName := 'COMx';
+  //LogStr('ComPortName := ' + ComPortName);
+  ComPortNumberSpinEditChange(self);  //init comportname string
+  ComPortSendByteSpinEditChange(self);  //init LabelByteToBinary;
+
+  CSVArr := TCSVArray.Create(reflectarraysize, reflectarraysize);  //to read/save array state to file
+  CSVArrTemp := TCSVArray.Create();  //for csv file loading
+
+end;  //FormCreate
+
+
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  //ComPort.Purge;  //err if already closed
+  ComPort.CloseSocket;  //err if usb-com already disconnected?
+end;  //FormClose
+
+
+procedure TForm1.ComPortNumberSpinEditChange(Sender: TObject);
+begin
+  ComPortName := 'COM'+IntToStr(ComPortNumberSpinEdit.Value);
+  StatusBar1.SimpleText := 'COM Port : ' + ComPortName;
+end;  //ComPortNumberSpinEditChange
+
+
+procedure TForm1.ComPortSendButtonClick(Sender: TObject);
+begin
+  try
+    ComPort.Purge;
+    ComPort.SendByte( Byte(ComPortSendByteSpinEdit.Value) );
+    //ComPort.SendByte( 9 );
+    //ShowMessage('ComPort sent : ' + ComPortSendByteSpinEdit.Value);
+  except
+    ShowMessage('ComPort.SendByte - ERROR');
+      //LogStr(ComPortName + ' - ComPort.Connect - ERROR');
+  end;  //try
+
+end;  //ComPortSendButtonClick
+
+
+procedure TForm1.ComPortSendByteSpinEditChange(Sender: TObject);
+begin
+  LabelByteToBinary.Caption := binStr(ComPortSendByteSpinEdit.Value, 8);
+end;  //ComPortSendByteSpinEditChange
+
+
+procedure TForm1.ComPortConnectButtonClick(Sender: TObject);
+begin
+  try
+      ComPort.Connect(ComPortName);
+      //ComPort.Config(38400, 8, 'N' , 0, false, false);
+      ComPort.Config(2400, 8, 'N', SB1, false, false);   //IR 2400
+      ComPort.Purge;
+      ComPortSendButton.Enabled := True;
+      ComPortDisconnectButon.Enabled := True;
+      ComPortConnectButton.Enabled := False;
+      ButtonSend2x2.Enabled := True;
+      LabelConnectedDisconnected.Caption := 'Connected';
+      ButtonTestAddr.Enabled := True;
+      ButtonTestLED.Enabled := True;
+      ButtonSendAllPhaseShifts.Enabled := True;
+
+      ShowMessage('ComPort.Connect connected : ' + ComPortName );
+  except
+      ComPortConnectButton.Enabled := True;
+      ButtonSend2x2.Enabled := False;
+      LabelConnectedDisconnected.Caption := 'Disconnected';
+      ButtonTestAddr.Enabled := False;
+      ButtonTestLED.Enabled := False;
+      ButtonSendAllPhaseShifts.Enabled := False;
+
+      ShowMessage('ComPort.Connect - ERROR');
+      //LogStr(ComPortName + ' - ComPort.Connect - ERROR');
+  end;  //try
+
+  //ComPort.GetCommState;
+  StatusBar1.SimpleText := 'ComPort : ' + ComPortName;
+end;  //ComPortConnectButtonClick
+
+
+function TForm1.SendTo2x2Module(const Addr: Integer): Boolean;
+const del = 2;
+var
+ state2x2: Byte;
+ BmpArrayXShift, BmpArrayYShift, AddrPlus128: Integer;
+begin
+  Result := True;
+
+  //BmpArrayXShift := 2 * ( (Addr-1) mod (reflectarraysize div 2) );  //ok
+  //BmpArrayYShift := 2 * ( (Addr-1) div (reflectarraysize div 2) );  //ok
+
+  BmpArrayXShift := 2 * ( (Addr-1) mod (reflectarraysize div 2) );  //ok
+  BmpArrayYShift := 2 * ( (Addr-1) div (reflectarraysize div 2) );  //ok
+
+  state2x2:=15;  //15 = 0fh = 00001111 = all led off = varactors set to U0
+  AddrPlus128 := Addr+128;  //+128 - set high bit - set address marker
+
+    //(2020.09.03 programming connector on the left of the 2x2 module)
+  //00->10(2-1) 01->00(8-2) 10->11(1-4) 11->01(4-8)
+  if (BmpArray.Canvas.Pixels[BmpArrayXShift+0, BmpArrayYShift+0] = BmpColorOne) then state2x2 := state2x2-1;
+  if (BmpArray.Canvas.Pixels[BmpArrayXShift+1, BmpArrayYShift+0] = BmpColorOne) then state2x2 := state2x2-4;
+  if (BmpArray.Canvas.Pixels[BmpArrayXShift+0, BmpArrayYShift+1] = BmpColorOne) then state2x2 := state2x2-2;
+  if (BmpArray.Canvas.Pixels[BmpArrayXShift+1, BmpArrayYShift+1] = BmpColorOne) then state2x2 := state2x2-8;
+
+  try
+    ComPort.Purge;
+    ComPort.SendByte(AddrPlus128);  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+    ComPort.SendByte(state2x2);
+  except
+      ShowMessage('ComPort.SendByte - ERROR');
+      Result := False;
+  end;  //try
+
+  //stdout debug, win32gui=off!
+  //WriteLn('addr=', Addr, ', xs=', BmpArrayXShift,  ', ys=', BmpArrayYShift, ', st2x2=', state2x2);
+
+//debug
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+0, BmpArrayYShift+0] := clRed;
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+1, BmpArrayYShift+0] := clMaroon;
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+0, BmpArrayYShift+1] := clGray;
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+1, BmpArrayYShift+1] := clBlack;
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+0, BmpArrayYShift+0] := TColor(10*Addr);
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+1, BmpArrayYShift+0] := TColor(100*Addr);
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+0, BmpArrayYShift+1] := TColor(1000*Addr);
+//  BmpArray.Canvas.Pixels[BmpArrayXShift+1, BmpArrayYShift+1] := TColor(10000*Addr);
+//  PaintBox1.Invalidate;
+
+ sleep(del);
+end;  //SendTo2x2Module
+
+
+procedure TForm1.ButtonSend2x2Click(Sender: TObject);
+var state2x2: Byte;
+begin
+  state2x2:=15;  //15 = 0fh = 00001111 = all led off = varactors set to U0
+
+  //pixels[x,y] BmpColorOne=U1
+  //row1(programming connector on top of the 2x2 module)
+  //if (bmp2x2.Canvas.Pixels[0, 0] = BmpColorOne) then state2x2 := state2x2-2;
+  //if (bmp2x2.Canvas.Pixels[1, 0] = BmpColorOne) then state2x2 := state2x2-1;
+  //row2(programming connector on top)
+  //if (bmp2x2.Canvas.Pixels[0, 1] = BmpColorOne) then state2x2 := state2x2-8;
+  //if (bmp2x2.Canvas.Pixels[1, 1] = BmpColorOne) then state2x2 := state2x2-4;;
+
+  //(2020.09.03 programming connector on the left of the 2x2 module)
+  //00->10(2-1) 01->00(8-2) 10->11(1-4) 11->01(4-8)
+  if (bmp2x2.Canvas.Pixels[0, 0] = BmpColorOne) then state2x2 := state2x2-1;
+  if (bmp2x2.Canvas.Pixels[1, 0] = BmpColorOne) then state2x2 := state2x2-4;
+  if (bmp2x2.Canvas.Pixels[0, 1] = BmpColorOne) then state2x2 := state2x2-2;
+  if (bmp2x2.Canvas.Pixels[1, 1] = BmpColorOne) then state2x2 := state2x2-8;
+
+  try
+    ComPort.Purge;
+    ComPort.SendByte(128);  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+    ComPort.SendByte(state2x2);
+  except
+      ShowMessage('ComPort.SendByte - ERROR');
+  end;  //try
+end;  // ButtonSend2x2Click
+
+
+procedure TForm1.ButtonTestLEDClick(Sender: TObject);
+const del = 1500;
+var
+  ii, addr: Integer;
+  b: Byte;
+begin
+ addr := SpinEditAddress.Value + 128;
+ b := 0;
+
+ for ii:=1 to 14 do  //cycle all led states
+ begin
+ LabelLED.Caption:=IntToStr(b);
+ Application.ProcessMessages;
+
+ try
+    ComPort.Purge;
+    ComPort.SendByte(addr);  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+    ComPort.SendByte(b);
+    sleep(del);
+  except
+      ShowMessage('ComPort.SendByte - ERROR');
+  end;  //try
+
+  b := b+1;
+ end;  //for ii
+
+ try
+    ComPort.Purge;
+    ComPort.SendByte(addr);  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+    ComPort.SendByte(15);
+  except
+      ShowMessage('ComPort.SendByte - ERROR');
+  end;
+
+ LabelLED.Caption := 'DONE';
+end;  //ButtonTestLEDClick
+
+
+procedure TForm1.ButtonTestAddrClick(Sender: TObject);
+const del = 300;
+var
+  ii: Integer;
+  b: Byte;
+begin
+ b := 129;
+
+ for ii:=1 to 99 do
+ begin
+ LabelAddress.Caption:=IntToStr(b); Application.ProcessMessages;
+ try
+    ComPort.Purge;
+    ComPort.SendByte(b);  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+    ComPort.SendByte(0);
+    sleep(del);
+  except
+      ShowMessage('ComPort.SendByte - ERROR');
+  end;  //try
+
+  b := b+1;
+ end;  //for ii
+
+ b := 129;
+
+ for ii:=1 to 99 do
+ begin
+   LabelAddress.Caption:=IntToStr(b); Application.ProcessMessages;
+ try
+    ComPort.Purge;
+    ComPort.SendByte(b);  //broadcast address 128=80h=0x80 (bit 7 set, bits 0-6 0)
+    ComPort.SendByte(15);
+    sleep(del);
+  except
+      ShowMessage('ComPort.SendByte - ERROR');
+  end;  //try
+
+  b := b+1;
+ end;  //for ii
+
+ LabelAddress.Caption := 'DONE';
+end;  //ButtonTestAddrClick
+
+
+
+procedure TForm1.ButtonSaveCSVClick(Sender: TObject);
+var ii, jj: Integer;
+begin
+if OpenDialogCSV.Execute then
+begin
+
+for ii:=0 to reflectarraysize-1 do
+begin
+for jj:=0 to reflectarraysize-1 do
+begin
+ if BmpArray.Canvas.Pixels[ii, jj] = BmpColorOne
+ then CSVArr.Data[ii, jj] := 1
+ else CSVArr.Data[ii, jj] := 0;
+end;  //for jj
+end;  //for ii
+
+CSVArr.SaveToFile(OpenDialogCSV.FileName);
+end;  //if OpenDialogCSV.Execute
+end;  //ButtonSaveCSVClick
+
+
+procedure TForm1.ButtonSendAllPhaseShiftsClick(Sender: TObject);
+var ii: Integer;
+begin
+for ii:=1 to 100 do
+begin
+  if SendTo2x2Module(ii)=true //true = data sent ok
+  then
+  begin
+   Form1.StatusBar1.SimpleText:= 'Addr = ' + IntToStr(ii);
+   Application.ProcessMessages;
+  end
+  else
+  begin
+   ShowMessage('ERROR : ButtonSendAllPhaseShiftsClick - cannot send (Addr = ' + IntToStr(ii) +')');
+   exit;
+  end;
+end;  //for ii
+
+end;  //ButtonSendAllPhaseShiftsClick
+
+
+procedure TForm1.ButtonLoadCSVClick(Sender: TObject);
+var ii, jj: Integer;
+begin
+if OpenDialogCSV.Execute then
+begin
+
+try
+CSVArrTemp.LoadFromFile(OpenDialogCSV.FileName);
+except
+ShowMessage('ERROR : cannot load CSV, File : ' + OpenDialogCSV.FileName);
+CSVArrTemp.Destroy;
+CSVArrTemp := TCSVArray.Create();
+exit;
+end;  //try
+
+if( (CSVArrTemp.Rows<>reflectarraysize) or (CSVArrTemp.Rows<>reflectarraysize) )
+then
+begin
+ShowMessage( 'ERROR : wrong CSV size, ' + 'Width = ' + IntToStr(CSVArrTemp.Columns) +
+             ', Height = ' + IntToStr(CSVArrTemp.Rows) );
+ShowMessage('ERROR : wrong CSV size, File : ' + OpenDialogCSV.FileName);
+CSVArrTemp.Destroy;
+CSVArrTemp := TCSVArray.Create();
+exit;
+end;  //if
+
+CSVArr.LoadFromFile(OpenDialogCSV.FileName);
+
+for ii:=0 to reflectarraysize-1 do
+begin
+for jj:=0 to reflectarraysize-1 do
+begin
+ if CSVArr.Data[ii, jj] > 0.5
+ then BmpArray.Canvas.Pixels[ii, jj] := BmpColorOne
+ else BmpArray.Canvas.Pixels[ii, jj] := BmpColorZero;
+end;  //for jj
+end;  //for ii
+
+end;  //if OpenDialogCSV.Execute
+
+PaintBox1.Invalidate;
+end; //ButtonLoadCSVClick
+
+
+procedure TForm1.ButtonLoadCSVClick0(Sender: TObject);
+var ii, jj: Integer;
+begin
+if OpenDialogCSV.Execute then
+begin
+
+try
+CSVArrTemp.LoadFromFile(OpenDialogCSV.FileName);
+except
+ShowMessage('ERROR : cannot load CSV, File : ' + OpenDialogCSV.FileName);
+CSVArrTemp.Destroy;
+CSVArrTemp := TCSVArray.Create();
+exit;
+end;  //try
+
+if( (CSVArrTemp.Rows<>reflectarraysize) or (CSVArrTemp.Rows<>reflectarraysize) )
+then
+begin
+ShowMessage( 'ERROR : wrong CSV size, ' + 'Width = ' + IntToStr(CSVArrTemp.Columns) +
+             ', Height = ' + IntToStr(CSVArrTemp.Rows) );
+ShowMessage('ERROR : wrong CSV size, File : ' + OpenDialogCSV.FileName);
+CSVArrTemp.Destroy;
+CSVArrTemp := TCSVArray.Create();
+exit;
+end;  //if
+
+CSVArr.LoadFromFile(OpenDialogCSV.FileName);
+
+for ii:=0 to reflectarraysize-1 do
+begin
+for jj:=0 to reflectarraysize-1 do
+begin
+ if CSVArr.Data[ii, jj] > 0.5
+ then BmpArray.Canvas.Pixels[ii, jj] := BmpColorOne
+ else BmpArray.Canvas.Pixels[ii, jj] := BmpColorZero;
+end;  //for jj
+end;  //for ii
+
+end;  //if OpenDialogCSV.Execute
+
+PaintBox1.Invalidate;
+end; //ButtonLoadCSVClick0
+
+
+procedure TForm1.ButtonLoadImageClick(Sender: TObject);
+begin
+  MenuItemImageOpenClick(self);
+end;  //ButtonLoadImageClick
+
+
+procedure TForm1.ComPortDisconnectButonClick(Sender: TObject);
+begin
+  try
+    ComPort.Purge;
+    ComPort.CloseSocket;
+    ComPortDisconnectButon.Enabled := False;
+    ComPortSendButton.Enabled := False;
+    ComPortConnectButton.Enabled := True;
+    ButtonSend2x2.Enabled := False;
+    LabelConnectedDisconnected.Caption := 'Disconnected';
+  except
+    ComPortConnectButton.Enabled := True;
+    ShowMessage('ComPort.CloseSocket - ERROR');
+    //LogStr(ComPortName + ' - ComPort.Connect - ERROR');
+  end;  //try
+end;  //ComPortDisconnectButonClick
+
+
+procedure TForm1.Image1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  StatusBar1.SimpleText := IntToStr(Image1.Picture.Pixmap.Canvas.Pixels[X, Y]);
+end;  //Image1MouseMove
+
+
+procedure TForm1.MenuItemImageOpenClick(Sender: TObject);
+begin
+  if OpenDialogImage.Execute then
+  //OpenDialogImage.FileName:='d:\work\it\it metasurface\ircontrol07\I1.PNG';
+  begin
+  //StatusBar1.SimpleText:='file opened';
+  //ShowMessage('file selected : ' + OpenDialog1.FileName);
+  //Image1.Picture.Bitmap.LoadFromFile(OpenDialog1.FileName);
+  Image1.Picture.LoadFromFile(OpenDialogImage.FileName); //! loading of PNG to tbitmap via timage
+  //Image1.Picture.Pixmap.Canvas.Pixels[];
+
+  try
+   Image1.Picture.LoadFromFile(OpenDialogImage.FileName); //! loading of PNG to tbitmap via timage
+  except
+   ShowMessage( 'TImage - Cannot load file : ' + OpenDialogImage.FileName );
+   exit;
+  end;  //try
+
+  BmpImage.Assign( Image1.Picture.Bitmap );
+
+  //try BmpImage.LoadFromFile(OpenDialogImage.FileName);  //!cannot load png
+  //except
+  //ShowMessage( 'Cannot load file : ' + OpenDialogImage.FileName );
+  //exit;
+  //end;  //try
+
+  ShowMessage( 'Image loaded : ' + 'Width = ' + IntToStr(BmpImage.Width) +
+               ', Height = ' + IntToStr(BmpImage.Height) );
+
+  if ( (BmpImage.Height<>reflectarraysize) or (BmpImage.Width<>reflectarraysize) )
+  then
+    BmpImageStretched.Canvas.StretchDraw(Rect(0,0, reflectarraysize-0,reflectarraysize-0), BmpImage)
+  else
+  begin
+    BmpImageStretched.Assign(BmpImage);
+  end;  //if
+
+  ShowMessage( 'Image resized : ' + 'Width = ' + IntToStr(BmpImageStretched.Width) +
+                 ', Height = ' + IntToStr(BmpImageStretched.Height) );
+
+  Image1.Picture.Bitmap.Assign(BmpImageStretched);
+
+  end;  //if OpenDialogImage.Execute
+end;  //MenuItemFileOpenClick
+
+
+procedure TForm1.PaintBox1Click(Sender: TObject);
+var
+  cx, cy: Real;
+  Xn, Yn: Integer;
+  RowNum, ColNum: Integer;
+begin
+  //BmpArray.Canvas.Pixels[10,10]:=clBlue;
+  //BmpArray.Canvas.Pixels[MouseXPos div 10, MouseYPos div 10]:=clBlue;
+
+  cx := reflectarraysize*(1/(PaintBox1.Width-1));
+  cy := reflectarraysize*(1/(PaintBox1.Height-1));
+
+  xn := trunc(cx*MouseXPos);
+  yn := trunc(cy*MouseYPos);
+
+  RowNum := yn;
+  ColNum := xn*reflectarraysize;
+
+  //BmpArray.Canvas.Pixels[trunc(cx*MouseXPos), trunc(cy*MouseYPos)]:=clBlue;
+
+  if (BmpArray.Canvas.Pixels[xn, yn]<>BmpColorZero)
+  then BmpArray.Canvas.Pixels[xn, yn]:=BmpColorZero
+  else BmpArray.Canvas.Pixels[xn, yn]:=BmpColorOne;
+
+  PaintBox1.Invalidate;
+  StatusBar1.SimpleText:=IntToStr(Xn+1) +', ' + IntToStr(Yn+1);
+end;  //PaintBox1Click
+
+
+procedure TForm1.PaintBox1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+var
+  cx, cy: Real;
+  xn, yn: Integer;
+  RowNum, ColNum: Integer;
+  ElemRow, ElemCol, ElemAddr: Integer;
+
+begin
+  MouseXPos := X;
+  MouseYPos := Y;
+
+  cx := reflectarraysize*(1/(PaintBox1.Width-1));
+  cy := reflectarraysize*(1/(PaintBox1.Height-1));
+
+  xn := trunc(cx*MouseXPos)+0;
+  yn := trunc(cy*MouseYPos)+0;
+
+  RowNum := yn+1;
+  ColNum := xn+1;
+
+  ElemRow := (yn div 2)+1;
+  ElemCol := (xn div 2)+1;
+
+  ElemAddr := (ElemRow-1)*(reflectarraysize div 2) + ElemCol;
+
+  //StatusBar1.SimpleText:= IntToStr(Xn+1) +', ' + IntToStr(Yn+1) + '  ( ' + IntToStr(X) +', ' + IntToStr(Y) + ' ) ';
+
+  StatusBar1.SimpleText:=
+   'Patch = (' + IntToStr(RowNum) +', ' + IntToStr(ColNum) +
+   '), Addr = ' + IntToStr(ElemAddr);
+
+   //+ ' Element = ( ' + IntToStr(ElemRow) +', ' + IntToStr(ElemCol) + ' ) ' +
+   //'  x,y = ( ' + IntToStr(X) +', ' + IntToStr(Y) + ' ) ';
+end;  //PaintBox1MouseMove
+
+
+procedure TForm1.PaintBox1Paint(Sender: TObject);
+begin
+  PaintBox1.Canvas.StretchDraw( PaintBox1.ClientRect, BmpArray);
+  DrawGrid(reflectarraysize, reflectarraysize, PaintBox1, clBlack, 3, psSolid);  //ok
+end;  //PaintBox1Paint
+
+
+procedure TForm1.PaintBox1Resize(Sender: TObject);
+begin
+  StatusBar1.SimpleText:='TForm1.PaintBox1Resize';
+  PaintBox1.Invalidate;
+end;  //PaintBox1Resize
+
+
+end.  //END
+

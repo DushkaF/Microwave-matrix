@@ -1,0 +1,117 @@
+%2024.09.27 octave920 planar idn 1st test
+%10.13 +'SENS1:FREQ:STAR 220000'  +'CALC:DATA:FDAT?'
+%12.22 +writeread +'CALC:PAR:COUN 2'  -'CALC:PAR:COUN 2' +drawnow
+%12.23 +TRIG:SING;*OPC?(no change)
+
+% IMPORTANT!
+% Before running this script,
+% The socket must be turned on by going to "system" -> "misc setup"
+% -> "network remote control settings" -> "socket server (on)" in the
+% VNA software
+
+clear all
+clc
+clf
+
+%-----------
+
+pkg load instrument-control
+
+disp('start');
+
+tic
+
+%nl = 10; % this is the decimal value of a new line character ('\n')
+
+% Connect to VNA
+try
+    vna = tcpclient("127.0.0.1", 5025, "Timeout", 20)
+catch ME
+    disp('Error establishing TCP connection.');
+    disp('Check that the TCP server is on.');
+    return
+end
+
+vna.ByteOrder = 'big-endian';
+configureTerminator(vna,'CR/LF');
+
+flush(vna);
+
+toc
+
+% Get and display the instrument name, serial number, etc.
+%writeread(vna, ['*IDN?', char(nl) ])
+writeread(vna, '*IDN?')
+%writeline(vna, ['*IDN?' ])
+%readline(vna)
+
+%FORM:DATA – определяет тип передаваемых данных
+%writeread(vna, 'FORM:DATA?')
+
+%writeline(vna, 'SYST:PRESET')
+
+writeline(vna, 'TRIG:SOURCE BUS')
+
+toc
+
+%''' set up the VNA '''
+%CMT.write('DISP:WIND:SPL 2')  %allocate 2 trace windows
+%writeline(vna, 'CALC:PAR:COUN 2') %2 Traces
+
+writeline(vna, 'CALC:PAR:DEF S11') %Choose S11 for trace 1
+%writeline(vna, 'CALC:PAR:SEL')
+writeline(vna, 'CALC:FORM MLOG')  %log Mag format
+
+disp('reading 1');
+
+writeread(vna, 'TRIG:SINGLE;*OPC?') %Trigger measurement and wait for completion
+
+
+%CALC:DATA:FDAT – считать данные в массив
+s = writeread(vna, 'CALC:DATA:FDAT?');
+%disp(char(VNAread(vna)));
+%s = char(s);
+%disp(s)
+s = strsplit(s, ",");
+%disp(s)
+d = str2double(s);
+
+toc
+
+plot(d(1:2:end), 'r')  %amp
+drawnow
+
+%------------
+
+writeline(vna, 'CALC:PAR:DEF S21') %Choose S21 for trace 2
+%writeline(vna, 'CALC:PAR:SEL')
+writeline(vna, 'CALC:FORM MLOG')  %log Mag format
+
+disp('reading 2');
+
+writeread(vna, 'TRIG:SINGLE;*OPC?') %Trigger measurement and wait for completion
+
+%CALC:DATA:FDAT – считать данные в массив
+s = writeread(vna, 'CALC:DATA:FDAT?');
+%disp(char(VNAread(vna)));
+%s = char(s);
+%disp(s)
+s = strsplit(s, ",");
+%disp(s)
+d = str2double(s);
+
+toc
+
+hold on
+plot(d(1:2:end), 'b')  %amp
+drawnow
+
+%change the trigger source back to internal after automation
+writeline(vna, 'TRIG:SOURCE INTERNAL')
+
+vna = [];
+
+disp("DONE")
+
+return
+

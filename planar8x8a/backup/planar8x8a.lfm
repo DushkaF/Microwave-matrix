@@ -1,0 +1,564 @@
+object Form1: TForm1
+  Left = 259
+  Height = 718
+  Top = 114
+  Width = 1064
+  Caption = 'planar8x8'
+  ClientHeight = 718
+  ClientWidth = 1064
+  DesignTimePPI = 168
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '3.8.0.0'
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 43
+    Top = 675
+    Width = 1064
+    Panels = <>
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 675
+    Top = 0
+    Width = 1064
+    ActivePage = TabSheetMain
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 1
+    object TabSheetMain: TTabSheet
+      Caption = 'Main'
+      ClientHeight = 632
+      ClientWidth = 1056
+      object PairSplitter1: TPairSplitter
+        Left = 0
+        Height = 632
+        Top = 0
+        Width = 1056
+        Align = alClient
+        OnResize = PairSplitter1Resize
+        Position = 181
+        object PairSplitterSide1: TPairSplitterSide
+          Cursor = crArrow
+          Left = 0
+          Height = 632
+          Top = 0
+          Width = 181
+          ClientWidth = 181
+          ClientHeight = 632
+          object PageControl2: TPageControl
+            Left = 0
+            Height = 632
+            Top = 0
+            Width = 181
+            ActivePage = TabSheet5
+            Align = alClient
+            TabIndex = 0
+            TabOrder = 0
+            TabPosition = tpLeft
+            object TabSheet5: TTabSheet
+              Caption = 'TabSheet5'
+              ClientHeight = 624
+              ClientWidth = 139
+              object SpinEditPlotsNum: TSpinEdit
+                Left = 6
+                Height = 38
+                Top = 36
+                Width = 88
+                MaxValue = 16
+                MinValue = 1
+                OnChange = SpinEditPlotsNumChange
+                TabOrder = 0
+                Value = 5
+              end
+              object SpinEditCurrentPlotNum: TSpinEdit
+                Left = 6
+                Height = 38
+                Top = 113
+                Width = 88
+                MaxValue = 16
+                MinValue = 1
+                OnChange = SpinEditCurrentPlotNumChange
+                TabOrder = 1
+                Value = 1
+              end
+              object RadioGroupS11S21: TRadioGroup
+                Left = 6
+                Height = 101
+                Top = 181
+                Width = 85
+                AutoFill = True
+                Caption = 'S11/S21'
+                ChildSizing.LeftRightSpacing = 6
+                ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+                ChildSizing.EnlargeVertical = crsHomogenousChildResize
+                ChildSizing.ShrinkHorizontal = crsScaleChilds
+                ChildSizing.ShrinkVertical = crsScaleChilds
+                ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                ChildSizing.ControlsPerLine = 1
+                ClientHeight = 66
+                ClientWidth = 81
+                Items.Strings = (
+                  'S11'
+                  'S21'
+                )
+                OnClick = RadioGroupS11S21Click
+                TabOrder = 2
+              end
+              object RadioGroupMagPhase: TRadioGroup
+                Left = 1
+                Height = 101
+                Top = 304
+                Width = 85
+                AutoFill = True
+                Caption = 'Mag/Phi'
+                ChildSizing.LeftRightSpacing = 6
+                ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+                ChildSizing.EnlargeVertical = crsHomogenousChildResize
+                ChildSizing.ShrinkHorizontal = crsScaleChilds
+                ChildSizing.ShrinkVertical = crsScaleChilds
+                ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                ChildSizing.ControlsPerLine = 1
+                ClientHeight = 66
+                ClientWidth = 81
+                Items.Strings = (
+                  'Mag'
+                  'Phi'
+                )
+                OnClick = RadioGroupMagPhaseClick
+                TabOrder = 3
+              end
+              object Label1: TLabel
+                Left = 15
+                Height = 30
+                Top = 4
+                Width = 62
+                Alignment = taCenter
+                Caption = 'Max N'
+              end
+              object Label2: TLabel
+                Left = 38
+                Height = 30
+                Top = 83
+                Width = 16
+                Alignment = taCenter
+                Caption = 'N'
+              end
+              object ButtonConnect: TButton
+                Left = 3
+                Height = 43
+                Top = 559
+                Width = 132
+                Anchors = [akLeft, akBottom]
+                Caption = 'Connect'
+                TabOrder = 4
+                OnClick = ButtonConnectClick
+              end
+              object ButtonCalibrate: TButton
+                Left = 3
+                Height = 43
+                Top = 437
+                Width = 132
+                Caption = 'Calibrate'
+                TabOrder = 5
+                OnClick = ButtonCalibrateClick
+              end
+              object CheckBoxCalibrationApply: TCheckBox
+                Left = 3
+                Height = 34
+                Top = 493
+                Width = 128
+                Caption = 'Calibration'
+                TabOrder = 6
+                OnChange = CheckBoxCalibrationApplyChange
+              end
+            end
+            object TabSheet6: TTabSheet
+              Caption = 'TabSheet6'
+            end
+            object TabSheet7: TTabSheet
+              Caption = 'TabSheet7'
+            end
+          end
+        end
+        object PairSplitterSide2: TPairSplitterSide
+          Cursor = crArrow
+          Left = 186
+          Height = 632
+          Top = 0
+          Width = 870
+          OnResize = PairSplitter1Resize
+        end
+      end
+    end
+    object TabSheetSettings: TTabSheet
+      Caption = 'Settings'
+      ClientHeight = 632
+      ClientWidth = 1056
+      object FloatSpinEditFStart: TFloatSpinEdit
+        Left = 115
+        Height = 38
+        Top = 39
+        Width = 339
+        DecimalPlaces = 6
+        Increment = 1000
+        OnEditingDone = FloatSpinEditFStartEditingDone
+        TabOrder = 0
+      end
+      object FloatSpinEditFStop: TFloatSpinEdit
+        Left = 115
+        Height = 38
+        Top = 120
+        Width = 339
+        DecimalPlaces = 6
+        Increment = 1000
+        OnEditingDone = FloatSpinEditFStopEditingDone
+        TabOrder = 1
+      end
+      object SpinEditSweepPoints: TSpinEdit
+        Left = 118
+        Height = 38
+        Top = 203
+        Width = 209
+        MaxValue = 100000
+        MinValue = 1
+        OnEditingDone = SpinEditSweepPointsEditingDone
+        TabOrder = 2
+        Value = 1
+      end
+      object LabelFStart: TLabel
+        Left = 6
+        Height = 30
+        Top = 41
+        Width = 58
+        Caption = 'F Start'
+      end
+      object LabelFStop: TLabel
+        Left = 6
+        Height = 30
+        Top = 120
+        Width = 57
+        Caption = 'F Stop'
+      end
+      object LabelPoints: TLabel
+        Left = 6
+        Height = 30
+        Top = 203
+        Width = 72
+        Caption = 'F Points'
+      end
+      object SpinEditIPPortPlanar: TSpinEdit
+        Left = 391
+        Height = 38
+        Top = 349
+        Width = 168
+        MinValue = 65535
+        OnChange = SpinEditIPPortPlanarChange
+        TabOrder = 3
+      end
+      object EditIPAddressSwitch: TEdit
+        Left = 113
+        Height = 38
+        Top = 437
+        Width = 209
+        TabOrder = 4
+        Text = 'IPAddressSwitch'
+        OnEditingDone = EditIPAddressSwitchEditingDone
+      end
+      object EditIPAddressPlanar: TEdit
+        Left = 113
+        Height = 38
+        Top = 349
+        Width = 214
+        TabOrder = 5
+        Text = 'IPAddressPlanar'
+        OnEditingDone = EditIPAddressPlanarEditingDone
+      end
+      object SpinEditIPPortSwitch: TSpinEdit
+        Left = 392
+        Height = 38
+        Top = 437
+        Width = 168
+        MinValue = 65535
+        OnChange = SpinEditIPPortSwitchChange
+        TabOrder = 6
+      end
+      object LabelIPPlanar: TLabel
+        Left = 14
+        Height = 30
+        Top = 351
+        Width = 82
+        Caption = 'IP Planar'
+      end
+      object LabelIPSwitch: TLabel
+        Left = 11
+        Height = 30
+        Top = 441
+        Width = 84
+        Caption = 'IP Switch'
+      end
+      object SpinEditYMinS11: TSpinEdit
+        Left = 766
+        Height = 38
+        Top = 39
+        Width = 146
+        Anchors = [akTop, akRight]
+        MaxValue = 100
+        MinValue = -200
+        OnChange = SpinEditYMinS11Change
+        TabOrder = 7
+      end
+      object LabelS11Min: TLabel
+        Left = 644
+        Height = 30
+        Top = 39
+        Width = 110
+        Anchors = [akTop, akRight]
+        Caption = 'S11 Min, dB'
+      end
+      object SpinEditYMaxS11: TSpinEdit
+        Left = 766
+        Height = 38
+        Top = 99
+        Width = 146
+        Anchors = [akTop, akRight]
+        MaxValue = 100
+        MinValue = -200
+        OnChange = SpinEditYMaxS11Change
+        TabOrder = 8
+      end
+      object SpinEditYMinS21: TSpinEdit
+        Left = 766
+        Height = 38
+        Top = 182
+        Width = 146
+        Anchors = [akTop, akRight]
+        MaxValue = 100
+        MinValue = -200
+        OnChange = SpinEditYMinS21Change
+        TabOrder = 9
+      end
+      object SpinEditYMaxS21: TSpinEdit
+        Left = 766
+        Height = 38
+        Top = 238
+        Width = 146
+        Anchors = [akTop, akRight]
+        MaxValue = 100
+        MinValue = -200
+        OnChange = SpinEditYMaxS21Change
+        TabOrder = 10
+      end
+      object LabelS11Max: TLabel
+        Left = 642
+        Height = 30
+        Top = 99
+        Width = 114
+        Anchors = [akTop, akRight]
+        Caption = 'S11 Max, dB'
+      end
+      object LabelS21Min: TLabel
+        Left = 644
+        Height = 30
+        Top = 182
+        Width = 110
+        Anchors = [akTop, akRight]
+        Caption = 'S21 Min, dB'
+      end
+      object LabelS21Max: TLabel
+        Left = 642
+        Height = 30
+        Top = 238
+        Width = 114
+        Anchors = [akTop, akRight]
+        Caption = 'S21 Max, dB'
+      end
+    end
+    object TabSheetMarkers: TTabSheet
+      Caption = 'Markers'
+      ClientHeight = 632
+      ClientWidth = 1056
+      object SpinEditMarkerNum: TSpinEdit
+        Left = 125
+        Height = 38
+        Top = 48
+        Width = 88
+        MaxValue = 6
+        MinValue = 1
+        OnChange = SpinEditMarkerNumChange
+        TabOrder = 0
+        Value = 1
+      end
+      object SpinEditMarkerChartNum: TSpinEdit
+        Left = 128
+        Height = 38
+        Top = 145
+        Width = 88
+        MaxValue = 16
+        MinValue = 1
+        OnChange = SpinEditMarkerChartNumChange
+        TabOrder = 1
+        Value = 1
+      end
+      object FloatSpinEditMarkerFrequency: TFloatSpinEdit
+        Left = 123
+        Height = 38
+        Top = 224
+        Width = 269
+        OnEditingDone = FloatSpinEditMarkerFrequencyEditingDone
+        TabOrder = 2
+      end
+      object CheckBoxMarkerEnabled: TCheckBox
+        Left = 125
+        Height = 34
+        Top = 308
+        Width = 173
+        Caption = 'Marker Enabled'
+        TabOrder = 3
+        OnChange = CheckBoxMarkerEnabledChange
+      end
+      object LabelMarkerNum: TLabel
+        Left = 8
+        Height = 30
+        Top = 49
+        Width = 87
+        Caption = 'Marker N'
+      end
+      object LabelMarkerChartNum: TLabel
+        Left = 14
+        Height = 30
+        Top = 153
+        Width = 72
+        Caption = 'Chart N'
+      end
+      object LabelMarkerFrequency: TLabel
+        Left = 14
+        Height = 30
+        Top = 235
+        Width = 81
+        Caption = 'Marker F'
+      end
+    end
+    object TabSheetSwitch: TTabSheet
+      Caption = 'Switch'
+      ClientHeight = 632
+      ClientWidth = 1056
+      OnEnter = TabSheetSwitchEnter
+      object RadioGroupSwitchInNum: TRadioGroup
+        Left = 67
+        Height = 342
+        Top = 67
+        Width = 119
+        AutoFill = True
+        Caption = 'Switch IN'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclTopToBottomThenLeftToRight
+        ChildSizing.ControlsPerLine = 8
+        ClientHeight = 307
+        ClientWidth = 115
+        ColumnLayout = clVerticalThenHorizontal
+        ItemIndex = 0
+        Items.Strings = (
+          'IN 1'
+          'IN 2'
+          'IN 3'
+          'IN 4'
+          'IN 5'
+          'IN 6'
+          'IN 7'
+          'IN 8'
+        )
+        OnClick = RadioGroupSwitchInNumClick
+        TabOrder = 0
+      end
+      object RadioGroupSwitchOutNum: TRadioGroup
+        Left = 336
+        Height = 342
+        Top = 67
+        Width = 167
+        AutoFill = True
+        Caption = 'Switch OUT'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclTopToBottomThenLeftToRight
+        ChildSizing.ControlsPerLine = 8
+        ClientHeight = 307
+        ClientWidth = 163
+        ColumnLayout = clVerticalThenHorizontal
+        ItemIndex = 0
+        Items.Strings = (
+          'OUT 1'
+          'OUT 2'
+          'OUT 3'
+          'OUT 4'
+          'OUT 5'
+          'OUT 6'
+          'OUT 7'
+          'OUT 8'
+        )
+        OnClick = RadioGroupSwitchOutNumClick
+        TabOrder = 1
+      end
+      object LabelArrow: TLabel
+        Left = 213
+        Height = 30
+        Top = 224
+        Width = 86
+        Caption = '--------->'
+      end
+      object LabelSwitchChartNum: TLabel
+        Left = 190
+        Height = 30
+        Top = 27
+        Width = 156
+        Caption = 'SwitchChartNum'
+      end
+    end
+    object TabSheetLog: TTabSheet
+      Caption = 'Log'
+      ClientHeight = 632
+      ClientWidth = 1056
+      object ListBox1: TListBox
+        Left = 15
+        Height = 609
+        Top = 8
+        Width = 351
+        Anchors = [akTop, akLeft, akBottom]
+        ItemHeight = 0
+        TabOrder = 0
+      end
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 41
+    Top = 568
+  end
+  object MainMenu1: TMainMenu
+    Left = 127
+    Top = 568
+    object MenuItem1: TMenuItem
+      Caption = '&File'
+    end
+    object MenuItemEdit: TMenuItem
+      Caption = '&Edit'
+      object MenuItemCopy: TMenuItem
+        Caption = '&Copy'
+        OnClick = MenuItemCopyClick
+      end
+    end
+    object MenuItemTest: TMenuItem
+      Caption = '&Test'
+      OnClick = MenuItemTestClick
+    end
+  end
+end

@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>TAChart documentation - Lazarus wiki</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"f226aae269d2bae73391f8dc","wgCSPNonce":false,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"TAChart_documentation","wgTitle":"TAChart documentation","wgCurRevisionId":160660,"wgRevisionId":160660,"wgArticleId":6779,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Components","Graphics","TAChart"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"TAChart_documentation","wgRelevantArticleId":6779,"wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgSmjUseCdn":true,
+"wgSmjUseChem":true,"wgSmjDisplayMath":[],"wgSmjExtraInlineMath":[],"wgSmjScale":1,"wgSmjEnableMenu":true,"wgSmjDisplayAlign":"left"};RLSTATE={"site.styles":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.pygments":"ready","skins.monobook.styles":"ready"};RLPAGEMODULES=["ext.SimpleMathJax","site","mediawiki.page.ready","mediawiki.toc","skins.monobook.scripts"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});});});</script>
+<link rel="stylesheet" href="/load.php?lang=en&amp;modules=ext.pygments%7Cskins.monobook.styles&amp;only=styles&amp;skin=monobook"/>
+<script async="" src="/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=monobook"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=monobook"/>
+<meta name="generator" content="MediaWiki 1.39.8"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="Lazarus wiki (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//wiki.freepascal.org/api.php?action=rsd"/>
+<link rel="license" href="https://sourceforge.net"/>
+<link rel="alternate" type="application/atom+xml" title="Lazarus wiki Atom feed" href="/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-TAChart_documentation rootpage-TAChart_documentation skin-monobook action-view skin--responsive"><div id="globalWrapper">
+	<div id="column-content">
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div id="siteNotice"></div>
+			<div class="mw-indicators">
+			</div>
+			<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">TAChart documentation</span></h1>
+			<div id="bodyContent" class="monobook-body">
+				<div id="siteSub">From Lazarus wiki</div>
+				<div id="contentSub" ></div>
+				
+				<div id="jump-to-nav"></div><a href="#column-one" class="mw-jump-link">Jump to navigation</a><a href="#searchInput" class="mw-jump-link">Jump to search</a>
+				<!-- start content -->
+				<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p><small>
+<font color="Gray">&#x2502;</font>&#32;</small><small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small><b><a class="mw-selflink selflink">English&#160;(en)</a></b>&#32;&#x2502;&#32;</small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small><b><a href="/TAChart_documentation/ru" title="TAChart documentation/ru">русский&#160;(ru)</a></b>&#32;&#x2502;&#32;</small>
+<small></small>
+<small></small>
+<small></small>
+<small></small>
+<small><b><a href="/TAChart_documentation/uk" title="TAChart documentation/uk">українська&#160;(uk)</a></b>&#32;&#x2502;&#32;</small>
+<small></small>
+<small><b><a href="/TAChart_documentation/zh_CN" title="TAChart documentation/zh CN">中文（中国大陆）&#160;(zh_CN)</a></b>&#32;&#x2502;&#32;</small>
+<small></small>
+<br /><font color="red"><b></b></font>
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Series"><span class="tocnumber">2</span> <span class="toctext">Series</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Constant_line_series"><span class="tocnumber">2.1</span> <span class="toctext">Constant line series</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Basic_series"><span class="tocnumber">2.2</span> <span class="toctext">Basic series</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#Line_series"><span class="tocnumber">2.2.1</span> <span class="toctext">Line series</span></a>
+<ul>
+<li class="toclevel-4 tocsection-6"><a href="#Fast_lines"><span class="tocnumber">2.2.1.1</span> <span class="toctext">Fast lines</span></a></li>
+<li class="toclevel-4 tocsection-7"><a href="#Point_series"><span class="tocnumber">2.2.1.2</span> <span class="toctext">Point series</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-8"><a href="#Bar_series"><span class="tocnumber">2.2.2</span> <span class="toctext">Bar series</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#Area_series"><span class="tocnumber">2.2.3</span> <span class="toctext">Area series</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Polygon_series"><span class="tocnumber">2.2.4</span> <span class="toctext">Polygon series</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-11"><a href="#Multi-value_series"><span class="tocnumber">2.3</span> <span class="toctext">Multi-value series</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href="#Bubble_series"><span class="tocnumber">2.3.1</span> <span class="toctext">Bubble series</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="#Box-and-whiskers_series"><span class="tocnumber">2.3.2</span> <span class="toctext">Box-and-whiskers series</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="#Open-high-low-close_series"><span class="tocnumber">2.3.3</span> <span class="toctext">Open-high-low-close series</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="#Field_series"><span class="tocnumber">2.3.4</span> <span class="toctext">Field series</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-16"><a href="#Radial_series"><span class="tocnumber">2.4</span> <span class="toctext">Radial series</span></a>
+<ul>
+<li class="toclevel-3 tocsection-17"><a href="#Pie_series"><span class="tocnumber">2.4.1</span> <span class="toctext">Pie series</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="#Polar_series"><span class="tocnumber">2.4.2</span> <span class="toctext">Polar series</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-19"><a href="#User-drawn_series"><span class="tocnumber">2.5</span> <span class="toctext">User-drawn series</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#Functional_series"><span class="tocnumber">2.6</span> <span class="toctext">Functional series</span></a>
+<ul>
+<li class="toclevel-3 tocsection-21"><a href="#Function_series"><span class="tocnumber">2.6.1</span> <span class="toctext">Function series</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="#Expression_series"><span class="tocnumber">2.6.2</span> <span class="toctext">Expression series</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="#B-spline_series"><span class="tocnumber">2.6.3</span> <span class="toctext">B-spline series</span></a></li>
+<li class="toclevel-3 tocsection-24"><a href="#Cubic_spline_series"><span class="tocnumber">2.6.4</span> <span class="toctext">Cubic spline series</span></a></li>
+<li class="toclevel-3 tocsection-25"><a href="#Fit_series"><span class="tocnumber">2.6.5</span> <span class="toctext">Fit series</span></a></li>
+<li class="toclevel-3 tocsection-26"><a href="#Color_map_series"><span class="tocnumber">2.6.6</span> <span class="toctext">Color map series</span></a></li>
+<li class="toclevel-3 tocsection-27"><a href="#Expression_color_map_series"><span class="tocnumber">2.6.7</span> <span class="toctext">Expression color map series</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-28"><a href="#Sources"><span class="tocnumber">3</span> <span class="toctext">Sources</span></a>
+<ul>
+<li class="toclevel-2 tocsection-29"><a href="#Sorted_sources"><span class="tocnumber">3.1</span> <span class="toctext">Sorted sources</span></a></li>
+<li class="toclevel-2 tocsection-30"><a href="#Multi-valued_sources"><span class="tocnumber">3.2</span> <span class="toctext">Multi-valued sources</span></a></li>
+<li class="toclevel-2 tocsection-31"><a href="#Skipping_source_items"><span class="tocnumber">3.3</span> <span class="toctext">Skipping source items</span></a></li>
+<li class="toclevel-2 tocsection-32"><a href="#Error_bars"><span class="tocnumber">3.4</span> <span class="toctext">Error bars</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="#List_source"><span class="tocnumber">3.5</span> <span class="toctext">List source</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="#Random_source"><span class="tocnumber">3.6</span> <span class="toctext">Random source</span></a></li>
+<li class="toclevel-2 tocsection-35"><a href="#User-defined_source"><span class="tocnumber">3.7</span> <span class="toctext">User-defined source</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="#Database_source"><span class="tocnumber">3.8</span> <span class="toctext">Database source</span></a></li>
+<li class="toclevel-2 tocsection-37"><a href="#Calculated_source"><span class="tocnumber">3.9</span> <span class="toctext">Calculated source</span></a></li>
+<li class="toclevel-2 tocsection-38"><a href="#Interval_source"><span class="tocnumber">3.10</span> <span class="toctext">Interval source</span></a></li>
+<li class="toclevel-2 tocsection-39"><a href="#Date-time_interval_source"><span class="tocnumber">3.11</span> <span class="toctext">Date-time interval source</span></a></li>
+<li class="toclevel-2 tocsection-40"><a href="#Source_optimization_notes"><span class="tocnumber">3.12</span> <span class="toctext">Source optimization notes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-41"><a href="#Coordinates_and_axes"><span class="tocnumber">4</span> <span class="toctext">Coordinates and axes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-42"><a href="#Axis_transformations"><span class="tocnumber">4.1</span> <span class="toctext">Axis transformations</span></a>
+<ul>
+<li class="toclevel-3 tocsection-43"><a href="#Linear_and_logarithmic_transformation"><span class="tocnumber">4.1.1</span> <span class="toctext">Linear and logarithmic transformation</span></a></li>
+<li class="toclevel-3 tocsection-44"><a href="#Auto-scaling_transformation"><span class="tocnumber">4.1.2</span> <span class="toctext">Auto-scaling transformation</span></a></li>
+<li class="toclevel-3 tocsection-45"><a href="#Cumulative_normal_distribution_transformation"><span class="tocnumber">4.1.3</span> <span class="toctext">Cumulative normal distribution transformation</span></a></li>
+<li class="toclevel-3 tocsection-46"><a href="#User-defined_transformation"><span class="tocnumber">4.1.4</span> <span class="toctext">User-defined transformation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-47"><a href="#Date_and_time_axes"><span class="tocnumber">4.2</span> <span class="toctext">Date and time axes</span></a></li>
+<li class="toclevel-2 tocsection-48"><a href="#Axis_ranges"><span class="tocnumber">4.3</span> <span class="toctext">Axis ranges</span></a></li>
+<li class="toclevel-2 tocsection-49"><a href="#Axis_intervals"><span class="tocnumber">4.4</span> <span class="toctext">Axis intervals</span></a></li>
+<li class="toclevel-2 tocsection-50"><a href="#Axis_position"><span class="tocnumber">4.5</span> <span class="toctext">Axis position</span></a></li>
+<li class="toclevel-2 tocsection-51"><a href="#Axis_titles"><span class="tocnumber">4.6</span> <span class="toctext">Axis titles</span></a></li>
+<li class="toclevel-2 tocsection-52"><a href="#Axis_LabelSize"><span class="tocnumber">4.7</span> <span class="toctext">Axis LabelSize</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-53"><a href="#Extents_and_margins"><span class="tocnumber">5</span> <span class="toctext">Extents and margins</span></a>
+<ul>
+<li class="toclevel-2 tocsection-54"><a href="#Extents"><span class="tocnumber">5.1</span> <span class="toctext">Extents</span></a></li>
+<li class="toclevel-2 tocsection-55"><a href="#Extent_limits"><span class="tocnumber">5.2</span> <span class="toctext">Extent limits</span></a></li>
+<li class="toclevel-2 tocsection-56"><a href="#Linked_extents"><span class="tocnumber">5.3</span> <span class="toctext">Linked extents</span></a></li>
+<li class="toclevel-2 tocsection-57"><a href="#Margins"><span class="tocnumber">5.4</span> <span class="toctext">Margins</span></a></li>
+<li class="toclevel-2 tocsection-58"><a href="#Optimization_notes"><span class="tocnumber">5.5</span> <span class="toctext">Optimization notes</span></a></li>
+<li class="toclevel-2 tocsection-59"><a href="#Graphical_explanation"><span class="tocnumber">5.6</span> <span class="toctext">Graphical explanation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-60"><a href="#Tools"><span class="tocnumber">6</span> <span class="toctext">Tools</span></a>
+<ul>
+<li class="toclevel-2 tocsection-61"><a href="#Keyboard_handling_in_tools"><span class="tocnumber">6.1</span> <span class="toctext">Keyboard handling in tools</span></a></li>
+<li class="toclevel-2 tocsection-62"><a href="#Drawing_mode"><span class="tocnumber">6.2</span> <span class="toctext">Drawing mode</span></a></li>
+<li class="toclevel-2 tocsection-63"><a href="#Extent_tools"><span class="tocnumber">6.3</span> <span class="toctext">Extent tools</span></a>
+<ul>
+<li class="toclevel-3 tocsection-64"><a href="#Zoom_drag_tool"><span class="tocnumber">6.3.1</span> <span class="toctext">Zoom drag tool</span></a></li>
+<li class="toclevel-3 tocsection-65"><a href="#Zoom_click_tool"><span class="tocnumber">6.3.2</span> <span class="toctext">Zoom click tool</span></a></li>
+<li class="toclevel-3 tocsection-66"><a href="#Zoom_mouse-wheel_tool"><span class="tocnumber">6.3.3</span> <span class="toctext">Zoom mouse-wheel tool</span></a></li>
+<li class="toclevel-3 tocsection-67"><a href="#Pan_drag_tool"><span class="tocnumber">6.3.4</span> <span class="toctext">Pan drag tool</span></a></li>
+<li class="toclevel-3 tocsection-68"><a href="#Pan_click_tool"><span class="tocnumber">6.3.5</span> <span class="toctext">Pan click tool</span></a></li>
+<li class="toclevel-3 tocsection-69"><a href="#Pan_mouse_wheel_tool"><span class="tocnumber">6.3.6</span> <span class="toctext">Pan mouse wheel tool</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-70"><a href="#Data_tools"><span class="tocnumber">6.4</span> <span class="toctext">Data tools</span></a>
+<ul>
+<li class="toclevel-3 tocsection-71"><a href="#Data_point_drag_tool"><span class="tocnumber">6.4.1</span> <span class="toctext">Data point drag tool</span></a></li>
+<li class="toclevel-3 tocsection-72"><a href="#Data_point_click_tool"><span class="tocnumber">6.4.2</span> <span class="toctext">Data point click tool</span></a></li>
+<li class="toclevel-3 tocsection-73"><a href="#Data_point_hint_tool"><span class="tocnumber">6.4.3</span> <span class="toctext">Data point hint tool</span></a></li>
+<li class="toclevel-3 tocsection-74"><a href="#Data_point_crosshair_tool"><span class="tocnumber">6.4.4</span> <span class="toctext">Data point crosshair tool</span></a></li>
+<li class="toclevel-3 tocsection-75"><a href="#Data_point_distance_tool"><span class="tocnumber">6.4.5</span> <span class="toctext">Data point distance tool</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-76"><a href="#Chart_element_tools"><span class="tocnumber">6.5</span> <span class="toctext">Chart element tools</span></a>
+<ul>
+<li class="toclevel-3 tocsection-77"><a href="#Axis_click_tool"><span class="tocnumber">6.5.1</span> <span class="toctext">Axis click tool</span></a></li>
+<li class="toclevel-3 tocsection-78"><a href="#Title/footer_click_tool"><span class="tocnumber">6.5.2</span> <span class="toctext">Title/footer click tool</span></a></li>
+<li class="toclevel-3 tocsection-79"><a href="#Legend_click_tool"><span class="tocnumber">6.5.3</span> <span class="toctext">Legend click tool</span></a></li>
+<li class="toclevel-3 tocsection-80"><a href="#Datapoint_marks_click_tool"><span class="tocnumber">6.5.4</span> <span class="toctext">Datapoint marks click tool</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-81"><a href="#User_defined_tool"><span class="tocnumber">6.6</span> <span class="toctext">User defined tool</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-82"><a href="#Decorative_elements"><span class="tocnumber">7</span> <span class="toctext">Decorative elements</span></a>
+<ul>
+<li class="toclevel-2 tocsection-83"><a href="#Title_and_footer"><span class="tocnumber">7.1</span> <span class="toctext">Title and footer</span></a>
+<ul>
+<li class="toclevel-3 tocsection-84"><a href="#HTML"><span class="tocnumber">7.1.1</span> <span class="toctext">HTML</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-85"><a href="#Legend"><span class="tocnumber">7.2</span> <span class="toctext">Legend</span></a>
+<ul>
+<li class="toclevel-3 tocsection-86"><a href="#Legend_item_text"><span class="tocnumber">7.2.1</span> <span class="toctext">Legend item text</span></a></li>
+<li class="toclevel-3 tocsection-87"><a href="#User-defined_legend_items"><span class="tocnumber">7.2.2</span> <span class="toctext">User-defined legend items</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-88"><a href="#Arrows"><span class="tocnumber">7.3</span> <span class="toctext">Arrows</span></a></li>
+<li class="toclevel-2 tocsection-89"><a href="#Transparency"><span class="tocnumber">7.4</span> <span class="toctext">Transparency</span></a></li>
+<li class="toclevel-2 tocsection-90"><a href="#ChartStyles"><span class="tocnumber">7.5</span> <span class="toctext">ChartStyles</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-91"><a href="#Marks"><span class="tocnumber">8</span> <span class="toctext">Marks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-92"><a href="#Mark_labels"><span class="tocnumber">8.1</span> <span class="toctext">Mark labels</span></a>
+<ul>
+<li class="toclevel-3 tocsection-93"><a href="#Multi-line_marks"><span class="tocnumber">8.1.1</span> <span class="toctext">Multi-line marks</span></a></li>
+<li class="toclevel-3 tocsection-94"><a href="#HTML_codes_in_marks"><span class="tocnumber">8.1.2</span> <span class="toctext">HTML codes in marks</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-95"><a href="#Mark_positions_and_attachment"><span class="tocnumber">8.2</span> <span class="toctext">Mark positions and attachment</span></a></li>
+<li class="toclevel-2 tocsection-96"><a href="#Rotation_of_marks"><span class="tocnumber">8.3</span> <span class="toctext">Rotation of marks</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-97"><a href="#Drawers"><span class="tocnumber">9</span> <span class="toctext">Drawers</span></a>
+<ul>
+<li class="toclevel-2 tocsection-98"><a href="#TCanvas_drawer"><span class="tocnumber">9.1</span> <span class="toctext">TCanvas drawer</span></a></li>
+<li class="toclevel-2 tocsection-99"><a href="#TFPCanvas_drawer"><span class="tocnumber">9.2</span> <span class="toctext">TFPCanvas drawer</span></a></li>
+<li class="toclevel-2 tocsection-100"><a href="#SVG_drawer"><span class="tocnumber">9.3</span> <span class="toctext">SVG drawer</span></a></li>
+<li class="toclevel-2 tocsection-101"><a href="#OpenGL_drawer"><span class="tocnumber">9.4</span> <span class="toctext">OpenGL drawer</span></a></li>
+<li class="toclevel-2 tocsection-102"><a href="#Printer_drawer"><span class="tocnumber">9.5</span> <span class="toctext">Printer drawer</span></a></li>
+<li class="toclevel-2 tocsection-103"><a href="#AggPas_drawer"><span class="tocnumber">9.6</span> <span class="toctext">AggPas drawer</span></a></li>
+<li class="toclevel-2 tocsection-104"><a href="#BGRABitmap_drawer"><span class="tocnumber">9.7</span> <span class="toctext">BGRABitmap drawer</span></a></li>
+<li class="toclevel-2 tocsection-105"><a href="#FPVectorial_drawer"><span class="tocnumber">9.8</span> <span class="toctext">FPVectorial drawer</span></a></li>
+<li class="toclevel-2 tocsection-106"><a href="#WMF_drawer"><span class="tocnumber">9.9</span> <span class="toctext">WMF drawer</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-107"><a href="#Navigation"><span class="tocnumber">10</span> <span class="toctext">Navigation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-108"><a href="#Scroll_bars"><span class="tocnumber">10.1</span> <span class="toctext">Scroll bars</span></a></li>
+<li class="toclevel-2 tocsection-109"><a href="#Navigation_panel"><span class="tocnumber">10.2</span> <span class="toctext">Navigation panel</span></a></li>
+<li class="toclevel-2 tocsection-110"><a href="#Live_View"><span class="tocnumber">10.3</span> <span class="toctext">Live View</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-111"><a href="#Additional_components"><span class="tocnumber">11</span> <span class="toctext">Additional components</span></a>
+<ul>
+<li class="toclevel-2 tocsection-112"><a href="#Legend_panel"><span class="tocnumber">11.1</span> <span class="toctext">Legend panel</span></a></li>
+<li class="toclevel-2 tocsection-113"><a href="#Chart_listbox"><span class="tocnumber">11.2</span> <span class="toctext">Chart listbox</span></a></li>
+<li class="toclevel-2 tocsection-114"><a href="#Chart_image_list"><span class="tocnumber">11.3</span> <span class="toctext">Chart image list</span></a></li>
+<li class="toclevel-2 tocsection-115"><a href="#Chart_combobox"><span class="tocnumber">11.4</span> <span class="toctext">Chart combobox</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-116"><a href="#TeeChart_compatibility"><span class="tocnumber">12</span> <span class="toctext">TeeChart compatibility</span></a></li>
+<li class="toclevel-1 tocsection-117"><a href="#Technical_details"><span class="tocnumber">13</span> <span class="toctext">Technical details</span></a>
+<ul>
+<li class="toclevel-2 tocsection-118"><a href="#Drawing_order"><span class="tocnumber">13.1</span> <span class="toctext">Drawing order</span></a></li>
+<li class="toclevel-2 tocsection-119"><a href="#Coding_style"><span class="tocnumber">13.2</span> <span class="toctext">Coding style</span></a>
+<ul>
+<li class="toclevel-3 tocsection-120"><a href="#Spaces"><span class="tocnumber">13.2.1</span> <span class="toctext">Spaces</span></a></li>
+<li class="toclevel-3 tocsection-121"><a href="#Lines"><span class="tocnumber">13.2.2</span> <span class="toctext">Lines</span></a></li>
+<li class="toclevel-3 tocsection-122"><a href="#Indentation_and_blocks"><span class="tocnumber">13.2.3</span> <span class="toctext">Indentation and blocks</span></a></li>
+<li class="toclevel-3 tocsection-123"><a href="#Comments"><span class="tocnumber">13.2.4</span> <span class="toctext">Comments</span></a></li>
+<li class="toclevel-3 tocsection-124"><a href="#Names"><span class="tocnumber">13.2.5</span> <span class="toctext">Names</span></a></li>
+<li class="toclevel-3 tocsection-125"><a href="#Variable_declarations"><span class="tocnumber">13.2.6</span> <span class="toctext">Variable declarations</span></a></li>
+<li class="toclevel-3 tocsection-126"><a href="#Classes_and_methods"><span class="tocnumber">13.2.7</span> <span class="toctext">Classes and methods</span></a></li>
+<li class="toclevel-3 tocsection-127"><a href="#Hints_and_warnings"><span class="tocnumber">13.2.8</span> <span class="toctext">Hints and warnings</span></a></li>
+<li class="toclevel-3 tocsection-128"><a href="#Control_flow"><span class="tocnumber">13.2.9</span> <span class="toctext">Control flow</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Overview">Overview</span></h2>
+<p><a href="/TAChart" title="TAChart">TAChart</a> is a package for drawing graphs, charts and other diagrams.
+It is <a href="/Comparing_TAChart_with_Delphi%27s_TeeChart_Standard" title="Comparing TAChart with Delphi&#39;s TeeChart Standard">comparable in features</a>, but not specifically <a href="#TeeChart_compatibility">compatible</a>, with Delphi's TeeChart package.
+One substantial difference is that some features (e.g. data sources and axis transformations)
+are implemented via separate components instead of through simple chart properties.
+This design gives increased flexibility and opportunity for code re-use,
+but at the cost of a slightly more complex API.
+</p><p>This document provides a concise but comprehensive overview of TAChart concepts, features and components.
+For a step-by-step introduction, see <a href="/TAChart_Tutorial:_Getting_started" title="TAChart Tutorial: Getting started">TAChart Tutorial: Getting started</a> and <a href="/TAChart#Documentation" title="TAChart">other tutorials</a>.
+</p><p>The documentation describes the TAChart package as found in the latest development version of Lazarus.
+Some features may not yet be available in the official Lazarus release version. We recommend that you use this latest document version because it has corrected and improved older descriptions in previous versions, as well as the fact that it includes details about the newest features.
+</p><p>Nevertheless, you can look at the
+<a class="external text" href="//wiki.freepascal.org/index.php?title=TAChart_documentation&amp;oldid=60477">the old version</a>
+of this document to see the state of the documentation around the time of the Lazarus 1.0 release.
+</p>
+<h2><span class="mw-headline" id="Series">Series</span></h2>
+<div class="floatright"><a href="/File:series_hierarchy-1.png" class="image"><img alt="series hierarchy-1.png" src="/images/d/d2/series_hierarchy-1.png" decoding="async" width="693" height="846" /></a></div><p>Series are the central part of TAChart. Their hierarchy is illustrated in the figure. The series inheriting from TCustomChartSeries represents data taken from a <a href="#Sources">ChartSource</a> in graphical ways, such as lines or bars; the other series get their data in another way.
+</p><h3><span class="mw-headline" id="Constant_line_series">Constant line series</span></h3>
+<p>This is the simplest series type, representing an "infinite" vertical or horizontal line.
+It can be used as a "central axis" in function graphs, or as a draggable marker line.
+</p><p>Also, by setting <tt>Active</tt>=true, <tt>Pen.Style=psClear</tt> and
+<tt>UseBounds=true</tt> and an appropriate <tt>AxisIndexX</tt>, it becomes an "axis extender",
+making sure that a given <tt>Position</tt> will always be included in the axis range.
+</p>
+<h3><span class="mw-headline" id="Basic_series">Basic series</span></h3>
+<p>Basic series are most often used, and include <a href="#Line_series">line</a>, <a href="#Bar_series">bar</a> and <a href="#Area_series">area</a> series.
+All basic series can be "stacked" by using <a href="#Multi-valued_sources">multi-valued source</a>.
+Also, all basic series fully support rotation and 3-D drawing.
+</p>
+<h4><span class="mw-headline" id="Line_series">Line series</span></h4>
+<p><tt>TLineSeries</tt> can be used to draw a given set of points,
+optionally marking each data point with a symbol and/or connecting the data points with a line. The color of the line series is defined by the <tt>SeriesColor</tt>.
+</p><p><tt>ColorEach</tt> gives control over coloring inidividual data points and the adjacent line segments (the data point color is provided by the chart source):
+</p>
+<ul><li><tt>ceNone</tt> -- no individual coloring, even if colors are assigend to the chart data item.</li>
+<li><tt>cePoint</tt> -- colorize only the data point symbol, not the line segment.</li>
+<li><tt>ceLineAfter</tt> -- apply the data point color to the line segment following the data point</li>
+<li><tt>ceLineBefore</tt> -- apply the data point color to the segment before the data point</li>
+<li><tt>cePointAndLineAfter, cePointAndLineBefore</tt> -- like before, but colorizes also the data point symbol.</li></ul>
+<p>You can get a "stepped" look by setting <tt>LineType</tt> property to <tt>ltStepXY</tt>, <tt>ltStepYX</tt>, <tt>ltStepCenterXY</tt> or <tt>ltStepCenterYX</tt>.
+</p><p>Using a <a href="#Multi-valued_sources">multi-valued data source</a> <tt>TLineSeries</tt> can handle several y values for each x value. If <tt>Stacked</tt> is set to <tt>true</tt> then the individual y values are plotted in a stacked way, i.e., the second y value is added to the first one, the third y value to the second value etc. Note, however, unlike stacked bar or area series it may not be clear that the data values are stacked, and therefore stacking is usually not recommended for a line series.
+</p>
+<h5><span class="mw-headline" id="Fast_lines">Fast lines</span></h5>
+<p>Some charting packages include a special "fast line" series to quickly draw
+line series from extremely large datasets (10000+ points).
+TAChart, by contrast, contains an optimized fast path inside standard line series code,
+which achieves comparable drawing speed.
+A line series will be drawn very fast if all of the following are true:
+</p>
+<ul><li>There are no marks.</li>
+<li>There are no pointers.</li>
+<li><tt>LineType</tt> is not <tt>ltFromOrigin</tt>.</li></ul>
+<p>Some operating systems/widgetsets may additionally require that <tt>LinePen.Style=psSolid</tt> and <tt>LinePen.Width=1</tt> and <tt>LinePen.Cosmetic=true</tt>.
+</p><p>Additional speedups will be available if <tt>Source.Sorted=true</tt>, and if <tt>AxisIndexX</tt> and <tt>AxisIndexY</tt> are <tt>-1</tt> (i.e. if no axis transformations are applied).
+</p><p>You can measure line speed drawing on your platform with the "line" demo.
+</p>
+<h5><span class="mw-headline" id="Point_series">Point series</span></h5>
+<p><tt>TLineSeries</tt> can be drawn as a "point series" showing only symbols at the position of the data points and hiding the connecting lines by setting <tt>ShowPoints</tt> to <tt>True</tt> and <tt>LineType</tt> to <tt>ltNone</tt>. Note that the <tt>SeriesColor</tt> applies only to the connecting lines; to specify the color of the points change the <tt>Pointer.Brush.Color</tt> for the fill and/or <tt>Pointer.Pen.Color</tt> for the border line color. The <tt>Pointer</tt> property also gives access to the shape (circle, box, etc) of the symbols (<tt>Style</tt>).
+</p>
+<h4><span class="mw-headline" id="Bar_series">Bar series</span></h4>
+<p><tt>TBarSeries</tt> represents data as a set or bars, extending from <tt>ZeroLevel</tt> to data points.
+</p><p>You can control bar width with <tt>BarWidthPercent</tt> property. Note that the it is measured relative to the
+neighboring bars. If the X values are not equidistant, bars will have varying width.
+To prevent that, set <tt>BarWidthStyle=bwPercentMin</tt>.
+</p><p>You can draw multiple bar series side-by-side by using <tt>BarOffsetPercent</tt> property. 
+</p><p>Use multiple y values to create stacked bar series (<tt>Stacked = true</tt>). Beginning with Lazarus v2.0 multiple y values can also be drawn in a side-by-side arrangement (<tt>Stacked = false</tt>).
+</p><p>In addition to rectangular bars the data can be represented by alternative shapes: cylinder, hexagonal prism, pyramid or cone - see property <tt>BarShape</tt> which supports these values: <tt>bsRectangular, bsCylindrical, bsHexPrism, bsPyramid, bsConical</tt>. Furthermore, the event <tt>OnCustomDrawBar</tt> allows to paint the bars in any user-defined manner.
+</p>
+<h4><span class="mw-headline" id="Area_series">Area series</span></h4>
+<p><tt>TAreaSeries</tt> represents data as a polygon extending downwards from the data points either to a <tt>ZeroLevel</tt> line
+or towards infinity (if <tt>UseZeroLevel=false</tt>).
+</p><p>You can get a "stepped" look by setting the <tt>ConnectType</tt> property.
+</p><p>Like <tt>TBarSeries</tt> and <tt>TLineSeries</tt>, an area series can accept several y values for the same x from a <a href="#Multi-valued_sources">multi-valued data source</a>. These y values are drawn in a stacked way if the property <tt>Stacked</tt> is set to <tt>True</tt> (its default value). Use a <a href="#ChartStyles">ChartStyles</a> component to define the appearance of the individual layers. (Note that in Lazarus versions 1.8.x or older, ChartStyles do not colorize overlapping layers consistently). 
+</p><p>The property <tt>Banded</tt> (available in Lazarus v2.0+), if set to true, suppresses painting of the lowest stack level. This way a band of data values can be highlighted: use a chartsource with two y values and set the first y value to the lower and the second y value to the upper band level. Alternatively, the width of the band can be specified in the second y value if both properties <tt>Banded</tt> and <tt>Stacked</tt> are set to true.
+</p><p>Multiple-y value support should be applied with caution: Stacking non-positive values may produce plots which are difficult to understand, and unstacked area series (<tt>Stacked = false</tt>) may suffer from data being covered by other y values. Also, the <tt>ZeroLevel</tt> should be included only in the lowest stack level to avoid unusual results. 
+</p><p>A 3D-like presentation of the series can be obtained if <tt>Depth</tt> is set to a positive value, something like 10 or 20. Note that the drawing algorithm is very simple and likely produces incorrect displays when curves cross, or stacking and banding are turned off.
+</p>
+<h4><span class="mw-headline" id="Polygon_series">Polygon series</span></h4>
+<p><tt>TPolygonSeries</tt> draws a filled polygon defined by the points of the series. It is intended to be the basis of contour plots or GIS plots (earth maps). The series supports both single and multiple polygons. Single polygons are closed automatically. Multiple Polygons are created by closing a first polygon and simply adding the points of one ore more subsequent polygon(s); each contributing polygon must be closed. Such polygonare are useful to display disconnected "islands" or to display "holes" in an outer shape; in the latter case the points of inner and outer polygons must have opposite orientations.
+</p>
+<h3><span class="mw-headline" id="Multi-value_series">Multi-value series</span></h3>
+<p>Multi-value series require a <a href="#Multi-valued_sources">multi-valued data source</a>, and use additional X and/or Y values
+as extra parameters to draw complex shapes.
+</p>
+<h4><span class="mw-headline" id="Bubble_series">Bubble series</span></h4>
+<p><tt>TBubbleSeries</tt> represents data as circles of variable radius centered at data points.
+This series requires a source with <tt>YCount</tt> of at least 2,
+and uses the first additional Y value for the bubble size.
+</p><p>Using the <tt>BubbleRadiusUnits</tt> property, the bubble radius can be mapped on the chart area in the following ways
+</p>
+<ul><li><tt>bruX</tt>: Bubbles are drawn as circles and the radius units are the same as used on the x axis.</li>
+<li><tt>bruY</tt>: like <tt>bruX</tt>, but the bubble radius is measured on the y axis.</li>
+<li><tt>bruXY</tt>: Bubbles are drawn as ellipses, the radius is understood to have the x axis units horizontally, and the y axis units vertically.</li>
+<li><tt>bruPercentageRadius, bruPercentageArea</tt>: Bubbles are drawn as circles. The data defining the bubble size are interpreted as being relative to the bubble radius (<tt>bruPercentageRadius</tt>) or to the bubble area (<tt>bruPercentage</tt>). The bubble size is scaled such that the radius of the largest bubble has a percentage <tt>BubbleRadiusPercentage</tt> of the plot area size.</li></ul>
+<p>Background and border of the bubbles are determined by <tt>BubbleBrush</tt> and <tt>BubblePen</tt>, respectively. But by means of the <tt>OverrideColor</tt> property the color of either interior or edge of each bubble can be changed individually to the color value stored in the chartsource.
+</p><p>Since v3.99, the <tt>Styles</tt> property can be used to define all brush and pen parameters of bubbles indivudually.
+</p>
+<h4><span class="mw-headline" id="Box-and-whiskers_series">Box-and-whiskers series</span></h4>
+<p><tt>TBoxAndWhiskerSeries</tt> represents data as rectangles with a central line and
+two T-like shapes protruding in both directions.
+Although in statistics a <a href="http://www.wikipedia.org/wiki/Box_plot" class="extiw" title="wikipedia:Box plot">box-and whiskers plot</a> is supposed to be based on specific
+data quartiles, TAChart does not enforce this, allowing users to draw arbitrary plots.
+</p><p>With some effort, box-and whiskers series may be used to represent other charts of
+different meaning but similar appearance, such as
+<a href="http://www.wikipedia.org/wiki/Gantt_chart" class="extiw" title="wikipedia:Gantt chart">Gantt diagrams</a>.
+</p><p>This series requires a source with <tt>YCount</tt> of at least 5, and uses Y values as follows:
+</p>
+<table>
+<tbody><tr>
+<th>Index</th>
+<th>Usage
+</th></tr>
+<tr>
+<td>0</td>
+<td>Lower whisker
+</td></tr>
+<tr>
+<td>1</td>
+<td>Lower box bound
+</td></tr>
+<tr>
+<td>2</td>
+<td>Central line
+</td></tr>
+<tr>
+<td>3</td>
+<td>Upper box bound
+</td></tr>
+<tr>
+<td>4</td>
+<td>Upper whisker
+</td></tr>
+</tbody></table>
+<p>Since Lazarus v2.3 a more flexible assignment of Y values to the parts of the box/whisker shape is possible by means of the properties <tt>YIndexWhiskerMin</tt>, <tt>YIndexBoxMin</tt>, <tt>YIndexCenter</tt>, <tt>YIndexBoxMax</tt> and <tt>YIndexWhiskerMax</tt>. Special combinations of Y values can be selected easily via the enumerated <tt>YDataLayout</tt> property:
+</p>
+<ul><li><b>bwlLegacy</b>: above assignment running the Y values from the lower to the upper end of the shape (default)</li>
+<li><b>bwlNormal</b>: here the ordinary Y value has index 0; this makes it easier to reuse the same chart source in other series types. It is followed by the Y indices for whisker min, box min, box max and whisker max. This selection will become the default in later versions.</li>
+<li><b>bwlCustom</b>: uses the Y index values as defined by the <tt>YIndex*</tt> properties.</li></ul>
+<h4><span class="mw-headline" id="Open-high-low-close_series">Open-high-low-close series</span></h4>
+<p><tt>TOpenHighLowCloseSeries</tt> represents data as vertical lines with two ticks,
+as described <a href="http://www.wikipedia.org/wiki/Open-high-low-close_chart" class="extiw" title="wikipedia:Open-high-low-close chart">here</a>.
+</p><p>It usually requires <tt>YCount</tt> of at least 4, and uses Y values as follows:
+</p>
+<table>
+<tbody><tr>
+<th>Property</th>
+<th>Default</th>
+<th>Usage
+</th></tr>
+<tr>
+<td>YIndexLow</td>
+<td>0</td>
+<td>Lower point of line
+</td></tr>
+<tr>
+<td>YIndexOpen</td>
+<td>1</td>
+<td>Left-facing tick position
+</td></tr>
+<tr>
+<td>YIndexClose</td>
+<td>2</td>
+<td>Right-facing tick position
+</td></tr>
+<tr>
+<td>YIndexHigh</td>
+<td>3</td>
+<td>Upper point of line
+</td></tr>
+</tbody></table>
+<p>Note that although Y values are supposed to be ordered ascending along the table above,
+the series does not enforce this and will draw any supplied data.
+</p>
+<h4><span class="mw-headline" id="Field_series">Field series</span></h4>
+<p><tt>TFieldSeries</tt> displays a vector at each data point. The vector is drawn as a line segment with an optional arrow. By default, the line is centered at the x,y coordinates stored in the chart source, its direction is given by additional values stored in the XList and YList of the chart source. When property <tt>VectorCoordKind</tt> is switched to <tt>vckStartend</tt> the line is defined by start and end points directly. In total, this series type requires a source with two x and y values:
+</p>
+<table>
+<tbody><tr>
+<th>Source data item field</th>
+<th>Usage
+</th></tr>
+<tr>
+<td>X</td>
+<td>X coordinate of line center (or start point, if <tt>VectorCoordKind = vckStartEnd</tt>)
+</td></tr>
+<tr>
+<td>Y</td>
+<td>Y coordinate of line center (or start point)
+</td></tr>
+<tr>
+<td>XList[0]</td>
+<td>X coordinate of line direction (or end point, if <tt>VectorCoordKind = vckStartEnd</tt>)
+</td></tr>
+<tr>
+<td>YList[0]</td>
+<td>Y coordinate of line direction (or end point)
+</td></tr>
+</tbody></table>
+<p>The method <tt>AddVector(x,y: Double; vectorx, vectory: Double; ALabel: String = &#39;&#39;; AColor: TColor = clTAColor)</tt> helps to assign all values correctly to the internal list source. 
+</p><p>In order to avoid overlapping of vectors call the method <tt>NormalizeVectors(ALength: Double)</tt> to normalize their lengths such that the longest vector has the specified length. 
+</p><p>The arrow parameters are understood to be percentages of the vector length, i.e. the arrow becomes smaller for shorter vectors.
+</p>
+<h3><span class="mw-headline" id="Radial_series">Radial series</span></h3>
+<p>Radial series ignore axis transformations.
+You can see examples of radial series in the "radial" demo.
+</p>
+<h4><span class="mw-headline" id="Pie_series">Pie series</span></h4>
+<p><tt>TPieSeries</tt> draws pie charts.
+</p><p>For each data point, the pie series interprets the Y value as relative size of the slice,
+and the X value as the distance of the slice from the center of the pie, relative to the pie radius (only if <tt>Exploded</tt> property is true).
+</p><p>Beginning at <tt>StartAngle</tt>, the pies run in counter-clockwise direction around the circle. When <tt>AngleRange</tt> is at its default of 360 the pies cover the full circle; a smaller value allows to use the circle only partially.
+</p><p>The pie radius can either be set manually by the <tt>FixedRadius</tt> property, or be calculated automatically so that the whole series, including all labels, exactly fits the parent chart.
+</p><p>A ring can be painted instead of a pie slice by giving the property <tt>InnerRadiusPercent</tt> a value greater than 0, but smaller than 100 - this determines the radius of the inner circle as percentage of the total radius.
+</p><p>The slice colors are determined by either the data items' <tt>Color</tt> field or a hard-coded palette. Slice contours are drawn using the <tt>EdgePen</tt> property. Since v3.99, all brush and pen parameters can be controlled individually for each slice by means of the <a href="#ChartStyles"><tt>Styles</tt></a> property. 
+</p><p>There are several options for label positioning, controlled by the <tt>MarkPositions</tt> property:
+</p>
+<ul><li><tt>pmpAround</tt> -- marks are drawn outside the pie, on the continuation of the radius vector for each slice</li>
+<li><tt>pmpInside</tt> -- marks are drawn inside each slice</li>
+<li><tt>pmpLeftRight</tt> -- marks are drawn directly to the left or to the right of slice</li></ul>
+<p><tt>MarkDistance</tt> defines the distance between the marks starting point and the label. The starting point is defined by <tt>MarkPositionCentered</tt> to be either the pie perimeter (<tt>false</tt>) or center (<tt>true</tt>). <tt>MarkDistancePercent</tt>, if set to <tt>true</tt>, interprets <tt>Marks.Distance</tt> as percentage of the pie radius. Otherwise it is in image units.
+</p><p>If <tt>RotateLabels</tt> is true, each label is additionally rotated so that
+(if <tt>LabelFont.Orientation=0</tt>) it is parallel to the radius vector of its slice.
+</p><p>If the Y value of a data item is set to NaN, the item is <a href="#Skipping_source_items">skipped</a>.
+If the X value is set to NaN, the item is not drawn, but the space for it is still reserved. This allows drawing of "partial" pie diagrams.
+</p><p>Pie charts have limited support for 3-d drawing. The property <tt>Depth</tt> determines the thickness of the pie. <tt>Orientation</tt> supplements the normal view (<tt>poNormal</tt>) with an oblique view of the reclined (<tt>poHorizontal</tt>) and upright (<tt>poVertical</tt>) pie series, the latter two being controlled by property <tt>ViewAngle</tt> in degrees between 0 and 89. Since TAChart does not implement a true hidden line/hidden area algorithm there may be some chance of drawing artifacts for some combinations of parameters, in particular when <tt>AngleRange</tt> is not <tt>360</tt>. A slight change of <tt>StartAngle</tt> and/or <tt>AngleRange</tt> usually helps to fix this issue.
+</p>
+<h4><span class="mw-headline" id="Polar_series">Polar series</span></h4>
+<p><tt>TPolarSeries</tt> represents data as points in <a href="http://www.wikipedia.org/wiki/Polar_coordinate_system" class="extiw" title="wikipedia:Polar coordinate system">polar coordinates</a>.
+</p><p>The origin of the polar coordinate system is defined in graph coordinates by <tt>OriginX</tt> and <tt>OriginY</tt>
+properties.
+</p><p>For each data point, X value is interpreted as an angle in radians and Y value -- as a distance from the center.
+</p><p>The TPolarSeries does not support axis transformations.
+</p><p>Some additional properties:
+</p>
+<ul><li><tt>CloseCircle</tt>: If true the last point is connected with the first one.</li>
+<li><tt>Filled</tt>: If true the polygon of the series points is filled using the current <tt>Brush</tt>. If <tt>CloseCircle</tt> is false the fill goes to the origin.</li>
+<li><tt>ShowPoints</tt>: If true then the series pointer is drawn at the position of each data point.</li></ul>
+<h3><span class="mw-headline" id="User-drawn_series">User-drawn series</span></h3>
+<p>Provides <tt>OnDraw</tt> and <tt>OnGetBounds</tt> events to allow arbitrary custom drawing on the TChart.
+Note that using <tt>TChart.Canvas</tt> directly is highly discouraged and will often not work as expected.
+</p>
+<h3><span class="mw-headline" id="Functional_series">Functional series</span></h3>
+<p>Functional series are recommended way to draw functional plots as opposed to, for example,
+pre-calculating function data and using <a href="#Line_series">line series</a>.
+They provide scale-independent controls of smoothness vs drawing speed.
+</p><p>You can see examples of functional series in "func" demo.
+</p>
+<h4><span class="mw-headline" id="Function_series">Function series</span></h4>
+<p><tt>TFuncSeries</tt> represents a one-dimensional function defined by the <tt>OnCalculate</tt> event. The function is calculated for each <tt>Step</tt> pixels of the image, so you can
+use this property to increase either "smoothness" or drawing speed.
+</p><p>The <tt>Extent</tt> property may be used to set both <i>x</i> and <i>y</i> extents for the purpose
+of calculating <a href="#Extents">full extent</a> of the chart.
+While drawing, however, this property is ignored, and the function will be
+displayed according to the current extent.
+</p><p>The <tt>DomainExclusions</tt> property allows to exclude some intervals from the function domain.
+The TFuncSeries correctly draws discontinuity points set by <tt>DomainExclusions</tt>.
+Currently, <tt>DomainExclusions</tt> can only be set at run-time
+by calling the <tt>AddRange</tt> or <tt>AddPoint</tt> procedures. Intervals defined by <tt>DomainExclusions</tt> are closed by default, i.e. contain the end points; this means that the function is not calculated at the end points. If the domain exclusion must contain endpoints (as needed for the funtion <tt>y = sqrt(x)</tt>) call <tt>AddRange</tt> with the corresponding element of the set <tt>TIntervalOptions = (ioOpenStart, ioOpenEnd)</tt> as optional third parameter.
+</p><p>The <tt>DomainExclusions.Epsilon</tt> property controls the distance between endpoint and last drawn point (of course, in case of an open interval, the curve begins immediately at the end point).
+<tt>Epsilon</tt> can be adjusted in the rare cases that the default value of 1E-6 does not produce correct results.
+</p>
+<h4><span class="mw-headline" id="Expression_series">Expression series</span></h4>
+<p>The <tt>TExpressionSeries</tt> is similar to the <tt>TFuncSeries</tt>, but the function is specified as a mathematical expression string such as <tt>'sin(1.23456*x)'</tt> (property <tt>Expression</tt>). The series creates an instance of the <a href="/How_To_Use_TFPExpressionParser" title="How To Use TFPExpressionParser">FPExpressionParser</a> to analyze the string and to calculate the function values. In this way functions can be plotted at designtime.
+</p><p>The property <tt>Params</tt> allows to define parameters for the function term; in the object inspector it opens a collection editor in which every parameter can be specified by its name (as used in the expression) and its value. If, for example, a parameter <tt>f</tt> is defined to have the value <tt>1.23456</tt> then above expression can also be written as <tt>'sin(f*x)'</tt>.
+</p><p>Similarly to <tt>TFuncSeries</tt>, domain exclusions are supported to define the regions at which the function cannot be calculated. But in agreement with mathematical conventions, <tt>TExpressionSeries</tt> requires in property <tt>Domain</tt> the region in which the function is <b>defined</b> (the complement of the domain exclusions). The region is specified by a string such as <tt>'x &gt;= 0'</tt>. If several conditions exist they must be separated by a colon, e.g. <tt>'x &lt; -1; x &gt; 1'</tt>. The colon has function of a logical OR. An interval is defined like <tt>'-1 &lt; x &lt; 1'</tt>. The constant parts of the conditions can be mathematical expressions as well - the following example excludes the point &#960;/2 from calculation of the function values: <tt>'x &lt;&gt; pi/2'</tt>. Decimal numbers must be entered with a dot as decimal separator, no matter what is defined in the language settings of the operating system.
+</p>
+<div id="shbox" role="note" style="background-color: #eeeef6; border: 1px solid LightGray; font-size: 0.9em; margin: 0.75em 2.5em; padding: 0.2em 0.75em;">
+<img alt="Light bulb" src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Nuvola_apps_ktip.png" decoding="async" title="Note icon" width="32" height="32" />&#8239;&#160;<b>Note:</b> Parameters and domains must be defined before the expression is entered, otherwise the parser will report an error</div>
+<h4><span class="mw-headline" id="B-spline_series">B-spline series</span></h4>
+<p><tt>TBSplineSeries</tt> draws <a href="http://www.wikipedia.org/wiki/B-spline" class="extiw" title="wikipedia:B-spline">B-spline</a> of given <tt>Degree</tt> using <a href="http://www.wikipedia.org/wiki/De_Boor%27s_algorithm" class="extiw" title="wikipedia:De Boor&#39;s algorithm">De Boor's algorithm</a>.
+</p><p>Spline segments shorter then <tt>Step</tt> pixels are represented by straight lines.
+</p>
+<h4><span class="mw-headline" id="Cubic_spline_series">Cubic spline series</span></h4>
+<p><tt>TCubicSplineSeries</tt> draws the data curve as a <a href="http://www.wikipedia.org/wiki/Spline_interpolation" class="extiw" title="wikipedia:Spline interpolation">cubic spline</a> using the standard <i>NumLib</i> package of FPC.
+</p><p>In Lazarus v2.0+, a property <tt>SplineType</tt> allows to select between <a href="http://www.wikipedia.org/wiki/Spline_interpolation" class="extiw" title="wikipedia:Spline interpolation">natural</a> and <a href="http://www.wikipedia.org/wiki/Monotone_cubic_interpolation" class="extiw" title="wikipedia:Monotone cubic interpolation">monotone Hermite</a> splines, the latter avoiding overshoot of the interpolation.
+</p><p>The spline function is calculated for each <tt>Step</tt> pixels of the image, so you can use this property to increase "smoothness" or drawing speed.
+</p><p>The data source must contain at least two points and have strictly increasing X coordinates. (Older Lazarus versions before v2.0 require at least 4 data points; for less points a polygon is drawn instead of a spline using the <tt>BadDataPen</tt> if the <tt>csoDrawFewPoints</tt> option is set.)
+</p><p>If X values are unordered and the <tt>csoDrawUnorderedX</tt> option is set,
+the spline will be drawn ignoring offending points using <tt>BadDataPen</tt>.
+</p><p>The options <tt>csoExtrapolateLeft</tt> and <tt>csoExtrapolateRight</tt> enable natural extrapolation to the left and to the right correspondingly.
+</p>
+<h4><span class="mw-headline" id="Fit_series">Fit series</span></h4>
+<p><tt>TFitSeries</tt> performs <a href="http://www.wikipedia.org/wiki/Least_squares" class="extiw" title="wikipedia:Least squares">least squares fitting</a> using calculation routines contained in the standard
+<a href="/numlib" class="mw-redirect" title="numlib">Numlib</a> package from the FPC. The main fitting unit is <i>TAFitLib</i> which is self-contained and can be applied also without TAChart.
+</p><p>The fitting function is selected via the <tt>FitEquation</tt> property:
+</p>
+<ul><li><tt>fePolynomial</tt>: <i>y</i> = <i>b</i><sub>0</sub> + <i>b</i><sub>1</sub><i>x</i> + <i>b</i><sub>2</sub><i>x</i><sup>2</sup> + &#8230; + <i>b</i><sub>n</sub><i>x</i><sup>n</sup>, where the value of <i>n</i> is controlled by <code>ParamCount</code> property (<tt>ParamCount = n + 1</tt>).</li>
+<li><tt>feLinear</tt>: <i>y</i> = <i>a</i> + <i>bx</i></li>
+<li><tt>feExp</tt>: <i>y</i> = <i>a</i> * e<i><sup>bx</sup></i></li>
+<li><tt>fePower</tt>: <i>y</i> = <i>a</i> * <i>x</i><sup>b</sup></li>
+<li><tt>feCustom</tt>: <i>y</i> = <i>b</i><sub>0</sub>X<sub>0</sub>(<i>x</i>) + <i>b</i><sub>1</sub>X<sub>1</sub>(<i>x</i>) + <i>b</i><sub>2</sub>X<sub>2</sub>(<i>x</i>) + &#8230; + <i>b</i><sub>n</sub>X<sub>n</sub>(<i>x</i>) where the value of <i>n</i> is controlled by the <tt>ParamCount</tt> property (<tt>ParamCount = n + 1</tt>), and X<sub>i</sub>(<i>x</i>), <i>i</i> = 0..<i>n</i>, are "basis functions" which are defined by the method <tt>SetFitBasisFunc(AIndex: TFitFuncIndex; AFitFunc: TFitFunc; AFitFuncName: String)</tt>.
+<ul><li><tt>AIndex</tt> - index <i>i</i> of the basis function, <tt>1..MaxInt</tt>.</li>
+<li><tt>AFitFuncName</tt> is a text representation of the function to be used for the default legend.</li>
+<li><tt>AFitFunc</tt> - address of the basis function X<sub>i</sub>(<i>x</i>) which has the signature <tt>function(x: ArbFloat; Param: Integer): ArbFloat</tt> with <tt>ArbFloat</tt> being the general floating-point data type in FPC's <a href="/numlib" class="mw-redirect" title="numlib">Numlib</a> (unit <i>typ</i>). Some basis functions are readily available in unit <i>TAFitLib</i>:</li></ul></li></ul>
+<div class="mw-highlight mw-highlight-lang-pascal mw-content-ltr" dir="ltr"><pre><span></span><span class="k">function</span> <span class="nf">FitBaseFunc_Const</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>   <span class="c1">// constant term</span>
+<span class="k">function</span> <span class="nf">FitBaseFunc_Linear</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>  <span class="c1">// linear term (x)</span>
+<span class="k">function</span> <span class="nf">FitBaseFunc_Square</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>  <span class="c1">// square term (x^2)</span>
+<span class="k">function</span> <span class="nf">FitBaseFunc_Cube</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>    <span class="c1">// cubic term (x^3)</span>
+<span class="k">function</span> <span class="nf">FitBaseFunc_Poly</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>    <span class="c1">// power term (x^Param)</span>
+<span class="k">function</span> <span class="nf">FitBaseFunc_Sin</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>     <span class="c1">// sin(x*Param) </span>
+<span class="k">function</span> <span class="nf">FitBaseFunc_Cos</span><span class="p">(</span><span class="n">x</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span> <span class="n">Param</span><span class="o">:</span> <span class="kt">Integer</span><span class="p">)</span><span class="o">:</span> <span class="n">ArbFloat</span><span class="o">;</span>     <span class="c1">// cos(x*Param)</span>
+</pre></div>
+<p>By default, the parameters, <tt>b<sub>0</sub>, b<sub>1</sub>, ..., a, b</tt> are varied by the fitting process such that the mean square deviation between data and fitted curves is minimized. However, it is also possible to hold one or more fitting parameters constant, e.g. in order to force a fitted straight line to run through the origin. For this purpose, the values of the constant parameters must be specified in the ';' or '|' delimited list of string values of property <tt>FixedParams</tt>. The order of values must match the order of the fitting parameters. Variable parameters can be left empty or replaced by a non-numerical string. 
+</p><p>Example: <tt>FixedParams='var;2'</tt> (or shorter: <tt>';2'</tt>) means that the first fitting parameter is variable, but the second one is held constant a the value 2; if there are more than 2 parameters, the others are considered to be variable, too. 
+</p><p>The fitting range is usually defined by the series extent, but can be manually set via the <tt>FitRange</tt> property.
+The fitting function is drawn over the entire axis unless <tt>DrawFitRangeOnly = true</tt>.
+</p><p>When fitting is complete the <tt>ErrCode</tt> of the series is set to indicate whether the calculation was successful or not:
+</p>
+<ul><li><tt>fitOK</tt>: successful</li>
+<li><tt>fitDimError</tt>: calculation was aborted because the dimensions of the data arrays (x, y, y error bars) do not match.</li>
+<li><tt>fitMoreParamsThanValues</tt>: calculation failed because there are more fitting parameters than data values.</li>
+<li><tt>fitNoFitParams</tt>:calculation aborted because no fit parameters are specified. This could happen incidentally if all fitting parameter are forced to be fixed in the <tt>FixedParams</tt> property.</li>
+<li><tt>fitSingular</tt>: the design matrix of the fit problem is found to be (nearly) singular.</li>
+<li><tt>fitNoBaseFunction</tt>: Not enough fit basis functions are specified for the case of <tt>FitEquation=feCustom</tt>.</li></ul>
+<p>The method <tt>ErrorMsg</tt> creates a text for an error message from the current <tt>ErrCode</tt>.
+</p><p>The event <tt>OnFitComplete</tt> is called after the fitting equation is found, but before the drawing starts. This is a good place to query the results of the fitting procedure: 
+</p>
+<ul><li><tt>Param[AIndex]</tt> is the best-fit value for the parameter with the specified index, <tt>AIndex = 0..ParamCount-1</tt>.</li>
+<li><tt>ParamError[AIndex]</tt> tells the uncertainty ("standard error" in statistical terms) of the corresponding fitting parameter.</li>
+<li>The procedure <tt>GetConfidenceLimits(AIndex: Integer; out ALower, AUpper: Double)</tt> returns the range between <tt>ALower</tt> and <tt>AUpper</tt> within which the corresponding best-fit parameter is expected to be found at the probability specified by <tt>ConfidenceLevel</tt> (default: <tt>0.95</tt>, i.e. 95%).</li>
+<li><tt>Param_tValue[AIndex]</tt> returns the value of the <a href="http://www.wikipedia.org/wiki/T-statistic" class="extiw" title="wikipedia:T-statistic">t statistic</a> for the corresponding fit parameter. This is the ratio of value divided by standard error. For an accurate parameter, the t value should be much larger than 1.</li>
+<li><tt>Param_pValue[AIndex]</tt> is the probability that any t value as high as <tt>Param_tValue</tt> occurs just by chance for the given degrees of freedom. In order to "trust" the fitted value with a certainty given by <tt>ConfidenceLevel</tt>, the p value should be smaller than <tt>1 - ConfidenceLevel</tt>, by default 0.05.</li>
+<li><tt>FitStatistics</tt> informs about other statistical parameters helpful to verify the validity of the fitted model or for further statistical calculations. These data are accessible as properties or functions of this class:
+<ul><li><tt>N</tt> (integer): the number of data points used for fitting. Note that this can be less than the data points provided by the chart source since it may contain NaN values which are skipped.</li>
+<li><tt>M</tt> (integer): the number of fitting parameters. Normally this is the value of <tt>ParamCount</tt>, but if certain parameters are forced to be constant (<tt>FixedParams</tt>) their count is subtracted.</li>
+<li><tt>DOF</tt> (integer): "degrees of freedom" - is the difference <tt>N - M</tt>, an important parameter in the statistical analysis of the fit results.</li>
+<li><tt>SST</tt>: "total sum of squares" - this is the sum of the squares of the term <tt>(y[i] - ymean)/dy[i]</tt> over all data points. Here, <tt>y[i]</tt> is the y value of a data point at index <tt>i</tt>, <tt>dy[i]</tt> the size of its error bar (standard deviation) - or 1 if not available -, and <tt>ymean</tt> is the average value of <tt>y[i]/dy[i]</tt>. The quantity identifies the total variation of data points around their mean value.</li>
+<li><tt>SSE</tt>: "error sum of squares" - the variation of the data points around the fitted curve, i.e. sum of <tt>((y[i] - ycalc(x[i])/dy[i])^2)</tt>; here <tt>ycalc(x[i])</tt> is the calculated value of the fitted curve at the point <tt>x[i]</tt>.</li>
+<li><tt>SSR</tt>: "regression sum of squares" - the variation of the fitted curve alone, i.e. sum of <tt>((ycalc(x[i]) - ymean)/dy[i])^2</tt>.</li>
+<li><tt>xBar</tt>: average value of the x coordinates of all used data points.</li>
+<li><tt>SSx</tt>: variation of the x coordinates of the data points, i.e. sum of <tt>(x[i] - xbar)^2</tt>.</li>
+<li><tt>VarCovar[i, j: Integer]: Double</tt>: is an element of the variance-covariance matrix for the fit parameters at the given indexes.</li>
+<li><tt>R2</tt>: "coefficient of determination". This is the ratio <tt>SSR/SSE</tt> and describes how much of the variation in the data is explained by the fitted curve. The value is 1 for a perfect fit and 0 for absolutely no agreement.</li>
+<li><tt>AdjR2</tt>: was introduced to compensate for the effect that <tt>R2</tt> usually increases by adding more and more fit parameters.</li>
+<li><tt>Chi2</tt>: another word for <tt>SSE</tt>. In essence, this is the statistical quantity which is minimized during the fitting procedure. The value given is the minimum value found.</li>
+<li><tt>ReducedChi2</tt>: is <tt>Chi2</tt> (or: <tt>SSE</tt>) normalized to the degrees of freedom, i.e. variation of the data around the fitted curve per degree of freedom. Should be "small" for a good fit.</li>
+<li><tt>ResidualStdError</tt>: is the overall standard error of the fit. Should be "small".</li>
+<li><tt>pValue</tt>: (fractional) probability that the residual scatter of the data points around the fitted curve is by chance. Should be high, in practice a few thenths, although sometimes values as low as 0.001 are still accepted. If no error bars are included in the fit, sometimes p turns out to be either exactly 0 or 1 - such values should be ignored.</li></ul></li>
+<li>The procedures <tt>GetLowerConfidenceInterval(const Ax: Double; out AY: Double)</tt>, <tt>GetUpperConfidenceInterval</tt>, <tt>GetLowerPredictionInterval</tt> and <tt>GetUpperPredictionInterval</tt> can be hooked into the <tt>OnCalculate</tt> event of a <tt>TFuncSeries</tt> in order to plot the limits of the lower and upper confidence and prediction intervals around the fitted curve. These limits define areas around the fitted curve within which the overall fitted curve (confidence interval) or individual data points (prediction interval) can be expected based on the probability given by <tt>ConfidenceLevel</tt>.</li>
+<li>Note: all these statistical data assume that the residual errors follow a normal distribution and that the error bars have been estimated appropriately.</li></ul>
+<p>The <tt>EquationText</tt> method returns an <tt>IEquationText</tt> interface, which allows to construct a string
+representing the fit equation. You can override names of <i>x</i> and <i>y</i> variables, numeric format, and, finally, obtain a string
+from <tt>Get</tt> function.
+Note that a transformation from IEquationText to String is defined, so usually there is no need to call <tt>Get</tt> explicitly.
+</p><p><a href="#Legend_item_text"><tt>Legend.Format</tt></a> property of fit series supports additional format argument ('%2:s')
+pointing to the default equation text.
+</p><p>After a change to <tt>TFitSeries</tt> parameters, the equation will be recalculated on the next drawing of the series.
+To recalculate it immediately, call <tt>ExecFit</tt> procedure.
+Use <tt>State</tt> property to check the validity of current equation.
+</p>
+<h4><span class="mw-headline" id="Color_map_series">Color map series</span></h4>
+<p><tt>TColorMapSeries</tt> represents a 2-dimensional function defined by the <tt>OnCalculate</tt> event
+as a field of pixels, with color depending on function value.
+</p><p>The series is drawn as a set of rectangles of size <tt>StepX</tt> by <tt>StepY</tt> pixels.
+The function is called once for each rectangle.
+</p><p>Color values are defined by one of the built-in palettes (property <tt>BuiltinPalette = cmpHot, cmpCold, cmpRainbow, cmpMonochrome</tt>). The range of values mapped to the colors of the palette must be specified in <tt>BuiltinPaletteMax</tt> and <tt>BuiltinPaletteMin</tt>, otherwise the results are not predictable.
+</p><p>Alternatively, an external ChartSource can be assigned to property <tt>ColorSource</tt>, which must be sorted.
+Each data point of the chart source is interpreted as having its X value correspond to the Color value.
+If the actual value falls between color levels, it can be either linearly interpolated
+(if <tt>Interpolate</tt> is <tt>true</tt>) or rounded down to the nearest level.
+</p><p>When <tt>Legend.Multiplicity=lmPoint</tt>, the color map series will display the color levels in the <a href="#Legend">legend</a>.
+</p>
+<h4><span class="mw-headline" id="Expression_color_map_series">Expression color map series</span></h4>
+<p>is similar to the color map series with the main difference that the 2-dimensional function is not defined by an event, but by a mathematical expression, such as <tt>x^2+y^2</tt>, like in the TExpressionSeries, but now with two variables <tt>x</tt> and <tt>y</tt>. The variables can be renamed by means of the properties <tt>VariableNameX</tt> and <tt>VariableNameY</tt>. Similar to <tt>TExpressionSeries</tt> it is also possible to introduce parameters (property <tt>Params</tt>). Domains, however, are not supported, the function must be defined within the entire visible x/y range.
+</p>
+<h2><span class="mw-headline" id="Sources">Sources</span></h2>
+<div class="floatright"><a href="/File:chartsource_hierarchy.png" class="image"><img alt="chartsource hierarchy.png" src="/images/6/61/chartsource_hierarchy.png" decoding="async" width="670" height="369" /></a></div><p>Data can get into a chart from various sources.
+</p><p>They are implemented as a set of components derived from <tt>TCustomChartSource</tt>.
+</p><p>To assign a source to a series, you can set the <tt>Source</tt> property.
+If the property is left unassigned, the series will use its own built-in list source.
+Methods like <tt>AddXY</tt> are delegated to the current series source.
+Note that the list source is the only editable source, so after you assign,
+for example, a random chart source to the series, a call to <tt>AddXY</tt> will raise an exception.
+</p><p>Each data item has the following fields: <tt>X</tt>, <tt>Y</tt>, <tt>XList</tt>, <tt>YList</tt>, <tt>Color</tt>, <tt>Text</tt>.
+</p><p>The element <tt>Text</tt> can provide a text for each y value. In this case, the individual texts must be separated by the <tt>LabelSeparator</tt> defined by the source (by default, <tt>'|'</tt>). The number of texts must match the number of y values.
+</p>
+<h3><span class="mw-headline" id="Sorted_sources">Sorted sources</span></h3>
+<p>If it is known that X values of the source are ascending,
+some additional optimizations like binary search become possible.
+So all sources have an <tt>IsSorted</tt> property which helps determine that.
+</p><p>In Lazarus 2.1+, the <a href="#List_source"><tt>TListChartSource</tt></a> can be sorted according to several criteria:
+</p>
+<ul><li><tt>SortBy</tt> = <tt>sbX</tt>, <tt>sbY</tt>, <tt>sbText</tt>, <tt>sbColor</tt>, <tt>sbCustom</tt>: sorting by X or Y value, Text, Color or in a user-defined way, respectively. In the latter case a handler for the event <tt>OnCompare</tt> must be provided.</li>
+<li><tt>SortIndex</tt>: the index of the X or Y value used for sorting.</li>
+<li><tt>SortDir</tt> = <tt>sdAscending</tt>, <tt>sdDescending</tt>: sorting in ascending or descending order.</li></ul>
+<p>When a source is sorted by anything other than x only the drawing order of the related series is affected, and it may be possible that nothing changes in the chart. A visual effect is seen for
+</p>
+<ul><li><a href="#Pie_series"><tt>TPieSeries</tt></a> because the data point order determines to order of the pies around the circle</li>
+<li><a href="#Bubble_series"><tt>TBubbleSeries</tt></a> when bubbles overlap. Use the combination <tt>SortBy=sbY</tt>, <tt>SortIndex=1</tt> and <tt>SortDir=sdDescending</tt> to avoid covered bubbles because large bubbles are drawn first and small bubbles last.</li>
+<li>all series inherited from <a href="#Basic_series"><tt>TBasicPointSeries</tt></a> when the <tt>XCount</tt> of the associated chart source is 0: in this case, the X value of the source is ignored and replaced by the data point index. Since the data point index changes upon sorting the data points will be automatically rearranged in the sorted order - see example <i>sort_demo</i> in the <i>demo</i> folder.</li></ul>
+<h3><span class="mw-headline" id="Multi-valued_sources">Multi-valued sources</span></h3>
+<p>Sources can contain multiple Y values for each X value.
+These values are stored in the <tt>YList</tt> field of the source data item.
+The number of Y values is determined by the <tt>YCount</tt> property.
+Note that the first Y value is stored in Y field anyway, so <tt>YCount=3</tt>
+means that values are stored in <tt>Y</tt>, <tt>YList[0]</tt> and <tt>YList[1]</tt>.
+</p><p>Additional values may be used by various series -- for example, stacked bars or bubble charts.
+</p><p>Moreover, it is also possible to store several X values for the same data point. This is required by <tt>TFieldSeries</tt>. These additional X values are stored in the <tt>XList</tt> of the source data item. Like with the Y values, the total count of X values is given by the <tt>XCount</tt> property which contains the "ordinary" X value plus the length of the <tt>XList</tt> array.
+</p>
+<h3><span class="mw-headline" id="Skipping_source_items">Skipping source items</span></h3>
+<p>It is possible to instruct TAChart to skip drawing some source items without removing them
+from the source. This may be useful for both optimization and user interface reasons.
+</p><p>To skip the item, assign <a class="external text" href="http://www.freepascal.org/docs-html/rtl/math/nan.html">NaN</a> to either X value or one of the Y values.
+The exact effect of skipping depends on the series, but usually setting X to NaN means skipping the
+entire item, while setting Y or some element of YList means skipping only this Y value, while still drawing others.
+</p><p>Also note that if you set only one coordinate to NaN, the other will still take part in extent calculation.
+</p><p>In case of stacked series it is not clear how the missing value should be handled when the following levels are added to it. In Lazarus v2.1+ there is a property <tt>StackedNaN</tt> which can be selected as
+</p>
+<ul><li><tt>snReplaceByZero</tt> -- the missing value is considered to be zero; this is the way how Excel handles this case.</li>
+<li><tt>snDoNotDraw</tt> -- skips the entire data point with all stack levels.</li></ul>
+<p>You can see examples of skipping items in the "nan" demo.
+</p>
+<h3><span class="mw-headline" id="Error_bars">Error bars</span></h3>
+<p><tt>TLineSeries</tt>, <tt>TBSplineSeries</tt>, <tt>TCubicSplineSeries</tt>, <tt>TFitSeries</tt> and <tt>TAreaSeries</tt> can display error bars at each data point. The size of the error bars in both <tt>x</tt> and <tt>y</tt> direction is determined by the parameters in the <tt>XErrorBarData</tt> and <tt>YErrorBarData</tt> properties of the chart source, respectively:
+</p>
+<ul><li><tt>Kind: TChartErrorBarKind</tt>: defines how the following data are interpreted
+<ul><li><tt>ebkNone</tt>: ignore - no error bars will be diplayed</li>
+<li><tt>ebkConst</tt>: all data points have the same error bar given by <tt>ValuePlus</tt> and <tt>ValueMinus</tt>.</li>
+<li><tt>ebkPercent</tt>: the values <code>ValuePlus</code> and <tt>ValueMinus</tt> are understood as percentage of the data values.</li>
+<li><tt>ebkChartSource</tt>: every data point can have an individual error bar. The error bar length is stored in the XList or YList of a multi-valued chart source. The index among all x and y values is specified by <tt>IndexPlus</tt> and <tt>IndexMinus</tt> for positive and negative error bar, respectively.</li></ul></li>
+<li><tt>ValuePlus</tt> and <tt>ValueMinus</tt>: length of the positive and negative error bars, respectively. Depending on the setting of <tt>Kind</tt>, the value is assumed to be constant for all data points (<tt>Kind = ebkConst</tt>, axis units), or a percentage of the data point value (<tt>Kind = ebkPercent</tt>). Both values must be positive numbers with the exception of <tt>ValueMinus = -1</tt> which indicates that the negative error bar should be equal to the positive error bar.</li>
+<li><tt>IndexPlus</tt> and <tt>IndexMinus</tt> are used when <tt>Kind</tt> is <tt>ebkChartSource</tt> and indicate the x or y index in a multi-valued chartsource from which the error bar lengths for the individual data points can be obtained. Suppose a chart source contains two x values (<tt>XCount = 2</tt>) and <tt>XErrorBarData.ValuePlus</tt> is <tt>1</tt> then the second x value (stored in <tt>XList[0]</tt>) is used for the positive error bar length. If <tt>IndexMinus</tt> is -1 then the negative error bar length is assumed to be equal to that of the positive error bar without having to provide an explicit value in the chart source.</li></ul>
+<div id="shbox" role="note" style="background-color: #eeeef6; border: 1px solid LightGray; font-size: 0.9em; margin: 0.75em 2.5em; padding: 0.2em 0.75em;">
+<img alt="Light bulb" src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Nuvola_apps_ktip.png" decoding="async" title="Note icon" width="32" height="32" />&#8239;&#160;<b>Note:</b> Usage of multiple y values for other purposes than individual error bars is discouraged in this context because the present implementation can display error bars only for the y value with index 0.</div>
+<p>Each series type supporting error bars has additional properties <code>XErrorBars</code> and <code>YErrorBars</code> which determine how the error bars will be displayed:
+</p>
+<ul><li><tt>Visible</tt> can be used to turn off error bars even if their size is specified in the chart source.</li>
+<li><tt>Width</tt> is the length of the crossbar drawn at the end of the error bar. The default value -1 means that its length will be equal to the corresponding size of the series' <tt>Pointer</tt>.</li>
+<li><tt>Pen</tt> defines the pen parameter used for drawing the error bars. Usually set <tt>Pen.Color</tt> to the color of the series.</li></ul>
+<h3><span class="mw-headline" id="List_source">List source</span></h3>
+<p><tt>TListChartSource</tt> is a basic chart source, storing chart data inside itself.
+As such, you can use <tt>Add</tt> and <tt>Delete</tt> functions to change source data.
+</p><p>The <tt>Item</tt> property returns a pointer directly to the underlying storage,
+so you can modify item fields directly. However, doing this will not automatically update
+the chart and will also invalidate some internal state of list source.
+It is recommended:
+</p>
+<ul><li>To change a single item, use <tt>Set{Color|Text|XValue|YValue|YList}</tt> procedures.</li>
+<li>To change many items in a time-sensitive code, call <tt>BeginUpdate</tt>, then modify items directly, then call <tt>EndUpdate</tt>.</li></ul>
+<p>The source also has <tt>DataPoints</tt> property to allow setting data at design time.
+This property is a TStringList, with each line representing a data point.
+Line consists of X, Y, optional YList, Color and Text values separated by | (vertical bar) character.
+Note that <tt>DataPoints</tt> property is designed primarily for sample and demo code.
+It is very inefficient, and you should not use it to add data points from the code.
+</p><p>You can control X value sorting by setting the <tt>Sorted</tt> property.
+Note when <tt>Sorted</tt> is set to true, list source sorts the data and keeps it sorted
+after insertion of new points. If inserted points are not sorted, this may result
+in quadratic running time.
+You should either set <tt>Sorted</tt> to true only after insertion,
+or pre-sort your data to avoid this.
+</p>
+<h3><span class="mw-headline" id="Random_source">Random source</span></h3>
+<p><tt>TRandomChartSource</tt> source generates random data in the given range and is intended mostly to use in demos.
+You can also use it as design-time replacement for your actual data source.
+This will let you see and change the look of your chart without having to run the application.
+</p><p>Each random source uses its own independent random number generator to guarantee the stability of its values.
+</p>
+<h3><span class="mw-headline" id="User-defined_source">User-defined source</span></h3>
+<p>This source may be used if you already have your data in memory, but in a format
+different from the data items used in TAChart.
+With user-defined source you can access your data directly instead of first moving it all into a list source.
+In some cases this may improve performance or reduce memory consumption.
+You can of course also generate, filter or modify data with the user-defined source.
+</p><p>The number of data items in the source is determined by <tt>PointsNumber</tt> property.
+Items themselves must be returned by the <tt>OnGetChartDataItem</tt> event handler.
+You should call <tt>Reset</tt> method to notify the chart about changes in the data.
+(Other sources detect changes and perform notification automatically).
+</p><p>Note that if the <tt>Sorted</tt> property is set to true, it is the responsibility
+of the event handler to provide actually sorted data.
+</p>
+<h3><span class="mw-headline" id="Database_source">Database source</span></h3>
+<p><tt>TDbChartSource</tt> takes data directly from a database.
+It is contained in a separate unit to avoid introducing a db-aware component dependency
+into every project using TAChart.
+</p><p>The following properties contain database field names for data item fields:
+</p>
+<table>
+<tbody><tr>
+<th>Property</th>
+<th>Access method
+</th></tr>
+<tr>
+<td><tt>FieldX</tt></td>
+<td>AsFloat (or AsDateTime, if option dcsoDateTimeX is set)
+</td></tr>
+<tr>
+<td><tt>FieldY</tt></td>
+<td>AsFloat (or AsDateTime, if option dcsoDateTimeY is set)
+</td></tr>
+<tr>
+<td><tt>FieldColor</tt></td>
+<td>AsInteger
+</td></tr>
+<tr>
+<td><tt>FieldText</tt></td>
+<td>AsString
+</td></tr>
+</tbody></table>
+<p>If <tt>FieldX</tt> property is empty, <tt>RecNo</tt> is used instead.
+<tt>NULL</tt> values in coordinate fields are translated into <a href="#Skipping_source_items">NaNs</a>.
+</p><p>To get a multi-valued source, set the <tt>FieldY</tt> property to a comma-separated list of field names.
+Note that <tt>YCount</tt> will be set automatically -- trying to set it by hand will raise an exception.
+</p><p>When the dataset returns date/time fields as strings you should set the property <tt>DateTimeFormat</tt> accordingly (e.g. <tt>'yyyy-mm-dd'</tt>) so that the strings can be converted to a TDateTime variables.
+</p><p>Please note that iterating through the items of a <tt>TDBChartSource</tt> is very ineffective. Do not attach other DB-aware controls to the same dataset because they will mirror the process. Usually it is recommended to copy the <tt>DBChartSource</tt> to a <tt>ListChartSource</tt> for better performance. Note also that some dataset types do not read all records of a table or query.
+</p>
+<h3><span class="mw-headline" id="Calculated_source">Calculated source</span></h3>
+<p><tt>TCalculatedChartSource</tt> is the source used for manipulating data taken from the
+<tt>Origin</tt> source.
+This source performs transformations in the following order:
+</p>
+<ul><li>Y reordering -- Y values of multi-valued source can be duplicated, removed or exchanged according to <tt>ReorderYList</tt> property, which is a comma-separated list of original Y value indexes. Step skipped if <tt>ReorderYList</tt> is empty.</li>
+<li>Accumulation -- replaces each item's Y values by a function of the neighboring values.</li>
+<li>Percentage -- replace each Y value by the percentage of total of all Y values for that item. Useful for drawing "stacked percentage" bar and area charts. Step skipped if the <code>Percentage</code> property is false.</li></ul>
+<p>Accumulation is controlled by several properties:
+</p><p><tt>AccumulationRange</tt> controls number of items to accumulate, counting the current item,
+so <tt>AccumulationRange = 1</tt> disables accumulation.
+<tt>AccumulationRange = 0</tt> is interpreted as "infinite" range, i.e. request to accumulate over all
+the available data. This is mostly useful in conjunction with <tt>camSum</tt> method to produce
+cumulative sums.
+</p><p>Note that the actual number of items may be lower for the points near the beginning or end of the source.
+</p><p><tt>AccumulationDirection</tt>:
+</p>
+<ul><li><tt>cadBackward</tt> -- use previous values from the source,</li>
+<li><tt>cadForward</tt> -- use next values from the source,</li>
+<li><tt>cadCenter</tt> -- use both previous and next values for a total number of up to <tt>2 * AccumulationRange - 1</tt>.</li></ul>
+<p><tt>AccumulationMethod</tt>:
+</p>
+<ul><li><tt>camNone</tt> -- skip accumulation step,</li>
+<li><tt>camSum</tt> -- sum of the last <tt>AccumulationRange</tt> items,</li>
+<li><tt>camAverage</tt> -- average the last <tt>AccumulationRange</tt> items,</li>
+<li><tt>camDerivative</tt> -- finite differences derivative, calculated using the last <tt>AccumulationRange</tt> items. Note that the calculation method assumes equidistant X values, and may loose accuracy if the X distance varies substantially.</li>
+<li><tt>camSmoothDerivative</tt> -- smoothed finite differences derivative, more robust against random measurement errors in the data.</li></ul>
+<h3><span class="mw-headline" id="Interval_source">Interval source</span></h3>
+<p><tt>TIntervalChartSource</tt> can supply arbitrarily many points in a given interval, controlled by various properties of the source.
+This source is the default built-in source for axis marks.
+If you want to set the same <a href="#Axis_intervals">axis interval parameters</a> for several axes,
+you can assign a single <tt>TIntervalChartSource</tt> component the <tt>Marks.Source</tt>
+of each of those axes.
+</p>
+<h3><span class="mw-headline" id="Date-time_interval_source">Date-time interval source</span></h3>
+<p><tt>TDateTimeIntervalChartSource</tt> is similar to the <a href="#Interval_source"><tt>TIntervalChartSource</tt></a>,
+but provides marks formatted as <a href="#Date_and_time_axises">date/time values</a>. This source automatically selects appropriate calendar interval
+(such as week or hour) depending on the axis scale.
+</p><p>Note that X values of provided data items are <tt>TDateTime</tt> values, and <tt>Label</tt> values
+contain formatted date-time strings. If you want to use <tt>TDateTimeIntervalChartSource</tt> as the source of axis marks,
+you should probably set <tt>Marks.Format</tt> or <tt>Marks.Style</tt> properties to make use of provided labels (e.g. by setting <tt>Marks.Style</tt> to <tt>smsLabel</tt>).
+</p><p>If the <tt>DateTimeFormat</tt> property is set, it is used to format all labels.
+Formatting is performed with standard
+<a class="external text" href="http://www.freepascal.org/docs-html/rtl/sysutils/formatdatetime.html">SysUtils.FormatDateTime</a> function.
+If <tt>DateTimeFormat</tt> is empty, format is chosen automatically based on scale.
+</p><p>TDateTimeIntervalChartSource is defined in the <a href="/index.php?title=TAIntervalSources&amp;action=edit&amp;redlink=1" class="new" title="TAIntervalSources (page does not exist)">TAIntervalSources</a> unit.
+</p>
+<h3><span class="mw-headline" id="Source_optimization_notes">Source optimization notes</span></h3>
+<p>Primary data source API allows random access. Nevertheless, many sources, in particular random, database and calculated,
+may exhibit quadratic or worse behavior if actually accessed randomly.
+TAChart itself takes care to only use sequential access (although it may require several passes).
+Sources optimize sequential access by using internal state.
+User code should be careful not to reset this state during chart drawing from event handlers or custom series code.
+</p><p>A notable exception is the <a href="#List_source">list source</a>, which is guaranteed to provide fast random access.
+It may be used to cache slow sources with the help of <tt>CopyFrom</tt> procedure.
+</p><p>Also note that the pointer returned by <tt>GetItem</tt> function may point to the internal buffer
+which will be overwritten by the next call to <tt>GetItem</tt>. Again the list source does not have this limitation.
+</p>
+<h2><span class="mw-headline" id="Coordinates_and_axes">Coordinates and axes</span></h2>
+<p>TAChart uses four coordinate systems:
+</p>
+<ul><li><i>Axis coordinates</i> (known in some other applications as object coordinates) -- this is the "raw" coordinate values obtained from the data. As the name implies, axis coordinates are interpreted in terms of specific axis -- the same coordinate value may have different meaning depending on the axis it is applied to.</li>
+<li><i>Graph coordinates</i> (aka world coordinates) are converted from the axis coordinates using axis transformation, such as logarithmic scale. Graph coordinates are common for all objects in the chart.</li>
+<li><i>Image coordinates</i> (aka screen coordinates) are converted from graph coordinates based on the chart viewport. This transformation is always linear and can be influenced by chart tools such as zooming and panning.</li>
+<li><i>Device coordinates</i> are usually equal to screen coordinates, but may be adjusted to the drawing back-end to accommodate different physical resolutions (DPI values). See, for example, <a href="#Printer_drawer">printer drawer</a>.</li></ul>
+<p>You can add or remove an arbitrary number of axes by editing <tt>AxisList</tt> property.
+By default, chart have two axes: one horizontal and one vertical.
+They are accessible via <tt>BottomAxis</tt> and <tt>LeftAxis</tt> properties.
+Note that those properties are aliases to <tt>AxisList[0]</tt> and <tt>AxisList[1]</tt>,
+so if you remove those default axes, accessing <tt>BottomAxis</tt> and <tt>LeftAxis</tt> will return nil.
+</p><p>Visually, axis consists of the axis line (drawn by <tt>AxisPen</tt>), grid lines (drawn by <tt>GridPen</tt>),
+ticks, marks and arrow.
+</p><p>Each axis is drawn inside its own rectangle, determined by the size of mark labels and ticks.
+By assigning several axes the same positive <tt>Group</tt> number, you can have them share the same
+rectangular area. Grouped axes can be used to achieve a "panes" look,
+when several series are drawn on different portions of the same graph.
+</p><p>Axes with the same alignment, but different groups, are stacked alongside each other.
+You can use the <tt>Margin</tt> property to control spacing between such axes.
+</p>
+<h3><span class="mw-headline" id="Axis_transformations">Axis transformations</span></h3>
+<p>Axis transformations are grouped in the <tt>TChartAxisTransformations</tt> component.
+It contains a list of transformations which are applied in the order given.
+(For example, performing scale before and after logarithm will yield different results).
+</p><p>For transformations to have an effect, you should:
+</p>
+<ul><li>Make sure that the <tt>Enabled</tt> property is true for all transformations. (Default)</li>
+<li>Assign transformations component to <tt>Transformations</tt> property of at least one axis.</li>
+<li>Assign <tt>AxisIndexX</tt> and/or <tt>AxisIndexY</tt> properties of the series to the appropriate axis index.</li></ul>
+<p>Note that by default, <tt>AxisIndexX</tt> and <tt>AxisIndexY</tt> have a special value of -1,
+which means "ignore axis transformations". Also note that if you add or remove axes, the indexes may change.
+You can rotate the series by assigning <i>both</i> <tt>AxisIndexX</tt> to vertical axis and <tt>AxisIndexY</tt>
+to the horizontal axis.
+</p>
+<h4><span class="mw-headline" id="Linear_and_logarithmic_transformation">Linear and logarithmic transformation</span></h4>
+<p>Those are simple arithmetic transformations.
+</p>
+<h4><span class="mw-headline" id="Auto-scaling_transformation">Auto-scaling transformation</span></h4>
+<p>To display several independently-scaled series, assign them to two or more axes
+and apply <tt>TAutoScaleAxisTransform</tt> to each axis.
+See "axistransf" demo, page "Linear", checkbox "Auto scale".
+</p><p>By using the <tt>MinValue</tt> and <tt>MaxValue</tt> properties you can control the in graph coordinates
+of the auto-scaled series. For example, by setting one transformation to a range from 0 to 1, and another
+to a range from 1 to 2, you will confine all the series using the first transformation to the upper half of the chart,
+and all the series using the second transformation to the lower half (assuming there are no unassigned series left).
+</p>
+<h4><span class="mw-headline" id="Cumulative_normal_distribution_transformation">Cumulative normal distribution transformation</span></h4>
+<p>Use <tt>TCumulNormDistrAxisTransform</tt> to set <a href="http://www.wikipedia.org/wiki/Cumulative_distribution_function" class="extiw" title="wikipedia:Cumulative distribution function">cumulative normal distribution</a> as an axis transformation. This may be useful in statistical charting.
+</p><p>Note that this transformation result is in range from 0 to 1. It is recommended to restrict the axis range accordingly.
+</p><p>See the "Normal distribution" page of the "axistransf" demo for an example.
+</p>
+<h4><span class="mw-headline" id="User-defined_transformation">User-defined transformation</span></h4>
+<p>You can create you own transformation either by inheriting from <tt>TAxisTransform</tt>,
+or, if you prefer "visual" programming, by using <tt>TUserDefinedAxisTransform</tt>.
+In either case there are two basic requirements:
+</p>
+<ul><li><tt>AxisToGraph</tt> and <tt>GraphToAxis</tt> functions should be defined everywhere in data range and inverse of each other (for example, avoid now only dividing, but also multiplying by zero).</li>
+<li>Functions should be monotonic.</li></ul>
+<h3><span class="mw-headline" id="Date_and_time_axes">Date and time axes</span></h3>
+<p>Using date/time values for axis marks is a common requirement.
+The correct way to do this depends on the exact nature of your date/time data:
+</p>
+<ul><li>If the data is actual <tt>TDateTime</tt> values, use it as an X coordinate in points, assign <a href="#Date-time_interval_source"><tt>TDateTimeIntervalChartSource</tt></a> to the <tt>Marks.Source</tt> of the corresponding axis, and change <tt>Marks.Style</tt> to <tt>smsLabel</tt>. <tt>TDateTimeIntervalChartSource</tt> provides automatic labeling depending on the scale in wide range -- from centuries to milliseconds.</li>
+<li>If the data is in physical units, but outside <tt>TDateTime</tt> values range, such as astronomical or micro-electronics timings, use it as a normal X coordinate with custom <tt>Marks.Format</tt>.</li>
+<li>If the data is in calendar units, such as months and years, which is common for financial data, you have several options:
+<ul><li>If date units are "equidistant" when interpreted as numbers (for example, simple year numbers), assign the same data source to both series and axis marks, then use custom <tt>Marks.Format</tt>, <tt>Axis.OnMarkToText</tt> event or <code>Text</code> field of the data items to format dates per your requirements.</li>
+<li>If date units are not "equidistant" (for example, numbers in YYYYMM format or even date strings), use surrogate X coordinate (usually, simply a point index) instead and display dates using methods described above.</li>
+<li>Convert coordinates to <tt>TDateTime</tt> values beforehand, then use <tt>tt</tt> as described above.</li></ul></li></ul>
+<h3><span class="mw-headline" id="Axis_ranges">Axis ranges</span></h3>
+<p>Axis range is measured in axis units and determines the extent of series attached to this axis.
+Normally an axis range is equal to the union of all series extents,
+but may be overridden with the <tt>Range</tt> property.
+</p><p>Axis marks are displayed inside the axis marks range, which is determined as the intersection of:
+</p>
+<ul><li>Logical extent (converted to axis coordinates)</li>
+<li>Combined extent of all data series of this axis, if <tt>Marks.AtDataOnly = true</tt></li>
+<li><tt>Marks.Range</tt> property.</li></ul>
+<h3><span class="mw-headline" id="Axis_intervals">Axis intervals</span></h3>
+<p>Axis marks are located along the axis at equal intervals chosen by the chart.
+The choice of intervals can be influenced via <tt>Intervals</tt> property. This property has a few subproperties, which are applied in the following order:
+</p>
+<ul><li>The <tt>Options</tt> property contains a set of flags controlling usage of other parameters. If a flag is not in the set, the corresponding parameter is ignored. Additionally, the following options play a special role:
+<ul><li><tt>aipGraphCoords</tt>: tries to find the labels based on the graph coordinates rather than on the axis coordinates. This is required for logarithmic axes.</li>
+<li><tt>aipInteger</tt>: accepts only integer labels. This feature is useful for barcharts to suppress labels between the bars, or for logarithmic plots to get labels at powers of 10 (together with <tt>aipGraphCoords</tt>). But note that the axis can be left without any labels in unfavourable cases.</li></ul></li>
+<li><tt>NiceSteps</tt> is a string containing a sequence of "step multipliers" -- floating point values in the range from 0 to 1, excluding 0. If this property is applied, the axis step will be a power of ten multiplied by one of the provided values. If several multipliers can be used, the leftmost one will be chosen. Multipliers are separated by the vertical bar (|) character.</li>
+<li>If <tt>NiceSteps</tt> is ignored or TAChart fails to find appropriate step, the axis range will be divided into equal intervals without regard to the number of decimal digits in the representation of mark values. In this case, it is recommended to reduce the number of visible digits in <tt>Marks.Format</tt>.</li>
+<li><tt>MinLength</tt> and <tt>MaxLength</tt> properties set the limits of interval length <i>in image units</i> (usually pixels).</li>
+<li>The <tt>Count</tt> property is the desired number of axis marks. Among all mark steps passing the previous tests, TChart chooses the one which gives the number of marks nearest to the <tt>Count</tt>. If <tt>Count</tt> property is ignored, or there are several steps with equal number of marks, the longest step is chosen.</li>
+<li>The <tt>Tolerance</tt> property sets the maximum distance <i>in image units</i> by which the mark may be moved in order to reduce the length of its decimal representation. This helps to avoid a lot of meaningless digits in mark labels when previous steps have for some reason failed to generate "nice" marks. Note that this stage ignores all previous restrictions, so large <tt>Tolerance</tt> values may result in significant distortions. Setting <tt>Tolerance = 1</tt> is often sufficient.</li></ul>
+<p>Note that if you set the chart source manually, the <tt>Intervals</tt> property may apply only partially or not apply at all.
+For example, <a href="#List_source"> list source</a> is unable to guarantee maximum interval length, since it has only a finite number of points. See also <a href="#Interval_source">interval chart source</a>.
+</p>
+<h3><span class="mw-headline" id="Axis_position">Axis position</span></h3>
+<p>By default, the axis is aligned to the side of the chart corresponding to the <tt>Alignment</tt> property.
+You can position an axis differently by setting the <tt>Position</tt> and <tt>PositionUnits</tt> properties.
+</p><p>The following values of the <code>PositionUnits</code> property are accepted:
+</p>
+<ul><li><tt>cuPercent</tt> -- percentage of the clipping rectangle.</li>
+<li><tt>cuGraph</tt> -- absolute position in graph coordinates.</li>
+<li><tt>cuAxis</tt> -- absolute position in axis coordinates. In order to apply the correct axis transformation the index of the orthogonal axis (<tt>OrthogonalAxisIndex</tt>) must be specified (new feature in Laz 4.0).</li>
+<li><tt>cuPixels</tt> -- position in screen units relative to the default coordinate.</li></ul>
+<p><b>Note 1:</b> If the axis position is changed from default (<tt>Position = 0</tt> and <tt>PositionUnits = cuPercent</tt>),
+it will be excluded from the margins calculation, so it will appear to overlap the series.
+</p><p><b>Note 2:</b> The <tt>Alignment</tt> affects not only the position of the axis itself,
+but also of the corresponding labels. So, if two axes have both <tt>Position = 50</tt> and <tt>PositionUnits = cuPercent</tt>,
+but one has <tt>Alignment = calLeft</tt> and another <tt>Alignment = calRight</tt>, they will display a common axis line
+with labels on different sides.
+</p><p>See "Position" page of the "axis" demo for an example.
+</p>
+<h3><span class="mw-headline" id="Axis_titles">Axis titles</span></h3>
+<p>If the property <tt>TextFormat</tt> is switched to <tt>tfHTML</tt> then HTML entities and tags can be embedded for special formatting of axis titles, such as subscripts/superscripts or greek characters. See <a href="#HTML">HTML</a> for details.
+</p><p>The property <tt>Wordwrap</tt>, if set to <tt>true</tt>, allows to wrap extra long axis titles into new lines. Note that this feature works only when the title is horizontal for the x axis and vertical for the y axis. Moreover, html-formatted text is not supported for word-wrapping.
+</p>
+<h3><span class="mw-headline" id="Axis_LabelSize">Axis LabelSize</span></h3>
+<p>Since Lazarus v1.4 the chart axes have a new property <tt>LabelSize</tt> which - if different from <tt>0</tt> - overrides the automatic calculation of the space needed by the axis marks. The <tt>LabelSize</tt>, approximately, defines the pixels between axis line and axis title, independently of the size of the axis labels. This feature can be used to align the axis lines of several charts that are stacked above each other or placed side by side. 
+</p><p>See the "axisalign" demo and <a href="/TAChart_documentation#Graphical_explanation" title="TAChart documentation">Graphical explanation</a> for an example.
+</p>
+<div id="shbox" role="note" style="background-color: #eeeef6; border: 1px solid LightGray; font-size: 0.9em; margin: 0.75em 2.5em; padding: 0.2em 0.75em;">
+<img alt="Light bulb" src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Nuvola_apps_ktip.png" decoding="async" title="Note icon" width="32" height="32" />&#8239;&#160;<b>Note:</b> If the (non-zero) <code>LabelSize</code> value is too small then the axis labels may reach into the axis title or may even be truncated at the chart border.</div>
+<h2><span class="mw-headline" id="Extents_and_margins">Extents and margins</span></h2>
+<h3><span class="mw-headline" id="Extents">Extents</span></h3>
+<p>Chart <i>extent</i> is a rectangle in <a href="#Coordinates_and_axises">graph coordinates</a>.
+</p><p>There are several extents defined by TChart:
+</p>
+<ul><li><i>Full extent</i> -- usually determined automatically as the area encompassing all the data from series and axis ranges. Is returned by the <tt>GetFullExtent</tt> function.</li>
+<li><i>Fixed extent</i> -- determined by the <tt>TChart.Extent</tt> property. May override full extent calculation partially or fully.</li>
+<li><tt>LogicalExtent</tt> -- the extent requested by the user to be seen on the chart image. Writing to this property is the official way to change the chart extent by external code. For example, <tt>LogicalExtent&#160;:= GetFullExtent</tt> is (almost) equivalent to calling the <tt>ZoomFull</tt> procedure.</li>
+<li><tt>CurrentExtent</tt> -- the extent actually displayed to the user. May differ from the <tt>LogicalExtent</tt> due to the need to reserve space for series <a href="#Marks">marks</a>, inner chart <a href="#Margins">margins</a> etc.</li></ul>
+<p>The value of the minimum extent cannot be greater than the value of the maximum extent. If an attempt is made to set such values an exception will be generated. To prevent exceptions, the procedure <tt>.Extent.FixTo(aBounds: TDoubleRect)</tt> can be used to set logical extents. The values in <tt>TDoubleRect</tt> are ordered in the following way: <i>[xmin, ymin, xmax, ymax]</i>.
+</p><p>In order to invert the extents, the property <tt>Inverted</tt>' of the (left, bottom, etc) axis shall be set to <tt>True</tt>.
+</p><p><b>Important:</b> Setting logical extents will work as required only if all the <tt>Margins</tt> of the chart are set to 0 (default value is 4) and <tt>Series.Marks.AutoMargins</tt> to all series in the chart is set to <tt>False</tt> (default is <tt>True</tt>). Otherwise, the requested extent will be enlarged to include also the chart's <tt>Margins</tt> as well as the series' <tt>Marks</tt>.
+</p>
+<h3><span class="mw-headline" id="Extent_limits">Extent limits</span></h3>
+<p>By default, TAChart allows arbitrary extents. However, for both usability and speed reasons it may be desirable
+to limit extent size. For example, setting the lower bound of the size may disallow extreme zoom levels,
+while setting the upper bound may force the user to only see a part of the very long series at any given time.
+</p><p>The extent can be limited with the <tt>ExtentSizeLimit</tt> property.
+Sub-properties <tt>MinX</tt>, <tt>MinY</tt>, <tt>UseMinX</tt> and <tt>UseMinY</tt> control the lower bounds of the extent, while sub-properties <tt>MaxX</tt>, <tt>MaxY</tt>, <tt>UseMaxX</tt> and <tt>UseMaxY</tt> control
+the upper bounds.
+</p><p>Extent limits are expressed in graph units.
+</p><p>Setting <tt>Proportional = true</tt> will enforce the current extent to have the shape of the plot area.
+This may be useful for cartographic or some math plots which require the same scale on both axes.
+</p>
+<h3><span class="mw-headline" id="Linked_extents">Linked extents</span></h3>
+<p>Using the <tt>TChartExtentLink</tt> component, you can ensure that the logical extents of several charts
+enumerated by the <tt>LinkedCharts</tt> property always stay the same. In Laz 2.1+ the component is extended to provide an additional property <tt>AlignSides</tt> which adjusts the <tt>LabelSize</tt> properties of aligned charts such that the corresponding sides of the plot area are aligned, too. (When property <tt>AlignMissingAxes</tt> is <tt>true</tt> (default) dummy axes are created for those sides having no axes so that alignment works for these sides, too).
+</p><p>This is useful for simulating multi-pane chart layouts. See "panes" demo for an example.
+</p>
+<h3><span class="mw-headline" id="Margins">Margins</span></h3>
+<p><i>Margin</i> is a distance reserved around the edges of rectangular region. Margins are measured in image units (usually pixels).
+The chart itself has two kinds of margins:
+</p>
+<ul><li>Internal (<tt>Margins</tt> property) -- applied after axis drawing. Are also influenced by series marks and series themselves.</li>
+<li>External (<tt>MarginsExternal</tt> property) -- applied before axis drawing. Are also influenced by axis marks and arrows.</li></ul>
+<p>Other chart elements, such as legend, title, footer and labels, have margins, too.
+</p>
+<h3><span class="mw-headline" id="Optimization_notes">Optimization notes</span></h3>
+<p>Calculation of <tt>CurrentExtent</tt> and actual margins is a non-trivial <i>iterative</i> process (see <tt>TChart.PrepareAxis</tt> code for details).
+Although usually fast, in complex cases it can require multiple passes through chart sources.
+</p>
+<h3><span class="mw-headline" id="Graphical_explanation">Graphical explanation</span></h3>
+<table>
+
+<tbody><tr style="text-align:left;">
+<td>1 = Chart.MarginsExternal.Left<br />2 = Chart.LeftAxis.Margin<br />3 = Chart.LeftAxis.Title.Margins.Top &#160;  <br />4 = Chart.LeftAxis.Title.Distance<br />5 = Chart.LeftAxis.LabelSize<br />6 = Chart.Margins.Left<br />7 = Autosized
+</td>
+<td><a href="/File:chart-margins.png" class="image"><img alt="chart-margins.png" src="/images/2/20/chart-margins.png" decoding="async" width="312" height="443" /></a>
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Tools">Tools</span></h2>
+<p>Chart tools define how the chart reacts to various user actions, primarily mouse movements and clicks.
+You can see examples of tools usage in the "tools" or "barseriestools" demos. 
+</p><p>Tools are grouped in a <tt>TChartToolset</tt> component,
+which should be assigned to the chart's <tt>Toolset</tt> property.
+The same toolset can be used in several charts.
+</p><p>If <tt>Toolset</tt> is unassigned, for compatibility reasons a built-in toolset consisting of
+<a href="#Zoom_drag_tool">zoom drag </a> and <a href="#Pan_drag_tool">pan drag</a> tools is used; these builtin tools can be turned off individually by setting the chart properties <tt>AllowZoom</tt> and/or <tt>AllowPanning</tt> to <tt>false</tt>, respectively (the latter is available only after Lazarus v2.2+).
+</p><p>In each user action, tools in the toolset are processed in order, and for each tool:
+</p>
+<ul><li>If <tt>Enabled=false</tt>, the tool is ignored.</li>
+<li>If <tt>Shift</tt> is not equal to the current shift state, the tool is ignored.</li>
+<li>Tool is requested to process the action.</li>
+<li>If the tool signals that the action is handled, processing is stopped, otherwise it continues to the next tool. This way, tools with the same <tt>Shift</tt> value may be differentiated based on special activation conditions. For example, some drag tools may be configured to not activate on a simple click, leaving the click event available for other actions.</li>
+<li>Finally, if no suitable tool is found, the chart's event handler is called. Note that this means that chart event handlers will only work with all tools disabled. Generally it is recommended to use tools for interactivity, chart events are left mostly for compatibility.</li></ul>
+<p>In your application you can create, for example, a toolbar with each button enabling the corresponding tool in the toolset and disabling all others.
+Alternatively, by assigning different <tt>Shift</tt> values, you can enable several tools at once.
+</p><p>Some tools publish the <tt>EscapeCancels</tt> property which, if set to <tt>true</tt>, cancels the tool operation if the user pressed the ESC key.
+</p>
+<h3><span class="mw-headline" id="Keyboard_handling_in_tools">Keyboard handling in tools</span></h3>
+<p>Besides mouse events, some tools may react on key presses -- for example, <a href="#Data_point_crosshair_tool">crosshair tool</a> with
+<tt>Shift = [ssCtrl]</tt> will display crosshairs when the CTRL key is pressed, without mouse buttons.
+Unfortunately, the chart must be focused to receive keyboard events.
+This means that after the user interacted with other controls on the same form, the chart stops reacting on keyboard-only events.
+</p><p>To prevent this, you can either call the <tt>Chart.SetFocus</tt> method, or set <tt>Chart.AutoFocus = true</tt>,
+which will make a chart grab the focus when the mouse moves over it.
+</p>
+<h3><span class="mw-headline" id="Drawing_mode">Drawing mode</span></h3>
+<p>Some tools, such as <a href="#Zoom_drag_tool">zoom drag</a> or
+<a href="#Data_point_crosshair_tool">crosshair</a>, display moving shapes over the chart
+with the mouse movement.
+</p><p>There are two ways to display those shapes: either simply draw them over the chart, fully redrawing the chart
+upon each mouse movement, or use <tt>pmXor</tt> pen mode to draw and erase the shape directly from
+the <tt>MouseMove</tt> event handler.
+The former method allows to use arbitrary pen color and style, but the latter is much more efficient.
+Additionally, some widgetsets ignore all drawing outside the <tt>Paint</tt> event, in such a case the latter method will not work at all.
+</p><p>The display method is controlled by the <code>DrawingMode</code> property with the following values:
+</p>
+<ul><li><tt>tdmXor</tt> -- use XOR method;</li>
+<li><tt>tdmNormal</tt> -- use full chart redraw;</li>
+<li><tt>tdmDefault</tt> -- use XOR method on widgetsets where it is known to work (Windows and Gtk) and full redraw on others.</li></ul>
+<h3><span class="mw-headline" id="Extent_tools">Extent tools</span></h3>
+<p>Extent tools modify the chart's <a href="#Extents">logical extent</a>.
+</p><p>Zooming tools can be animated by setting <tt>AnimationSteps</tt> to a value greater then <tt>1</tt>
+and specifying an appropriate <tt>AnimationInterval</tt> in milliseconds. 
+</p><p>In the zooming tools, adapt the <tt>LimitToExtent</tt> property to restrict zooming to the chart's full extent on all or some directions. The same property is available also in the panning tools for the corresponding purpose when the viewport is panned.
+</p>
+<h4><span class="mw-headline" id="Zoom_drag_tool">Zoom drag tool</span></h4>
+<p><tt>TZoomDragTool</tt> allows the user to zoom in by drawing a rectangle with the mouse.
+The rectangle then becomes the new <a href="#Extents">logical extent</a>.
+</p><p>Restoration of the zooming to the full extent can be achieved by several actions,
+controlled by the <tt>RestoreExtentOn</tt> property:
+</p>
+<ul><li><tt>zreDragTopLeft</tt>, <tt>zreDragTopRight</tt>, <tt>zreDragBottomLeft</tt>, <tt>zreDragBottomRight</tt> -- dragging in the specified direction,</li>
+<li><tt>zreClick</tt> -- clicking without dragging,</li>
+<li><tt>zreDifferentDrag</tt> -- dragging in a direction different from the one used to zoom in.</li></ul>
+<p>By default, <tt>RestoreExtentOn = [zreClick, zreDragTopLeft, zreDragTopRight, zreDragBottomLeft]</tt> which means
+that the full extent is restored either by clicking or by drawing a rectangle in any direction except from top-left to bottom-right.
+</p><p>To get a behavior compatible with earlier versions of Delphi's TeeChart, specify <tt>RestoreExtentOn = [zreDragTopLeft, zreDragTopRight, zreDragBottomLeft]</tt>.
+</p><p>To get a behavior compatible with newer versions of TeeChart, specify <tt>RestoreExtentOn = [zreDifferentDrag]</tt>.
+</p><p>The enumerated property <tt>RatioLimit</tt> (<tt>(zrlNone, zrlProportional, zrlFixedX, zrlFixedY</tt>) lets you restrict zooming to one of the coordinates, or makes the zooming process keep the original proportions. In such a case of restricted zooming the zoom rectangle is drawn in the fixed direction across the entire chart when the property <tt>AdjustSelection</tt> is at its default value <tt>true</tt>; otherwise the zoom rectangle would be drawn between the mouse start and end points, like in the unrestricted case.
+</p>
+<h4><span class="mw-headline" id="Zoom_click_tool">Zoom click tool</span></h4>
+<p><tt>TZoomClickTool</tt> allows the user to zoom in or out by clicking on the chart with the mouse.
+<tt>ZoomFactor</tt> is the scaling multiplier applied by the tool where factors below 1 represent "zoom out", and factors above represent "zoom in".
+</p><p><tt>ZoomRatio</tt> allows to create a non-proportional zooming effect by specifiying the ratio of X to Y scale. In other words, the X zoom factor is given by the property <tt>ZoomFactor</tt>, the Y zoom factor is the product <tt>ZoomFactor*ZoomRatio</tt>.
+</p>
+<ul><li>In particular, to <b>zoom only horizontally</b>, the Y zoom factor must be 1, i.e. <tt>ZoomFactor*ZoomRatio = 1</tt> or <tt>ZoomRatio = 1/ZoomFactor</tt>. For example, when your <tt>ZoomFactor</tt> for the X axis is 1.1, then <tt>ZoomRatio</tt> must be 1/1.1 = 0.909.</li>
+<li>Similarly, to <b>zoom only vertically</b>, the X factor must be 1, i.e. <tt>ZoomFactor = 1</tt>, and you can use <tt>ZoomRatio</tt> alone to determine the Y zoom factor.</li>
+<li>And finally, in the normal case, when X and Y should zoom by the same ratio, keep <tt>ZoomRatio</tt> at 1 and determine the overall zoom factor by the <tt>ZoomFactor</tt> alone.</li></ul>
+<p>If <tt>FixedPoint</tt> is true, the location of the mouse click is used as a fixed point for zooming, otherwise the chart image center is used instead.
+</p>
+<h4><span class="mw-headline" id="Zoom_mouse-wheel_tool">Zoom mouse-wheel tool</span></h4>
+<p><tt>TZoomMouseWheelTool</tt> allows the user to zoom in and out with the mouse wheel.
+Its properties are identical to the <a href="#Zoom_click_tool">zoom click tool</a>.
+</p><p>The chart is scaled by <tt>ZoomFactor</tt> when the user scrolls the mouse wheel up,
+and by <tt>1/ZoomFactor</tt> when the user scrolls the mouse wheel down.
+</p>
+<h4><span class="mw-headline" id="Pan_drag_tool">Pan drag tool</span></h4>
+<p><tt>TPanDragTool</tt> allows the user to move the logical extent by dragging the mouse in the directions
+indicated by the <tt>Directions</tt> property.
+</p><p>Use the <tt>MinDragRadius</tt> property to distinguish dragging from clicking.
+</p>
+<h4><span class="mw-headline" id="Pan_click_tool">Pan click tool</span></h4>
+<p><tt>TPanClickTool</tt> allows the user to move the logical extent by clicking inside a range of 
+<tt>Margins</tt> pixels from the corresponding border of the chart image.
+</p><p>The panning offset is determined by the distance from the edge of the chart (the nearer to
+the edge, the greater).
+Setting <tt>Interval</tt> in milliseconds will allow to continue panning with the given
+interval until the mouse button is up.
+</p>
+<h4><span class="mw-headline" id="Pan_mouse_wheel_tool">Pan mouse wheel tool</span></h4>
+<p><tt>TPanMouseWheelTool</tt> allows the user to move the logical extent by scrolling the mouse wheel.
+</p><p>The extent is moved in <tt>WheelUpDirection</tt> when the wheel is scrolled up
+and in the opposite direction when the wheel is scrolled down.
+</p><p>The movement speed is controlled by <tt>Step</tt> property.
+</p>
+<h3><span class="mw-headline" id="Data_tools">Data tools</span></h3>
+<p>Data tools are linked to specific data series via the <tt>AffectedSeries</tt> property,
+which is a string of comma-separated series indexes.
+Note that indexes may change if you add or remove series. 
+Having <tt>AffectedSeries</tt> empty means that the tools operate on every series in the chart.
+</p><p>When a data tool is activated, it determines the nearest point of the affected series
+which is located inside of the <tt>GrabRadius</tt> (in pixels). 
+</p><p>Using the set <tt>Targets: TNearestPointTargets</tt> it can be controlled which part of a complex series must be hit:
+</p>
+<ul><li><tt>nptPoint</tt>: The tool must hit the data point at (x, y).</li>
+<li><tt>nptXList</tt>: If the series' source has several x values the tool must hit any of the values in the XList.</li>
+<li><tt>nptYList</tt>: If the series' source has several y values the tool must hit any of the values in the YList.</li>
+<li><tt>nptCustom</tt>: Meant for special effects depending on the series. In case of a bar series, for example, the function <tt>GetNearestPoint</tt> is overridden to accept hits inside series bars if this option is set.</li></ul>
+<p>All options are on by default.
+For further control, most series have the same set of Targets, named <tt>ToolTargets</tt>. An option must be included in the targets of both tool and series to be active. This way tools can be shared with series reacting differently on each option. See "barseriestools" demo as an example.
+</p><p>For large series, the efficiency can be improved by using a sorted source, a small <tt>GrabRadius</tt> and a <tt>DistanceMode&lt;&gt;cdmOnlyY </tt>.
+</p>
+<h4><span class="mw-headline" id="Data_point_drag_tool">Data point drag tool</span></h4>
+<p><tt>TDataPointDragTool</tt> allows the user to change data values by dragging the data point.
+Requires the series' data source to be a <a href="#List_sources">list source</a>.
+</p><p>You can use the <tt>OnDrag</tt> and <tt>OnDragStart</tt> events to limit drag direction or grab area.
+</p><p>See "dragdrop" demo for an example.
+</p>
+<h4><span class="mw-headline" id="Data_point_click_tool">Data point click tool</span></h4>
+<p><tt>TDataPointClickTool</tt> allows you to assign an <tt>OnPointClick</tt> event handler,
+which will be called when the user clicks on the data point.
+</p>
+<h4><span class="mw-headline" id="Data_point_hint_tool">Data point hint tool</span></h4>
+<p><tt>TDataPointHintTool</tt> displays a hint when the user moves the mouse over the data point.
+The hint is either equal to the data point label (if <tt>UseDefaultHintText=true</tt>) or
+determined by calling the <tt>OnHint</tt> event handler. 
+In the former case, the <tt>Style</tt> property of the series' <tt>Marks</tt> must be set 
+to something different from <tt>smsNone</tt>. 
+(You can turn off directly displaying all the series marks in the chart by selecting the 
+series' <tt>Marks.Visible = false</tt>).
+</p><p>By default, this tool displays a separate hint window, independent from the application hint.
+To use a single hint window per application, you may set <tt>UseApplicationHint=true</tt>.
+</p><p>Note that the application-level hint does not work in combination with modifier keys
+and mouse buttons, so the hint is displayed only if no buttons are pressed
+(i.e. <tt>Shift</tt> property must be empty when <tt>UseApplicationHint=true</tt>).
+</p>
+<h4><span class="mw-headline" id="Data_point_crosshair_tool">Data point crosshair tool</span></h4>
+<p><tt>TDataPointCrosshairTool</tt> displays a cross-hair centered on the data point. It replaces the "reticule" found in older versions of TAChart.
+</p>
+<h4><span class="mw-headline" id="Data_point_distance_tool">Data point distance tool</span></h4>
+<p><tt>TDataPointDistanceTool</tt> allows to measure and display a distance between two points on the chart.
+</p>
+<h3><span class="mw-headline" id="Chart_element_tools">Chart element tools</span></h3>
+<h4><span class="mw-headline" id="Axis_click_tool">Axis click tool</span></h4>
+<p>This tool fires an event <tt>OnClick</tt> when the user clicks on an axis or its title. The event has the clicked axis and a set of <tt>TAxisHitTest</tt> elements as parameters:
+</p>
+<ul><li><tt>ahtTitle</tt>: click on the axis title</li>
+<li><tt>ahtLine</tt>: click on the axis line (allowed tolerance defined by the tool's <tt>GrabRadius</tt> or the axis' <tt>TickLength</tt> and <tt>InnerTickLength</tt> whichever is greater).</li>
+<li><tt>ahtLabels</tt>: click into the label area of the axis. It is not distinguished whether a label is clicked or the empty space between the labels.</li>
+<li><tt>ahtAxisStart</tt>: the click on the line or label area occured in the first quarter of the axis length</li>
+<li><tt>ahtAxisCenter</tt>: the click on the line or label area occured in the center part (two quarters) of the axis length</li>
+<li><tt>ahtAxisEnd</tt>: the click on the line or label area occured in the last quarter of the axis length.</li></ul>
+<p>If you do not want an axis to register clicks on some of these elements you can remove them from the <tt>EnabledHitTests</tt> property of the axis.
+</p>
+<h4><span id="Title.2Ffooter_click_tool"></span><span class="mw-headline" id="Title/footer_click_tool">Title/footer click tool</span></h4>
+<p>An <tt>OnClick</tt> event is created when the user clicks on the title or footer of a chart. The event has the clicked title/footer as parameter.
+</p>
+<h4><span class="mw-headline" id="Legend_click_tool">Legend click tool</span></h4>
+<p>Generates an <tt>OnClick</tt> event when a click on the chart's legend has occured. The event has the legend as a parameter.
+</p><p>Moreover an <tt>OnSeriesClick</tt> event fires when a legend item is clicked and the item is associated with a series; the series is passed to the event handler as a parameter. The series parameter can be nil when empty space or a non-series item (group header) is clicked. Requires Lazarus version 2.3 or newer.
+</p><p>When both events are assigned, only <tt>OnSeriesClick</tt> is fired.
+</p>
+<h4><span class="mw-headline" id="Datapoint_marks_click_tool">Datapoint marks click tool</span></h4>
+<p>Fires the event <tt>OnPointClick</tt> when the user clicks on the marks of a series. It is useful for crowded charts in which a series with marks is covered by others and is to be moved to the top of the z order so that all marks can be read. Requires Lazarus version 2.3 or newer.
+</p>
+<h3><span class="mw-headline" id="User_defined_tool">User defined tool</span></h3>
+<p>To add your own tool, either inherit from <tt>TUserDefinedTool</tt> or use it directly,
+assigning one or more On{After,Before}{KeyDown,KeyUp,MouseDown,MouseMove,MouseUp,MouseWheelDown,MouseWheelUp} event handlers.
+</p><p>Call the <tt>Handled</tt> method of the tool to indicate that no further processing of the event should be done.
+</p>
+<h2><span class="mw-headline" id="Decorative_elements">Decorative elements</span></h2>
+<h3><span class="mw-headline" id="Title_and_footer">Title and footer</span></h3>
+<p>Chart title and footer are multi-line texts appearing above and below the chart
+correspondingly.
+They support various rotations and alignments, as well as the boolean <tt>WordWrap</tt> property to wrap text wider than the chart into multiple lines.
+</p><p>Normally the title/footer background tightly encloses the text; it can be expanded to run across the entire width of the chart by setting the <tt>FullWidth</tt> property to <tt>true</tt>.
+</p>
+<h4><span class="mw-headline" id="HTML">HTML</span></h4>
+<p>If the Lazarus version is 1.8 or newer then html entities and some html tags can be embedded into the title/footer texts for a variety of additional formatting options. This feature is turned on by switching the property <tt>TextFormat</tt> to <tt>tfHTML</tt>. In addition to header/footer texts it is available also for axis captions, axis marks, series marks and legend texts/series titles.
+</p>
+<ul><li>Non-standard charcters can be embedded using the corresponding <b>html entities</b>, i.e. as codes beginning with an ampersand (&amp;), a standardized appreviation of the character name (or its hex or decimal unicode value), and ending with a semicolon (;). A list of all html entities can be found at <a rel="nofollow" class="external free" href="http://unicode.e-workers.de/entities.php">http://unicode.e-workers.de/entities.php</a>. <br /><i>Example</i>: The text <tt>sin 2&amp;alpha; = 2 sin &amp;alpha; cos &amp;alpha;</tt> is displayed as "sin 2&#945; = 2 sin &#945; cos &#945;"</li>
+<li><tt>&lt;sub&gt;...&lt;/sub&gt;</tt> displays the enclosed text as <b>subscript</b>. <br /><i>Example:</i> <tt>H&lt;sub&gt;2&lt;/sub&gt;O</tt> is shown in the chart as "H<sub>2</sub>O"</li>
+<li><tt>&lt;sup&gt;...&lt;/sup&gt;</tt> displays the enclosed text as <b>superscript</b>. <br /><i>Example:</i> <tt>cm&lt;sup&gt;2&lt;/sup&gt;</tt> is shown in the chart as "cm<sup>2</sup>"</li>
+<li><tt>&lt;b&gt;...&lt;/b&gt;</tt> displays the enclosed text with <b>bold</b> type face. <br />Likewise, the tags &lt;i&gt;...&lt;/i&gt;, &lt;u&gt;...&lt;/u&gt;, &lt;s&gt;...;&lt;/s&gt; can be used to format portions of the text as <i>italic</i>, <u>underlined</u>, and <s>strike-out</s><br /><i>Example:</i> <tt>Plot of &lt;b&gt;x&lt;/b&gt; &lt;i&gt;vs.&lt;/i&gt; &lt;b&gt;y&lt;/b&gt;</tt> is shown in the chart as "Plot of <b>x</b> <i>vs.</i> <b>y</b>"</li>
+<li>The <tt>&lt;font&gt;...&lt;/font&gt;</tt> tags can be used to modify the font of the enclosed text:
+<ul><li><b>Text color</b>: The embedded <tt>This text is &lt;font color="red"&gt;RED&lt;/font&gt;</tt> displays the enclosed text in red color, i.e. like "This text is <font color="red">RED</font>". Specify the color by the most typical color names or by the html hex color codes of rgb values, in the format <tt>#rrggbb</tt> or <tt>#rgb</tt> where r, g, b are hex bytes for the red, green and blue color components. The three-digit codes <tt>#rgb</tt> are equivalent to the six-digit codes <tt>#rrggbb</tt> where both digits of the same component are equal.</li>
+<li>The <b>font name</b> can be specified by the <tt>name</tt> attribute.</li>
+<li>The <b>font size</b> is controlled by the <tt>size</tt> attribute. It can take the values "x-small", "small", "medium", "large", "x-large", "xx-large" for font sizes 7, 10, 12, 14, 18, 24pt, respectively. Alternatively, the point or pixel size can be specified directly if "pt" or "px", respectively, is appended.</li>
+<li><i>Example:</i> This code adds a two-line footer in which the 2nd line is in blue, 8-pt, underlined Times New Roman:</li></ul></li></ul>
+<div class="mw-highlight mw-highlight-lang-pascal mw-content-ltr" dir="ltr"><pre><span></span>  <span class="n">Chart</span><span class="o">.</span><span class="n">Foot</span><span class="o">.</span><span class="n">Text</span><span class="o">.</span><span class="n">Clear</span><span class="o">;</span>
+  <span class="n">Chart</span><span class="o">.</span><span class="n">Foot</span><span class="o">.</span><span class="n">Text</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#39;Reference:&#39;</span><span class="p">)</span><span class="o">;</span>
+  <span class="n">Chart</span><span class="o">.</span><span class="n">Font</span><span class="o">.</span><span class="n">Text</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#39;&lt;font name=&quot;Times New Roman&quot; size=&quot;8pt&quot; color=&quot;blue&quot;&gt;&lt;u&gt;www.freepascal.org/&lt;/u&gt;&lt;/font&gt;&#39;</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+<div id="shbox" style="border-width:1px; border-color:lightgrey; padding: 8px 5px 2px 10px; min-height:34px; border-style:solid; width=500px; background:lightyellow; display: block; margin-top:20px;">
+<div class="floatleft"><a href="/File:Warning-icon.png" class="image"><img alt="Warning-icon.png" src="/images/b/b2/Warning-icon.png" decoding="async" width="24" height="24" /></a></div>
+<p style="margin-top:0px; margin-left: 24px;"><b>Warning:</b> It is not recommended to switch font name and font size within the same line because TAChart drawers cannot exactly align the base line of characters in different fonts and font sizes</p></div>
+<p>The demo application in folder <i>demo/html</i> of the Lazarus installation heavily makes use of embedded HTML codes.
+</p>
+<h3><span class="mw-headline" id="Legend">Legend</span></h3>
+<p>Chart legend is a table with each item containing an icon and a text line.
+Grid lines may be controlled by <tt>GridHorizontal</tt> and <tt>GridVertical</tt> properties.
+</p><p>Legend supports various alignments and can be located inside the chart or
+on the sidebar. Legend can be displayed in two or more columns
+by setting <tt>ColumnCount</tt> property.
+Setting <tt>ColumnCount</tt> to a very large value effectively creates "horizontal" legend.
+<tt>ColumnCount = 0</tt> automatically adjusts the legend orientation and number of columns to the size of the chart and position of the legend.
+</p><p>Legend items are generated based on chart series which have both
+<tt>Active</tt> and <tt>ShowInLegend</tt> set to true.
+Depending on <tt>Legend.Multiplicity</tt> series can produce a single
+item or one item per point.
+</p><p>Legend items can be grouped together under sub-headers.
+Sub-headers are taken from <tt>GroupNames</tt> property,
+and each series can use <tt>Legend.GroupIndex</tt> property
+to indicate its group.
+</p><p>Legend items are sorted as following:
+</p>
+<ul><li>By group index, items without group (<tt>GroupIndex=-1</tt>) going first to avoid confusion with the last group.</li>
+<li>By <tt>Order</tt> property, items without explicit order (<tt>Order=-1</tt>) going last.</li>
+<li>By creation order of series.</li>
+<li>For multiple items per series, by generation order (for standard series it is the order of points).</li></ul>
+<p>Sorted items are then added to the legend table in either by rows or by columns
+depending on the <tt>ItemFillOrder</tt> property.
+</p>
+<h4><span class="mw-headline" id="Legend_item_text">Legend item text</span></h4>
+<p>The text of a legend item is generated by the corresponding series based on the <tt>Legend.Format</tt> property.
+This property is used as a first argument for the
+<a class="external text" href="http://www.freepascal.org/docs-html/rtl/sysutils/format.html"><tt>SysUtils.Format</tt></a> function,
+with the second argument containing following data items:
+</p>
+<ul><li>For per-series multiplicity:
+<ul><li>0: Series <tt>Title</tt></li>
+<li>1: Series <tt>Index</tt></li></ul></li>
+<li>For per-point multiplicity:
+<ul><li>Same as <a href="#Mark_labels">mark labels</a></li></ul></li></ul>
+<p>If the property <tt>TextFormat</tt> is switched to <tt>tfHTML</tt> then HTML entities and tags can be embedded for special formatting of legend texts. See <a href="#HTML">HTML</a> for details.
+</p>
+<h4><span class="mw-headline" id="User-defined_legend_items">User-defined legend items</span></h4>
+<p>Arbitrary legend items can be generated by overriding <tt>OnCreate</tt> and <tt>OnDraw</tt> events of series <tt>Legend</tt> property.
+</p><p>Note that user-defined item count is controlled solely by
+&lt;codettUserItemsCount property and does not depend on <tt>Multiplicity</tt>. Also note that <tt>GroupIndex</tt> and <tt>Order</tt> properties are actually per-item, so you can totally override entire legend from a single (perhaps fictive) series.
+</p>
+<h3><span class="mw-headline" id="Arrows">Arrows</span></h3>
+<p>Arrowheads can be drawn at the end of axis lines, constant lines, mark links, etc.
+It is controlled by <tt>TChartAxis.Arrow</tt>, <tt>TConstantLine.Arrow</tt>, <tt>TChartMarks.Arrow</tt> correspondingly.
+</p><p>Arrowhead shape is determined by <tt>Width</tt>, <tt>Length</tt> and <tt>BaseLength</tt> properties,
+for example:
+</p>
+<ul><li>Thin wedge: <tt>BaseLength = 0</tt></li>
+<li>Triangle: <tt>BaseLength = Length</tt></li>
+<li>Rhombus: <tt>BaseLength = 2 * Length</tt></li>
+<li>Inverted Triangle: <tt>BaseLength &gt; 0</tt>, <tt>Length = 0</tt></li></ul>
+<p>This image shows these arrows created for <tt>Length=10</tt> and <tt>Width=5</tt>.<a href="/File:TAChart_Arrows.png" class="image"><img alt="TAChart Arrows.png" src="/images/b/be/TAChart_Arrows.png" decoding="async" width="138" height="32" /></a><br clear="all" />
+</p>
+<h3><span class="mw-headline" id="Transparency">Transparency</span></h3>
+<p><tt>Transparency</tt> property of the series represents a level of transparency from 0 (fully opaque) to 255 (fully transparent -- i.e. invisible).
+</p><p><b>Compatibility note</b>: <a href="#FPVectorial_drawer">FPVectorial</a> and <a href="#TFPCanvas_drawer">TFPCanvas</a> drawers currently do not support transparency because of limitations of the underlying libraries. <a href="#Printer_drawer">Printer</a> and <a href="#WMF_drawer">WMF</a> drawers can not support transparency in principle.
+</p><p><b>Optimization note</b>: Transparency support in the LCL is rudimentary, so current <a href="#TCanvas_drawer">TCanvas drawer</a> implementation may be slow with many transparent series and large charts. To improve efficiency, it is recommended to use as few different transparency levels as possible and to not interleave series with different transparencies. Alternatively, use <a href="#BGRABitmap_drawer">BGRABitmap</a> as back-end, since it has faster transparency implementation.
+</p>
+<h3><span class="mw-headline" id="ChartStyles">ChartStyles</span></h3>
+<div class="floatleft"><a href="/File:tchartstyles_200.png" class="image"><img alt="tchartstyles 200.png" src="/images/b/b6/tchartstyles_200.png" decoding="async" width="48" height="48" /></a></div><p><tt>TChartStyles</tt> can be employed to control the appearance of the "layers" of area, line, polar, b-spline and bar series with multiple y values. There are properties to define the <tt>Brush</tt>, <tt>Pen</tt>, <tt>Pointer</tt>, <tt>Font</tt> and <tt>Text</tt> for each layer. Boolean <tt>UseBrush</tt>, <tt>UsePen</tt>, <tt>UsePointer</tt> and <tt>UseFont</tt> properties are available to revert to the corresponding series settings (if <tt>false</tt>). <tt>Font</tt> is the font of the series labels in that particular layer. <tt>Text</tt> is used as legend text when the <tt>Legend.Multiplicity</tt> of the associated series has been set to <tt>lmStyle</tt>. The event <tt>OnAddStyleToLegend</tt> is meant to exclude a particular series level from the legend if required (set the event argument <tt>ShowInLegend</tt> to <tt>false</tt>). 
+</p><p>ChartStyles can also be used to color the regions between axis ticks in a banded way.
+</p><p>A special application exists also for <tt>TBarSeries</tt> (which must have a single layer in this case), <tt>TBubbleSeries</tt> and <tt>TPieSeries</tt>: When <tt>Styles</tt> is not <tt>nil</tt> for these series types, the styles define the formatting of individual data points. This way, for example, the fill pattern of pies in a TPieSeries can be varied from slice to slice.
+<br />
+<br />
+</p>
+<h2><span class="mw-headline" id="Marks">Marks</span></h2>
+<p>Marks annotate certain points of the chart. These points can be defined by a series or an axis.
+Typically, mark consists of some graphical element (such as an axis tick) and a text label.
+However, either of these elements can be omitted.
+</p><p>You can see examples in the "labels" demo.
+</p>
+<h3><span class="mw-headline" id="Mark_labels">Mark labels</span></h3>
+<p>The label text can be enclosed in a box, controlled by <tt>LabelBrush</tt> and <tt>Frame</tt> properties.
+The text itself is created based on the data source items, with the help of <tt>Format</tt> property.
+This property is used as a first argument for the
+<a class="external text" href="http://www.freepascal.org/docs-html/rtl/sysutils/format.html"><tt>SysUtils.Format</tt></a> function,
+with the second argument containing following data items:
+</p>
+<ul><li>0: Y</li>
+<li>1: Y as a percentage of the Y total</li>
+<li>2: Text</li>
+<li>3: Y total</li>
+<li>4: X</li></ul>
+<p>Where "Y total" is the sum of all Y values for this source.
+Note that not all sources supply all the items above.
+</p><p>Some pre-defined formats can be set via the <tt>Style</tt> property.
+</p><p>If the source is <a href="#Multi-valued_sources">mutli-valued</a>,
+<tt>YIndex</tt> property determines which Y value is used.
+If <tt>YIndex = -1</tt>, a separate label is displayed for each Y value, which is useful for stacked series. The <tt>Text</tt> element of the source's <tt>TChartDataItem</tt> records can contain indidual texts for each Y value level; they must be separated by the <tt>LabelSeparator</tt> defined by the chart source (by default <tt>'|'</tt>).
+</p><p>The built-in predefined label texts can be overridden by provding a handler for the <tt>OnGetMark</tt>/<tt>OnGetMarkText</tt> 
+events of the series. Note that <tt>OnGetMark</tt> has been deprecated in Laz v3.99 to be replaced by event <tt>OnGetMarkText</tt> 
+which gives access to more parameters.
+</p><p>The text is rendered using the <tt>LabelFont</tt>. Note in particular that TAChart supports arbitrary
+font <tt>Orientation</tt>.
+</p><p>Mark labels are usually included in <a href="#Margins">margins</a> calculation to guarantee that all labels fit in the viewport.
+This behavior can be turned off by setting <tt>AutoMargins</tt> property to <tt>false</tt>.
+</p>
+<h4><span class="mw-headline" id="Multi-line_marks">Multi-line marks</span></h4>
+<p>If the mark text contains <a class="external text" href="http://www.freepascal.org/docs-html/rtl/system/lineending.html"><tt>LineEnding</tt></a> character sequence, it is split into several lines.
+Lines of different length are aligned according to <tt>Alignment</tt> property.
+</p>
+<h4><span class="mw-headline" id="HTML_codes_in_marks">HTML codes in marks</span></h4>
+<p>If the property <tt>TextFormat</tt> is switched to <tt>tfHTML</tt> then HTML entities and tags can be embedded for special formatting of marks. See <a href="#HTML">HTML</a> for details.
+</p>
+<h3><span class="mw-headline" id="Mark_positions_and_attachment">Mark positions and attachment</span></h3>
+<p>The mark position relative to the marked point is determined by the marks owner (series or axis).
+</p><p>Common mark properties include <tt>Distance</tt>, which measures the distance
+from the origin point to the attachment point in image units, and <tt>Attachment</tt>, which controls
+whether the attachment point is considered to be in the center or at the edge of the label box.
+</p><p>Additionally, <a href="#Basic_series">basic chart series</a> have a property <tt>MarkPositions</tt> specifying
+the direction of labels' offsets relative to series data points as following:
+</p>
+<ul><li><tt>lmpOutside</tt> -- away from the center of the data points cloud; for <a href="#Bar_series">TBarSeries</a> and <a href="#Area_series">TAreaSeries</a> it has a special meaning: away from the ZeroLevel defined for this series.</li>
+<li><tt>lmpPositive</tt> -- positive direction of series' Y axis</li>
+<li><tt>lmpNegative</tt> -- negative direction of series' Y axis</li>
+<li><tt>lmpInside</tt> -- towards the center of the data points cloud; for <a href="#Bar_series">TBarSeries</a> and <a href="#Area_series">TAreaSeries</a>: towards the ZeroLevel</li></ul>
+<p>In Lazarus 2.0+, <a href="#Bar_series">TBarSeries</a> and <a href="#Area_series">TAreaSeries</a> have an additional property <tt>MarkPositionCentered</tt> which allows to center the marks origins between data points and zero level. In order to place marks exactly at the center of the bars of a BarSeries or at the center of the drop line of an AreaSeries, the following properties must be changed additionally: <tt>Marks.Distance = 0</tt>, and <tt>Marks.Attachment = maCenter</tt>.
+</p>
+<h3><span class="mw-headline" id="Rotation_of_marks">Rotation of marks</span></h3>
+<p>Marks can be rotated by any angle in a resolution of 1/10 degree by modifying the <tt>Orientation</tt> of their font; it is specified by the 10-fold value in degrees, i.e. the value 450 refers to an angle of 45°. 0° means horizontal orientation, the angle increases in the counter-clockwise direction.
+</p><p>The rotation normally occurs with respect to the center of the label. Axis and series marks additionally have a property <tt>RotationCenter</tt> to shift the center of rotation to an edge of the text:
+</p>
+<ul><li><tt>raCenter</tt> -- default setting, i.e. rotation occurs around the text center</li>
+<li><tt>raLeft</tt> -- the rotation center is at the left edge of the label.</li>
+<li><tt>raRight</tt> -- the rotation center is at the right edge of the text.</li>
+<li><tt>raEdge</tt> -- ignored in case of series marks (will be replaced by raLeft). But in case of axis marks the center of rotation is automatically moved to the text start or end in order to avoid rotation of the label into the chart.</li></ul>
+<h2><span class="mw-headline" id="Drawers">Drawers</span></h2>
+<p>For low-level drawing routines, TAChart uses special set of classes implementing <tt>IChartDrawer</tt> interface.
+This allows such features as printing charts and exporting them to SVG format.
+</p><p>These classes are called <i>drawing back-ends</i> or <i>drawers</i> for short.
+</p>
+<h3><span class="mw-headline" id="TCanvas_drawer">TCanvas drawer</span></h3>
+<p><tt>TCanvasDrawer</tt> is the default drawer used to display chart on TCanvas.
+This includes screen and various raster image formats.
+The image produced by this drawer is used as a reference when developing and debugging other back-ends.
+</p>
+<h3><span class="mw-headline" id="TFPCanvas_drawer">TFPCanvas drawer</span></h3>
+<p><tt>TFPCanvasDrawer</tt> is similar to <a href="#TCanvas_drawer">TCanvas drawer</a>, but based on <tt>TFPCanvas</tt> 
+(which is a <code>TCanvas</code> analog implemented in the FCL instead of the LCL).
+</p><p>See the "nogui" demo for an example.
+</p><p>Although <tt>TFPCanvas</tt> and, correspondingly, <tt>TFPCanvasDrawer</tt> have a restricted implementation
+of some TAChart features, their important advantage is the possibility they offer of compiling an application with the nogui widgetset.
+This is particularly useful for Web applications, which can then generate raster chart images without any further graphic dependency, or a need to install X/Gtk/Qt on the server.
+</p>
+<h3><span class="mw-headline" id="SVG_drawer">SVG drawer</span></h3>
+<p><tt>TSVGDrawer</tt> produces text stream with the image of the chart in <a href="http://www.wikipedia.org/wiki/SVG" class="extiw" title="wikipedia:SVG">SVG</a> format.
+Similarly to <a href="#TFPCanvas_drawer">TFPCanvas drawer</a>, it is independent of LCL and can be used in Web applications
+to generate vector charts in nogui widgetset.
+</p><p>See "save" demo for an example.
+</p><p>For this drawer, image unit is an SVG canvas unit instead of a pixel.
+</p><p>Note that due to the nature of SVG, there is no way to measure font dimensions, so they are approximated crudely.
+This may result in problems like label text not fitting in the mark rectangle, especially in browsers
+like Firefox that do not support <tt>textLength</tt> attribute.
+</p>
+<h3><span class="mw-headline" id="OpenGL_drawer">OpenGL drawer</span></h3>
+<p><tt>TOpenGLDrawer</tt> draws chart on the current <a href="http://www.wikipedia.org/wiki/OpenGL" class="extiw" title="wikipedia:OpenGL">OpenGL</a> context.
+It is suitable to be used in games and other OpenGL-only applications.
+</p><p>OpenGL drawer expects, but does not set by itself, an orthogonal projection.
+See "opengl" demo for an example.
+</p><p>Note that, like in OpenGL itself, <tt>TOpenGLDrawer</tt> font support is extremely limited.
+</p>
+<h3><span class="mw-headline" id="Printer_drawer">Printer drawer</span></h3>
+<p><tt>TPrinterDrawer</tt> draws chart on the printer canvas. It does not flush the page.
+</p><p>Although printer canvas is a descendant of <tt>TCanvas</tt>, and so printing can be done
+using the <a href="#TCanvas_drawer">default drawer</a>, <tt>TPrinterDrawer</tt> does proper re-scaling
+of image coordinates according to printer vs screen DPI.
+</p><p>You can use this drawer to export chart to PDF format using one of the available PDF writer products.
+</p><p>See "print" demo for an example.
+</p><p>Note that this drawer is located in a separate TAChartPrint package.
+</p>
+<h3><span class="mw-headline" id="AggPas_drawer">AggPas drawer</span></h3>
+<p><tt>TAggPasDrawer</tt> draws chart using <a rel="nofollow" class="external text" href="http://www.crossgl.com/aggpas">AggPas library</a>.
+</p><p>AggPas offers high-speed antialiased drawing and is included in Lazarus sources.
+Unfortunately, the library is currently not maintained and there are some limitations in TAChart support.
+</p><p>Note that this drawer is located in a separate TAChartAggPas package.
+</p>
+<h3><span class="mw-headline" id="BGRABitmap_drawer">BGRABitmap drawer</span></h3>
+<p><tt>TBGRADrawer</tt> draws chart using <a href="/BGRABitmap" title="BGRABitmap">BGRABitmap</a> library.
+</p><p>BGRABitmap is recently created and actively developed graphics library,
+offering, in particular, anti-aliasing and rich selection of gradients.
+</p><p>Currently BGRABitmap supports all TAChart features, but is somewhat slower then other drawing methods.
+</p><p>Note that this drawer is located in a separate TAChartBGRA package,
+which depends on external <code>bgrabitmappack</code> package.
+</p>
+<h3><span class="mw-headline" id="FPVectorial_drawer">FPVectorial drawer</span></h3>
+<p><tt>TFPVectorialDrawer</tt> draws chart using <a href="/fpvectorial" title="fpvectorial">fpvectorial</a> library.
+FPVectorial offers exporting to various vector formats,
+including SVG, PDF, CorelDraw and even instructions for metal cutting machines.
+</p><p>It currently has some limitations in TAChart support, but is actively developed.
+</p><p>Note that this drawer is located in a separate <tt>TAChartFPVectorial</tt> package,
+which depends on <tt>fpvectorialpkg</tt> package.
+</p>
+<h3><span class="mw-headline" id="WMF_drawer">WMF drawer</span></h3>
+<p><tt>TWindowsMetafileDrawer</tt> draws chart into a <a href="http://www.wikipedia.org/wiki/Windows_Metafile" class="extiw" title="wikipedia:Windows Metafile">Windows Metafile</a>.
+</p><p>It uses WinAPI directly, and so will only work on Windows.
+WMF support has been added to <a href="#FPVectorial_drawer">fpvectorial</a> which provides a cross-platform alternative to this package.
+</p>
+<h2><span class="mw-headline" id="Navigation">Navigation</span></h2>
+<p>Chart <i>navigation</i> consists of two parts: moving <a href="#Extents">logical extent</a> around without changing zoom factor,
+and visualizing the logical extent's position and size relative to the <a href="#Extents">full extent</a>.
+</p><p>Moving extent (but not visualizing it) is possible by using <a href="#Pan_drag_tool">panning tools</a>.
+</p><p>You can see examples in the "navigation" demo.
+</p>
+<h3><span class="mw-headline" id="Scroll_bars">Scroll bars</span></h3>
+<div class="floatleft"><a href="/File:tchartnavscrollbar_200.png" class="image"><img alt="tchartnavscrollbar 200.png" src="/images/e/ea/tchartnavscrollbar_200.png" decoding="async" width="48" height="48" /></a></div><p><tt>TChartNavScrollBar</tt> is a <tt>TCustomScrollBar</tt> descendant with additional <tt>Chart</tt> property referencing the chart. <tt>TChartNavScrollBar</tt> synchronizes its position with chart extent in both directions. If the logical extent is equal to or larger than the full extent, navigation scroll bar does nothing.
+</p><p>Setting <tt>AutoPageSize = true</tt> lets <tt>TChartNavScrollBar</tt> pick a page size proportional to the logical extent.
+</p><p>Note that <tt>Min</tt> and <tt>Max</tt> properties are <i>not</i> changed automatically. It is recommended to set <tt>Min = 0</tt> and <tt>Max</tt> to some fairly large integer value to avoid rounding issues. Also note that <tt>TChartNavScrollBar</tt> does not automatically align or attach itself to a chart, so it can be arbitrarily positioned on the form.
+</p>
+<h3><span class="mw-headline" id="Navigation_panel">Navigation panel</span></h3>
+<div class="floatleft"><a href="/File:tchartnavpanel_200.png" class="image"><img alt="tchartnavpanel 200.png" src="/images/4/4f/tchartnavpanel_200.png" decoding="async" width="48" height="48" /></a></div><p><tt>TChartNavPanel</tt> component displays logical and full extent of an assigned chart as differently colored rectangles, allowing user to drag the logical extent rectangle if <tt>AllowDragNavigation = true</tt>.
+</p><p>If <tt>MiniMap = true</tt>, the panel additionally displays the chart series.
+</p><p><tt>TChartNavPanel</tt> can have arbitrary size, but it is recommended to keep height to width proportion the same as in the assigned chart. Setting <tt>Proportional = true</tt> will enforce the same proportions even if the above condition is not met, at the cost of some wasted space on the panel.
+</p>
+<h3><span class="mw-headline" id="Live_View">Live View</span></h3>
+<div class="floatleft"><a href="/File:tchartliveview_200.png" class="image"><img alt="tchartliveview 200.png" src="/images/4/4a/tchartliveview_200.png" decoding="async" width="48" height="48" /></a></div><p> Although not a navigation tool directly, <tt>TChartLiveView</tt> is related to navigation. In the case of a long array of incoming data it provides an easy way to display a viewport with only the most recent data while older data are flowing to the left out of the viewport. 
+</p><p>The viewport is updated whenever the full extent of the associated chart changes. However, when property <tt>Active</tt> is set to <tt>false</tt> the viewport is fixed -- this is a setting which allows the user to review older data, or change the extent while still new data are coming at the same time. 
+</p><p>Property <tt>ViewportSize</tt> defines the width of the visible viewport, in graph units. If set to 0, the width of the current <tt>LogicalExtent</tt> is used instead. 
+</p><p>The enumerated property <tt>ExtentY = (lveAuto, lveFull, lveLogical)</tt>, finally, determines the height of the viewport: 
+</p>
+<ul><li><tt>lveAuto</tt> adjusts the height to the visible data range automatically. This works also when the chart contains several y axes. When a <tt>Range</tt> is defined for an axis (i.e. by setting <tt>axis.Range.Min</tt>/<tt>axis.Range.UseMin</tt> and/or <tt>axis.Range.Max</tt>/<tt>axis.Range.UseMax</tt>) the component keeps it as long as series values are within this range.</li>
+<li><tt>lveFull</tt> freezes the height to the full extent of the chart.</li>
+<li><tt>lveLogical</tt> freezes the height to the logical extent of the chart.</li></ul>
+<p>The methods <tt>StoreAxisRange</tt> and <tt>RestoreAxisRange</tt> are used for internal purposes because the component may change the <tt>Range</tt> parameters of an axis. Be careful when calling these methods because they may disrupt operation of the live view if not done properly.
+</p>
+<h2><span class="mw-headline" id="Additional_components">Additional components</span></h2>
+<h3><span class="mw-headline" id="Legend_panel">Legend panel</span></h3>
+<p><tt>TChartLegendPanel</tt> provides a legend which can be placed anywhere on the form. The legend is taken from the chart with is assigned to the property <tt>Chart</tt> of the LegendPanel. The chart’s own legend should be turned off.
+</p>
+<h3><span class="mw-headline" id="Chart_listbox">Chart listbox</span></h3>
+<p><tt>TChartListbox</tt> is a versatile legend replacement which displays an icon and the series title for each series of the chart attached to the property <tt>Chart</tt> of the listbox. But in addition to the standard legend, it also has checkboxes for each series. Unchecking a checkbox hides the associated series, checking it shows the series again. The listbox listens to changes in the associated chart and updates automatically.
+</p><p>The property <tt>CheckStyle</tt> can be used to switch the listbox from a checkbox-like behavior (<tt>cbsCheckbox</tt>, an arbitrary combination of series can be checked) to a radiobutton-like behavior (<tt>cbsRadioButton</tt>, only a single series can be checked). Depending on <tt>CheckStyle</tt> either a radiobutton or a checkbox state icon is displayed for each series.
+</p><p>Events are fired when the checkbox/radiobutton or the series title are clicked (<tt>OnCheckboxClick</tt> or <tt>OnItemClick</tt>, respectively), or when the series icon is double-clicked (<tt>OnSeriesIconDblClick</tt>). The latter event is thought to open a dialog for changing the series color, pointer style, series title etc.
+</p><p>The listbox items are collected in a different way than for a conventional legend. The populating process ignores the series property <tt>Legend.Visible</tt> which controls whether the series is to be shown in the legend or not. Instead of it, there is an event <tt>OnAddSeries</tt> in which the <tt>var</tt> parameter <tt>Skip</tt> should be set to <tt>true</tt> if the series passed as another argument should be excluded from the listbox. Every series is listed only with a single item, i.e. the series’ <tt>Multiplicity</tt> is ignored as well. Moveover, grouping of items is not supported either.
+</p><p>The order of listbox items is normally given by the order of series items in the chart's legend and thus depend on the chart's <tt>Legend.Inverted</tt> and the series' <tt>Legend.Order</tt> parameters. Moreover, items can be rearranged independently of the legend by calling the <tt>ExchangeSeries(AIndex1, AIndex2)</tt> method with the listbox indices as parameters. There is also a method <tt>Sort</tt> to sort the listbox by series titles (the sort order can be inverted by setting its optional <tt>Descending</tt> parameter, or <tt>Chart.Legend.Inverted</tt> to <tt>true</tt>. Note that the <tt>Sort</tt> method works only on the series having the default <tt>Legend.Order</tt> (-1).
+</p>
+<h3><span class="mw-headline" id="Chart_image_list">Chart image list</span></h3>
+<p><tt>TChartImageList</tt> collects the icons displayed for each series in the legend and can be used for imagelist-aware controls, such as treeviews, listviews or menus to show icons for each series. The icons are extracted from the chart which is assigned to the <tt>Chart</tt> property of the component. The image list is notified of changes in the chart and updates its images automatically whenever something changes with a series. The event <tt>OnPopulate</tt> is fired if the image list is rebuilt.
+</p><p>Note that this kind of image list is <i>volatile</i>, i.e. its images are not stored in the form's lfm file. Nevertheless, at runtime, it can be used as a standard image list with other images. Just add these non-series images <b>before</b> assigning the chart to the image list. Use the property <tt>FirstSeriesIndex</tt> to get the image index of the first series contained in the image list. Alternatively, find the image index of a specific series by calling the function <tt>ImageIndexOfSeries(series)</tt>.
+</p><p>In Laz 2.1+ the <tt>TChartImageList</tt> can be used also at designtime. It stores only those images not assigned to a series.
+</p>
+<h3><span class="mw-headline" id="Chart_combobox">Chart combobox</span></h3>
+<p>The <tt>TChartCombobox</tt> is an extended combobox. Depending on the property <tt>Mode</tt> (<tt>ccmPointerStyle</tt>, <tt>ccmPenStyle</tt>, <tt>ccmPenWidth</tt>, <tt>ccmBrushStyle</tt>) it is populated with names and corresponding icons for pointer style, pen style, pen width or brush style selection. Therefore, it is useful for gui elements in which the user can modify the appearance of series and other chart objects. 
+</p><p>The combobox is not linked to a particular chart. Use the <tt>OnChange</tt> event to transfer the modified property to the series.
+</p>
+<h2><span class="mw-headline" id="TeeChart_compatibility">TeeChart compatibility</span></h2>
+<p>TeeChart is a standard set of charting components used by Delphi.
+Although TAChart does not have a goal to to be compatible with TeeChart,
+basic feature set and names are very similar, so simple examples
+may work in both libraries equivalently.
+</p><p>More complex features -- in particular,
+multi-value series, series sources, multiple axes -- are
+implemented differently from TeeChart. This is by design and will not change.
+See <a href="/Comparing_TAChart_with_Delphi%27s_TeeChart_Standard" title="Comparing TAChart with Delphi&#39;s TeeChart Standard">comparison page</a> for more detailed info.
+</p><p>To assist porting of TeeChart code to the TAChart, you can use
+<tt>TAChartTeeChart</tt> unit. It contains class helpers adding
+or emulating some TeeChart-specific properties and methods.
+</p><p>Note that it is NOT recommended to use this unit for normal development,
+since the emulation is only intended to simulate the subset of features
+implemented in TeeChart, and may not be reliable when used in conjunction
+with the full set of TAChart features.
+</p>
+<h2><span class="mw-headline" id="Technical_details">Technical details</span></h2>
+<h3><span class="mw-headline" id="Drawing_order">Drawing order</span></h3>
+<p>Chart drawing consists of three stages:
+</p>
+<ol><li><i>Preparation</i>: At this stage, various internal data structures are initialized.</li>
+<li><i>Measurement</i>: At this stage, the chart calculates the sizes of all elements, and optimizes them for best presentation. Optimization may require several iterations, so the measurement stage is often the heaviest one both in terms of implementation complexity and running time.</li>
+<li><i>Drawing</i>: At this stage, the actual chart image is displayed.</li></ol>
+<p>There also exists an ordering among various chart elements:
+</p>
+<ol><li>Background (using <tt>TChart.Color</tt> property).</li>
+<li>Back-wall (using <tt>TChart.BackColor</tt> property).</li>
+<li><a href="#Series">Series</a> and axes according to <tt>ZPosition</tt> property. For each series and axis, graphic elements are drawn before <a href="#Marks">marks</a>. Note that this protects marks against hiding by the axis/series they belong to, but not by other axes/series.</li>
+<li><a href="#Legend">Legend</a>.</li>
+<li><a href="#Tools">Tools</a>.</li></ol>
+<p>Note that <tt>ZPosition</tt> works for both 2-D and 3-D charts, so you can overlay series and axes in arbitrary order.
+</p>
+<h3><span class="mw-headline" id="Coding_style">Coding style</span></h3>
+<p>Historically FPC, Lazarus and LCL sources contain a mix of coding styles,
+with the general rule being "be consistent with the surrounding code".
+</p><p>However, since TAChart has many fewer contributors, it is feasible to adopt and maintain
+a consistent style across all TAChart code.
+If you want to contribute to TAChart, please format your code accordingly.
+Also remember that any coding style may be violated in certain situations
+when the reason is good enough, but please explain that reason if you do so.
+</p>
+<h4><span class="mw-headline" id="Spaces">Spaces</span></h4>
+<ul><li>No double spaces anywhere.</li>
+<li>Spaces after: operations, comma, semicolon, assignment, closing parenthesis in expressions (not in function calls).</li>
+<li>Spaces before: operations, assignment, opening parenthesis in expressions (not in function calls).</li></ul>
+<h4><span class="mw-headline" id="Lines">Lines</span></h4>
+<ul><li>No double empty lines anywhere.</li>
+<li>Empty lines between procedures, classes, unit sections. Rare empty lines inside procedure bodies to separate logical blocks.</li>
+<li>Line length below 80 characters, with rare exceptions.</li>
+<li>Single statement per line, except <i>if</i> ... <i>then</i> {<i>exit</i>|<i>break</i>|<i>continue</i>} and some rare cases of mass assignment.</li>
+<li>If the line is too long, line breaks may be inserted after at the following symbols, in order of decreasing priority: keywords, opening parenthesis, opening square bracket, semicolon, comma, operation.</li></ul>
+<h4><span class="mw-headline" id="Indentation_and_blocks">Indentation and blocks</span></h4>
+<ul><li>Always two spaces, both for blocks and continuation lines.</li>
+<li><i>begin</i> on the same line as the control statement, <i>end</i> aligned with the control statement.</li>
+<li><i>end</i> always alone on the line. In particular, write <i>end else begin</i> on two lines.</li>
+<li>Put <i>then</i> or <i>do</i> on a separate line to separate a complex condition from the statement body:</li></ul>
+<pre> <b>while</b>
+   long condition or
+   another long condition
+ <b>do</b>
+   loop body
+</pre>
+<ul><li>Use <i>begin</i>/<i>end</i> only when necessary (i. e. not for single statements).</li></ul>
+<h4><span class="mw-headline" id="Comments">Comments</span></h4>
+<ul><li>Put a license header at the beginning of every file.</li>
+<li>Single-line comments everywhere except the license header and auto-generated class headers in implementation section.</li>
+<li>Use only full sentences in comments, starting with a capital letter and ending with a full stop.</li>
+<li>Comments should be placed before commented code, except in rare cases where a comment fits at the end of the same line.</li>
+<li>Comments should only include information not evident from the source. In particular, choose meaningful procedure and argument names in preference to adding comments describing their usage.</li></ul>
+<h4><span class="mw-headline" id="Names">Names</span></h4>
+<ul><li>Constants use ALL_CAPS_WITH_UNDERSCORE, everything else use CamelCase.</li>
+<li>Local variables start with a lower-case letter, everything else starts with an upper-case letter, even when FPC library disagrees (e.g. ``Math``, not ``math``).</li>
+<li>Class fields start with 'F', arguments start with 'A', types start with 'T', TAChart units start with 'TA'.</li></ul>
+<h4><span class="mw-headline" id="Variable_declarations">Variable declarations</span></h4>
+<ul><li>Initialize when possible.</li>
+<li>Local variables after nested procedures unless used by them.</li>
+<li>Group variables by type.</li></ul>
+<h4><span class="mw-headline" id="Classes_and_methods">Classes and methods</span></h4>
+<ul><li>Methods are grouped per-class, methods inside class are sorted alphabetically both in interface and implementation. There should be zero Code Observer warnings about 'Unsorted members'.</li>
+<li>If there is a need to group methods by topic, use visibility specifiers as topic separators. In particular, group overridden methods separately from the newly introduced ones.</li>
+<li>Use <i>strict private</i>/<i>strict protected</i> visibility where possible.</li></ul>
+<h4><span class="mw-headline" id="Hints_and_warnings">Hints and warnings</span></h4>
+<ul><li>Code should compile with zero hints and warnings.</li>
+<li>Silence any "unused parameter" warning with the ``Unused`` procedure from the TAChartUtils unit, or use the {%H-} Lazarus IDE directive.</li></ul>
+<h4><span class="mw-headline" id="Control_flow">Control flow</span></h4>
+<ul><li>Use <i>exit</i> or <i>raise</i> to abort method execution in case of a violated pre-condition.</li>
+<li>Use enumerators where possible.</li>
+<li>Use <i>with</i> carefully, and only where its use significantly saves code size and in the minimal possible range.</li>
+<li>Limit all procedures to 50-60 lines, and use nested procedures liberally.</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20240929104103
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.175 seconds
+Real time usage: 0.622 seconds
+Preprocessor visited node count: 1153/1000000
+Post‐expand include size: 8025/2097152 bytes
+Template argument size: 2406/2097152 bytes
+Highest expansion depth: 21/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 4296/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  486.989      1 -total
+  6.60%   32.147      1 Template:TAChart_documentation
+  4.55%   22.182      1 Template:LanguageBar
+  3.97%   19.345      1 Template:ShowLngBar
+  2.62%   12.747     31 Template:LngBarItem
+  1.60%    7.792      1 Template:CategoriesBySuffixForPage
+  1.44%    7.003      1 Template:NameWithoutLngSuffix
+  1.01%    4.908      2 Template:IsLngSuffix
+  0.47%    2.299      2 Template:ExtractSuffix
+  0.46%    2.238      1 Template:Warning
+-->
+
+<!-- Saved in parser cache with key lazaruswiki:pcache:idhash:6779-0!canonical and timestamp 20240929104101 and revision id 160660.
+ -->
+</div>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://wiki.freepascal.org/index.php?title=TAChart_documentation&amp;oldid=160660">https://wiki.freepascal.org/index.php?title=TAChart_documentation&amp;oldid=160660</a>"</div></div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/Category:Components" title="Category:Components">Components</a></li><li><a href="/Category:Graphics" title="Category:Graphics">Graphics</a></li><li><a href="/Category:TAChart" title="Category:TAChart">TAChart</a></li></ul></div></div>
+				<!-- end content -->
+				<div class="visualClear"></div>
+			</div>
+		</div>
+		<div class="visualClear"></div>
+	</div>
+	<div id="column-one" >
+		<h2>Navigation menu</h2>
+		<div role="navigation" class="portlet" id="p-cactions" aria-labelledby="p-cactions-label">
+			<h3 id="p-cactions-label" >Page actions</h3>
+			<div class="pBody">
+				<ul >
+				<li id="ca-nstab-main" class="selected mw-list-item"><a href="/TAChart_documentation" title="View the content page [c]" accesskey="c">Page</a></li><li id="ca-talk" class="new mw-list-item"><a href="/index.php?title=Talk:TAChart_documentation&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [t]" accesskey="t">Discussion</a></li><li id="ca-view" class="selected mw-list-item"><a href="/TAChart_documentation">Read</a></li><li id="ca-viewsource" class="mw-list-item"><a href="/index.php?title=TAChart_documentation&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></li><li id="ca-history" class="mw-list-item"><a href="/index.php?title=TAChart_documentation&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></li>
+				
+				</ul>
+			</div>
+		</div>
+		
+<div role="navigation" class="portlet mw-portlet mw-portlet-cactions-mobile"
+	id="p-cactions-mobile" aria-labelledby="p-cactions-mobile-label">
+	<h3 id="p-cactions-mobile-label" >Page actions</h3>
+	<div class="pBody">
+		<ul ><li id="main-mobile" class="selected mw-list-item"><a href="/TAChart_documentation" title="Page">Page</a></li><li id="talk-mobile" class="new mw-list-item"><a href="/index.php?title=Talk:TAChart_documentation&amp;action=edit&amp;redlink=1" title=" (page does not exist)">Discussion</a></li><li id="ca-more" class="mw-list-item"><a href="#p-cactions">More</a></li><li id="ca-tools" class="mw-list-item"><a href="#p-tb" title="Tools">Tools</a></li></ul>
+		
+	</div>
+</div>
+
+		<div role="navigation" class="portlet" id="p-personal" aria-labelledby="p-personal-label">
+			<h3 id="p-personal-label" >Personal tools</h3>
+			<div class="pBody">
+				<ul >
+				<li id="pt-createaccount" class="mw-list-item"><a href="/index.php?title=Special:CreateAccount&amp;returnto=TAChart+documentation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login" class="mw-list-item"><a href="/index.php?title=Special:UserLogin&amp;returnto=TAChart+documentation" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="portlet" id="p-logo" role="banner">
+			<a href="/Main_Page" class="mw-wiki-logo"></a>
+		</div>
+		<div id="sidebar">
+		
+<div role="navigation" class="portlet mw-portlet mw-portlet-navigation"
+	id="p-navigation" aria-labelledby="p-navigation-label">
+	<h3 id="p-navigation-label" >Navigation</h3>
+	<div class="pBody">
+		<ul ><li id="n-mainpage" class="mw-list-item"><a href="/Main_Page" title="Visit the main page [z]" accesskey="z">Main Page</a></li><li id="n-documentation" class="mw-list-item"><a href="/Lazarus_Documentation">Documentation</a></li><li id="n-FAQ" class="mw-list-item"><a href="/Lazarus_Faq">FAQ</a></li><li id="n-downloads" class="mw-list-item"><a href="/Components_and_Code_examples">Downloads</a></li><li id="n-glossary" class="mw-list-item"><a href="/Glossary">Glossary</a></li><li id="n-index" class="mw-list-item"><a href="/Special:AllPages">Index</a></li><li id="n-recentchanges" class="mw-list-item"><a href="/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-randompage" class="mw-list-item"><a href="/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li><li id="n-help" class="mw-list-item"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" rel="nofollow" title="The place to find out">Help</a></li></ul>
+		
+	</div>
+</div>
+
+		<div role="search" class="portlet" id="p-search">
+			<h3 id="p-search-label" ><label for="searchInput">Search</label></h3>
+			<div class="pBody" id="searchBody">
+				<form action="/index.php" id="searchform"><input type="hidden" value="Special:Search" name="title"><input type="search" name="search" placeholder="Search Lazarus wiki" aria-label="Search Lazarus wiki" autocapitalize="none" title="Search Lazarus wiki [f]" accesskey="f" id="searchInput"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" class="searchButton" id="searchButton"/> <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" class="searchButton mw-fallbackSearchButton" id="mw-searchButton"/></form>
+			</div>
+		</div>
+		
+<div role="navigation" class="portlet mw-portlet mw-portlet-tb"
+	id="p-tb" aria-labelledby="p-tb-label">
+	<h3 id="p-tb-label" >Tools</h3>
+	<div class="pBody">
+		<ul ><li id="t-whatlinkshere" class="mw-list-item"><a href="/Special:WhatLinksHere/TAChart_documentation" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/Special:RecentChangesLinked/TAChart_documentation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages" class="mw-list-item"><a href="/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print" class="mw-list-item"><a href="javascript:print();" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink" class="mw-list-item"><a href="/index.php?title=TAChart_documentation&amp;oldid=160660" title="Permanent link to this revision of this page">Permanent link</a></li><li id="t-info" class="mw-list-item"><a href="/index.php?title=TAChart_documentation&amp;action=info" title="More information about this page">Page information</a></li></ul>
+		
+	</div>
+</div>
+
+		
+		</div>
+		<a href="#sidebar" title="Jump to navigation"
+			class="menu-toggle" id="sidebar-toggle"></a>
+		<a href="#p-personal" title="user tools"
+			class="menu-toggle" id="p-personal-toggle"></a>
+		<a href="#globalWrapper" title="back to top"
+			class="menu-toggle" id="globalWrapper-toggle"></a>
+	</div>
+	<!-- end of the left (by default at least) column -->
+	<div class="visualClear"></div>
+	<div id="footer" class="mw-footer" role="contentinfo"
+		>
+		<div id="f-copyrightico" class="footer-icons">
+			<a href="https://sourceforge.net"><img src="https://sflogo.sourceforge.net/sflogo.php?group_id=92177&amp;type=1" alt="" width="88" height="31" loading="lazy"/></a>
+		</div>
+		<div id="f-poweredbyico" class="footer-icons">
+			<a href="https://www.mediawiki.org/"><img src="/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a>
+		</div>
+		<ul id="f-list">
+			<li id="lastmod"> This page was last edited on 29 September 2024, at 12:41.</li><li id="copyright">Content is available under <a class="external" rel="nofollow" href="https://sourceforge.net"></a> unless otherwise noted.</li>
+			<li id="privacy"><a href="/Lazarus_wiki:Privacy_policy">Privacy policy</a></li><li id="about"><a href="/Lazarus_wiki:About">About Lazarus wiki</a></li><li id="disclaimer"><a href="/Lazarus_wiki:General_disclaimer">Disclaimers</a></li>
+		</ul>
+	</div>
+</div>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.175","walltime":"0.622","ppvisitednodes":{"value":1153,"limit":1000000},"postexpandincludesize":{"value":8025,"limit":2097152},"templateargumentsize":{"value":2406,"limit":2097152},"expansiondepth":{"value":21,"limit":100},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":4296,"limit":5000000},"timingprofile":["100.00%  486.989      1 -total","  6.60%   32.147      1 Template:TAChart_documentation","  4.55%   22.182      1 Template:LanguageBar","  3.97%   19.345      1 Template:ShowLngBar","  2.62%   12.747     31 Template:LngBarItem","  1.60%    7.792      1 Template:CategoriesBySuffixForPage","  1.44%    7.003      1 Template:NameWithoutLngSuffix","  1.01%    4.908      2 Template:IsLngSuffix","  0.47%    2.299      2 Template:ExtractSuffix","  0.46%    2.238      1 Template:Warning"]},"cachereport":{"timestamp":"20240929104103","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":133});});</script>
+</body>
+<!-- Cached 20240929105734 -->
+</html>

@@ -1,0 +1,995 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" type="text/css" href="/Themes/default/css/index.css?fin20" />
+	<link rel="stylesheet" type="text/css" href="/Themes/default/css/webkit.css" />
+	<script type="text/javascript" src="/Themes/default/scripts/script.js?fin20"></script>
+	<script type="text/javascript" src="/Themes/default/scripts/theme.js?fin20"></script>
+	<script type="text/javascript"><!-- // --><![CDATA[
+		var smf_theme_url = "/Themes/default";
+		var smf_default_theme_url = "/Themes/default";
+		var smf_images_url = "/Themes/default/images";
+		var smf_scripturl = "https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var ajax_notification_text = "Loading...";
+		var ajax_notification_cancel_text = "Cancel";
+	// ]]></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Changing Y Axies Scales in run time." />
+	<title>Changing Y Axies Scales in run time.</title>
+	<link rel="canonical" href="https://forum.lazarus.freepascal.org/index.php?topic=25404.0" />
+	<link rel="help" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=help" />
+	<link rel="search" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=search" />
+	<link rel="contents" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;" />
+	<link rel="alternate" type="application/rss+xml" title="Lazarus - RSS" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;type=rss;action=.xml" />
+	<link rel="index" href="https://forum.lazarus.freepascal.org/index.php/board,31.0.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1" />
+			<script src="/jquery-1.10.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1.0"/><!--[if lt IE 9]>
+	<style type="text/css">
+		  body {min-width:900px;}
+	</style>
+	<![endif]--><!--[if lt IE 7]>
+	<style type="text/css">
+	      #centerContainer {float: left;}
+		  body {width:900px;}
+	</style>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="/Themes/default/css/tp-style.css?fin160" />
+	<style type="text/css">
+		.block_leftcontainer,
+		.block_rightcontainer,
+		.block_centercontainer,
+		.block_uppercontainer,
+		.block_lowercontainer,
+		.block_topcontainer,
+		.block_bottomcontainer
+		{
+			padding-bottom: 4px;
+		}
+		#tpleftbarHeader
+		{
+			margin-right: 4px;
+		}
+		#tprightbarHeader
+		{
+			margin-left: 4px;
+		}
+	</style>
+	  <script type="text/javascript"><!-- // --><![CDATA[
+		
+		var tpPanels = new Array();
+		function togglepanel( targetID )
+		{
+			var pstate = 0;
+			var panel = targetID;
+			var img = "toggle_" + targetID;
+			var ap = 0;
+
+			if ( document.getElementById ) {
+				target = document.getElementById( panel );
+				if ( target.style.display == "none" ) {
+					target.style.display = "";
+					pstate = 1;
+					removeFromArray(targetID, tpPanels);
+					document.cookie="tp_panels=" + tpPanels.join(",") + "; expires=Wednesday, 01-Aug-2040 08:00:00 GMT";
+					document.getElementById(img).src = '/Themes/default/images/tinyportal/TPupshrink.png';
+				}
+				else {
+					target.style.display = "none";
+					pstate = 0;
+					tpPanels.push(targetID);
+					document.cookie="tp_panels=" + tpPanels.join(",") + "; expires=Wednesday, 01-Aug-2040 08:00:00 GMT";
+					document.getElementById(img).src = '/Themes/default/images/tinyportal/TPupshrink2.png';
+				}
+			}
+		}
+		function removeFromArray(value, array){
+			for(var x=0;x<array.length;x++){
+				if(array[x]==value){
+					array.splice(x, 1);
+				}
+			}
+			return array;
+		}
+		function inArray(value, array){
+			for(var x=0;x<array.length;x++){
+				if(array[x]==value){
+					return 1;
+				}
+			}
+			return 0;
+		}
+	// ]]></script>
+		<script type="text/javascript" src="/Themes/default/scripts/captcha.js"></script>
+</head>
+<body id="topicpage" class="boardpage board31 topicpage topic25404">
+<div id="wrapper" style="width: 98%">
+	<div id="header"><div class="frame">
+		<div id="top_section">
+			<h1 class="forumtitle">
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;">Lazarus</a>
+			</h1>
+		<div id="main_menu">
+			<ul class="dropmenu" id="menu_nav">
+				<li id="button_home">
+					<a class="active firstlevel" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;">
+						<span class="last firstlevel">Home</span>
+					</a>
+				</li>
+				<li id="button_help">
+					<a class="firstlevel" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=help">
+						<span class="firstlevel">Help</span>
+					</a>
+					<ul>
+						<li>
+							<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=tpmod;sa=help">
+								<span>TinyPortal</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li id="button_search">
+					<a class="firstlevel" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=search">
+						<span class="firstlevel">Search</span>
+					</a>
+				</li>
+				<li id="button_login">
+					<a class="firstlevel" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=login">
+						<span class="firstlevel">Login</span>
+					</a>
+				</li>
+				<li id="button_register">
+					<a class="firstlevel" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=register">
+						<span class="last firstlevel">Register</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		</div>
+	</div></div>
+	<div id="content_section"><div class="frame">
+		<div id="main_content_section">
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;"><span>Lazarus</span></a> &#187;
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=forum"><span>Forum</span></a> &#187;
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=forum#c9"><span>Programming</span></a> &#187;
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/board,31.0.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1"><span>LCL</span></a> &#187;
+			</li>
+			<li class="last">
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.0.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1"><span>Changing Y Axies Scales in run time.</span></a>
+			</li>
+		</ul>
+	</div><div class="lrs lrON tp_responsive">
+	<div style="float: right; margin-right: 0.5em; margin-top: -1.5em;">
+	<a title="Left Panel" style="cursor: pointer;" name="toggle_tpleftbarHeader" onclick="togglepanel('tpleftbarHeader');togglepanel('tpleftbarContainer')">
+		<img id="toggle_tpleftbarHeader" src="/Themes/default/images/tinyportal/TPupshrink.png" alt="*" />
+	</a>
+	<a title="Right Panel" style="cursor: pointer;" name="toggle_tprightbarHeader" onclick="togglepanel('tprightbarHeader');togglepanel('tprightbarContainer')">
+		<img id="toggle_tprightbarHeader" src="/Themes/default/images/tinyportal/TPupshrink.png" alt="*" />
+	</a>
+	<a title="Bottom Panel" style="cursor: pointer;" name="toggle_tpbottombarHeader" onclick="togglepanel('tpbottombarHeader');togglepanel('')">
+		<img id="toggle_tpbottombarHeader" src="/Themes/default/images/tinyportal/TPupshrink.png" alt="*" />
+	</a></div><div id="mainContainer" style="clear: both;">
+			<div id="tpleftbarContainer" style="width:180px; " >
+				<div id="tpleftbarHeader" style="">
+				<div class="block_leftcontainer scriptbox" id="scriptbox_logo">
+	<div class="tp_leftblock_noframe">
+		<div class="" id="block17"><div class="blockbody" style="overflow: auto;"><div align="center" valign="middle"><a href="https://www.lazarus-ide.org/"><img width="160" border="0" src="/splash_logo_small.png" alt="Lazarus Logo" /></a></div></div>
+		</div>
+	</div>
+	</div><div class="block_leftcontainer" id="block_catmenu">
+	<div class="tp_leftblock_noframe">
+		<div class="" id="block14"><div class="blockbody" style="overflow: auto;">
+	<ul class="tp_catmenu">
+		<li class="tp_catmenu_header">&nbsp;&nbsp;
+			<a class="tp_catmenu_header" name="header47"><b>Free Pascal</b></a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://www.freepascal.org/" target="_blank">Website</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://www.freepascal.org/download.html" target="_blank">Downloads</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.freepascal.org/" target="_blank">Wiki</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://www.freepascal.org/docs.html" target="_blank">Documentation</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://gitlab.com/freepascal.org/fpc/source/-/issues" target="_blank">Bugtracker</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://lists.freepascal.org/mailman/listinfo" target="_blank">Mailing List</a></li>
+		<li class="tp_catmenu_header">&nbsp;&nbsp;
+			<a class="tp_catmenu_header" name="header46"><b>Lazarus</b></a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://www.lazarus-ide.org/" target="_blank">Website</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://sourceforge.net/project/showfiles.php?group_id=89339" target="_blank">Downloads (Laz+FPC)</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://packages.lazarus-ide.org/">Packages (OPM)</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.lazarus.freepascal.org/Lazarus_Faq" target="_blank">FAQ</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.lazarus.freepascal.org/">Wiki</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://lazarus-ccr.sourceforge.io/docs/index.html" target="_blank">Documentation (RTL/FCL/LCL)</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://gitlab.com/freepascal.org/lazarus/lazarus/-/issues" target="_blank">Bugtracker</a></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://gitlab.com/freepascal.org/lazarus/ccr/-/issues" target="_blank">CCR Bugs</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://gitlab.com/freepascal.org/lazarus/lazarus/-/tree/main">GIT</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://lists.lazarus-ide.org/listinfo">Mailing List</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://forum.lazarus.freepascal.org/index.php/page,21.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1">Other languages</a></li>
+		<li class="tp_catmenu_header">&nbsp;&nbsp;
+			<a class="tp_catmenu_header" name="header55"><b>Foundation</b></a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://foundation.freepascal.org/" target="_blank">Website</a></li>
+		<li class="tp_catmenu_header">&nbsp;&nbsp;
+			<a class="tp_catmenu_header" name="header19"><b>Useful Wiki Links</b></a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.lazarus.freepascal.org/Roadmap" target="_blank">Project Roadmap</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.lazarus.freepascal.org/index.php/Getting_Lazarus">Getting the Source</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.lazarus.freepascal.org/Screenshots">Screenshots</a></li>
+		<li>&nbsp;&nbsp;
+			<img src="/Themes/default/images/tinyportal/bullet3.png" alt="" />
+			<a href="https://wiki.freepascal.org/Forum">How to use the forum</a></li>
+	</ul></div>
+		</div>
+	</div>
+	</div><div class="block_leftcontainer scriptbox" id="scriptbox_Donate">
+	<div class="tborder tp_leftblock_frame">
+		<div class="tp_leftblock_body" id="block26"><div class="windowbg2"><div style="padding: 8px 8px 0 8px;"><div class="blockbody" style="overflow: auto;"><center>
+<form action="https://sourceforge.net/p/lazarus/donate-euro" method="get">
+<input type="submit" value="Donate €" class="button">
+</form>
+<form action="https://sourceforge.net/p/lazarus/donate-usd" method="get">
+<input type="submit" value="Donate $" class="button">
+</form><div style="text-align: center; padding: 3px;" class="smalltext"><a href="http://wiki.lazarus.freepascal.org/How_to_donate_to_Lazarus">About donations (wiki)</a></div>
+</center></div></div><span class="botslice"><span></span></span></div>
+		</div>
+	</div>
+	</div><div class="block_leftcontainer scriptbox" id="scriptbox_Bookstore">
+	<div class="tborder tp_leftblock_frame"><div class="tp_half"><h3 class="titlebg"><span class="l"></span><span class="r"></span><a href="javascript: void(0); return false" onclick="toggle('29'); return false"><img id="blockcollapse29" style="margin: 8px 0 0 0; " align="right" src="/Themes/default/images/tinyportal/TPcollapse.png" border="0" alt="" title="Collapse or Expand Block" /></a><span class="header">Bookstore</span></h3></div>
+		<div class="tp_leftblock_body" id="block29"><div class="windowbg2"><div style="padding: 8px 8px 0 8px;"><div class="blockbody" style="overflow: auto;"><div><table>
+<tr>
+  <td><a target="_blank" href="https://www.blaisepascalmagazine.eu/product/books/"><img height="78" border="0" src="/davidbooksmall.png" alt="Computer Math and Games in Pascal" /></a>
+ </td>
+  <td>
+    <div class="smalltext"><a target="_blank" href="https://www.blaisepascalmagazine.eu/product/books/">Computer Math and Games in Pascal</a></div>
+    <div class="smalltext"><a target="_blank" href="https://www.blaisepascalmagazine.eu/online-preview-book-computer-graphics-math-games/">(preview)</a></div>
+ </td>
+</tr>
+<tr>
+  <td><a target="_blank" href="https://www.blaisepascalmagazine.eu/product-category/books/"><img height="78" border="0" src="/lazbooksmall.png" alt="Lazarus Handbook" /></a>
+ </td>
+  <td>
+    <div class="smalltext"><a target="_blank" href="https://www.blaisepascalmagazine.eu/product-category/books/">Lazarus Handbook</a></div>
+   
+ </td>
+</tr></table></div></div></div><span class="botslice"><span></span></span></div>
+		</div>
+	</div>
+	</div><div class="block_leftcontainer" id="block_searchbox">
+	<div class="tborder tp_leftblock_frame"><div class="tp_half"><h3 class="titlebg"><span class="l"></span><span class="r"></span><a href="javascript: void(0); return false" onclick="toggle('2'); return false"><img id="blockcollapse2" style="margin: 8px 0 0 0; " align="right" src="/Themes/default/images/tinyportal/TPcollapse.png" border="0" alt="" title="Collapse or Expand Block" /></a><a class="subject" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=search">Search</a></h3></div>
+		<div class="tp_leftblock_body" id="block2"><div class="windowbg2"><div style="padding: 8px 8px 0 8px;"><div class="blockbody" style="overflow: auto;">
+	<form accept-charset="UTF-8" action="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=search2" method="post" style="padding: 0; text-align: center; margin: 0; ">
+		<input type="text" name="search" value="" class="block_search" />
+		<input type="submit" name="submit" value="Search" class="block_search_submit button_submit" /><br>
+		<br><span class="smalltext"><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=search;advanced">Advanced search</a></span>
+		<input type="hidden" name="advanced" value="0" />
+	</form></div></div><span class="botslice"><span></span></span></div>
+		</div>
+	</div>
+	</div><script type="text/javascript"><!-- // --><![CDATA[
+				function toggle( targetId )
+				{
+					var state = 0;
+					var blockname = "block" + targetId;
+					var blockimage = "blockcollapse" + targetId;
+
+					if ( document.getElementById ) {
+						target = document.getElementById( blockname );
+						if ( target.style.display == "none" ) {
+							target.style.display = "";
+							state = 1;
+						}
+						else {
+							target.style.display = "none";
+							state = 0;
+						}
+
+						document.getElementById( blockimage ).src = "/Themes/default/images/tinyportal" + (state ? "/TPcollapse.png" : "/TPexpand.png");
+						var tempImage = new Image();
+						tempImage.src = "https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=tpmod;upshrink=" + targetId + ";state=" + state + ";" + (new Date().getTime());
+
+					}
+				}
+			// ]]></script>
+				<p class="clearthefloat"></p></div>
+			</div>
+			<div id="tprightbarContainer" style="width:170px;" >
+				<div id="tprightbarHeader" style="">
+				<div class="block_rightcontainer" id="block_recentbox">
+	<div class="tborder tp_rightblock_frame"><div class="tp_half"><h3 class="titlebg"><span class="l"></span><span class="r"></span><a href="javascript: void(0); return false" onclick="toggle('25'); return false"><img id="blockcollapse25" style="margin: 8px 0 0 0; " align="right" src="/Themes/default/images/tinyportal/TPcollapse.png" border="0" alt="" title="Collapse or Expand Block" /></a>Recent</h3></div>
+		<div class="tp_rightblock_body" id="block25"><div class="windowbg2"><div style="padding: 8px 8px 0 8px;"><div class="blockbody" style="overflow: auto;">
+		<ul class="recent_topics" style="margin: 0; padding: 0;">
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69854.msg543498/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="how to create sync application">how to create sync applic...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=61311">Packs</a></b> <br><span class="smalltext">[<strong>Today</strong> at 10:26:04 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69596.msg543496/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="SDL2 image rotation Problem">SDL2 image rotation Probl...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=67976">Pe3s</a></b> <br><span class="smalltext">[<strong>Today</strong> at 10:19:23 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69809.msg543495/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="How to combine data from several DBs? ">How to combine data from ...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=62279">Zvoni</a></b> <br><span class="smalltext">[<strong>Today</strong> at 10:17:05 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69855.msg543493/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="[SOLVED]Might have a menu bug in lazarus">[SOLVED]Might have a menu...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=60561">dbannon</a></b> <br><span class="smalltext">[<strong>Today</strong> at 09:07:11 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69811.msg543492/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Nested declarations inside advanced record">Nested declarations insid...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=62346">440bx</a></b> <br><span class="smalltext">[<strong>Today</strong> at 09:05:28 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69856.msg543486/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Color Buttons">Color Buttons</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=66189">Weitentaaal</a></b> <br><span class="smalltext">[<strong>Today</strong> at 07:33:04 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69861.msg543485/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Fpc Updates">Fpc Updates</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=58816">loaded</a></b> <br><span class="smalltext">[<strong>Today</strong> at 07:18:08 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69755.msg543483/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Why with allows assignment ">Why with allows assignmen...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=60768">egsuh</a></b> <br><span class="smalltext">[<strong>Today</strong> at 06:46:30 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69857.msg543482/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="file Blockread error">file Blockread error</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=72978">TBMan</a></b> <br><span class="smalltext">[<strong>Today</strong> at 03:45:29 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,68708.msg543480/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Lazarus Release 3.6">Lazarus Release 3.6</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=60561">dbannon</a></b> <br><span class="smalltext">[<strong>Today</strong> at 03:25:19 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69833.msg543474/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="test if web site is valid">test if web site is valid</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=55230">Warfley</a></b> <br><span class="smalltext">[<strong>Today</strong> at 01:22:48 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69859.msg543473/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="File operations blocking UI update">File operations blocking ...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=59649">TRon</a></b> <br><span class="smalltext">[<strong>Today</strong> at 01:15:30 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69860.msg543470/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="[Solved] TPopupMenu OnDrawItem,  compiler complains">[Solved] TPopupMenu OnDra...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=66663">d7_2_laz</a></b> <br><span class="smalltext">[<strong>Today</strong> at 12:37:26 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69853.msg543468/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="how to make application running always like windows service ">how to make application r...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=66885">DragoRosso</a></b> <br><span class="smalltext">[<strong>Today</strong> at 12:19:23 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69807.msg543467/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Discussion: How do you distribute your applications?">Discussion: How do you di...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=60561">dbannon</a></b> <br><span class="smalltext">[<strong>Today</strong> at 12:18:30 am]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69843.msg543460/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Assigning proc to event at run time">Assigning proc to event a...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=3796">Bart</a></b> <br><span class="smalltext">[January 13, 2025, 10:16:59 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69844.msg543451/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Lazarus Pascal Keywords and Examples">Lazarus Pascal Keywords a...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=47423">PascalDragon</a></b> <br><span class="smalltext">[January 13, 2025, 09:11:42 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,67458.msg543449/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Generics as PUBLISHED impossible?">Generics as PUBLISHED imp...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=47423">PascalDragon</a></b> <br><span class="smalltext">[January 13, 2025, 09:04:43 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69851.msg543448/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="FP crashes after running run">FP crashes after running ...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=16234">Martin_fr</a></b> <br><span class="smalltext">[January 13, 2025, 09:03:42 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,64362.msg543441/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Random ?">Random ?</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=43552">Thaddy</a></b> <br><span class="smalltext">[January 13, 2025, 07:26:20 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69783.msg543438/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="UnoLib - library in Pascal for Arduino Uno and ATMega328p">UnoLib - library in Pasca...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=72747">ackarwow</a></b> <br><span class="smalltext">[January 13, 2025, 07:08:06 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,69858.msg543433/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="¿Hay alguna limitación en los tamaños de los arrays multidimensionales?">¿Hay alguna limitación en...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=72946">e_nigma</a></b> <br><span class="smalltext">[January 13, 2025, 06:27:03 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,67879.msg543426/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Exploring FPC/Lazarus units and packages">Exploring FPC/Lazarus uni...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=63662">MarkMLl</a></b> <br><span class="smalltext">[January 13, 2025, 05:48:05 pm]</span>
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,64888.msg543423/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="Web Pascal without JavaScript = Pascal + HTMX">Web Pascal without JavaSc...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=51434">zendrael</a></b> <br><span class="smalltext">[January 13, 2025, 05:19:57 pm]</span>
+			</li>
+			<li style="border: none; margin-bottom: 0;padding-bottom: 0;">
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,65762.msg543419/topicseen.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new" title="MainMenu: How to use the &quot;Quit &lt;App&gt;&quot; item that has been added in trunk?">MainMenu: How to use the ...</a>
+				 by <b><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=56842">madref</a></b> <br><span class="smalltext">[January 13, 2025, 03:03:37 pm]</span>
+			</li>
+		</ul></div></div><span class="botslice"><span></span></span></div>
+		</div>
+	</div>
+	</div><script type="text/javascript"><!-- // --><![CDATA[
+				function toggle( targetId )
+				{
+					var state = 0;
+					var blockname = "block" + targetId;
+					var blockimage = "blockcollapse" + targetId;
+
+					if ( document.getElementById ) {
+						target = document.getElementById( blockname );
+						if ( target.style.display == "none" ) {
+							target.style.display = "";
+							state = 1;
+						}
+						else {
+							target.style.display = "none";
+							state = 0;
+						}
+
+						document.getElementById( blockimage ).src = "/Themes/default/images/tinyportal" + (state ? "/TPcollapse.png" : "/TPexpand.png");
+						var tempImage = new Image();
+						tempImage.src = "https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=tpmod;upshrink=" + targetId + ";state=" + state + ";" + (new Date().getTime());
+
+					}
+				}
+			// ]]></script>
+				<p class="clearthefloat"></p></div>
+			</div>
+		<div id="centerContainer">
+			<div id="tpcontentHeader">
+			</div>
+			<a id="top"></a>
+			<a id="msg154217"></a>
+			<div class="pagesection">
+				<div class="nextlinks"><a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.0/prev_next,prev.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new">&laquo; previous</a> <a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.0/prev_next,next.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new">next &raquo;</a></div>
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=printpage;topic=25404.0" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+			</div>
+			<div id="forumposts">
+				<div class="cat_bar">
+					<h3 class="catbg">
+						<img src="/Themes/default/images/topic/normal_post.gif" align="bottom" alt="" />
+						<span id="author">Author</span>
+						Topic: Changing Y Axies Scales in run time. &nbsp;(Read 7496 times)
+					</h3>
+				</div>
+				<form action="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=quickmod2;topic=25404.0" method="post" accept-charset="UTF-8" name="quickModForm" id="quickModForm" style="margin: 0;" onsubmit="return oQuickModify.bInEditMode ? oQuickModify.modifySave('e4de5aed543f1f90ebd49936f0da7c9e', 'a7c1fb0caa9') : false">
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=42637" title="View the profile of Hopestation">Hopestation</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_154217_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 181</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/clip.gif" alt="" />
+									</div>
+									<h5 id="subject_154217">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg154217.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg154217" rel="nofollow">Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong> on:</strong> August 05, 2014, 02:10:35 pm &#187;</div>
+									<div id="msg_154217_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_154217">Hi.<br /><br />I am new to the TaChart component and am struggling to change chart scales from the program.<br /><br />I have added the chart to the form and created two TLineseries which are linked to the left and right axies. I have added Auto Scale TChartAxisTransformations for each Y axis and set the range for each to User values of 1100 and 550 respectively.<br /><br />My program compares the Y value added to the Lineseries at each Timer.Event with the current Max value for the range and doubles the Max value if the new Y value is larger than the Max value.<br /><br />This changes the chart, halving the height of the plot but the grid lines and scaling on the Y axis stop half way up the axis at the original values. <br /><br />I do the same thing with the X axis, but this does have associated transforms and it does exactly what I want. The initial Max value is 100 and when the added LineSeries X value exceeds it the scale changes to 200 and the grid line appear across the whole of the chart.<br /><br />I See attached picture.<br /><br />Here is a section of the program:-<br /><br />{*** Simulate temperature and Voltage readings ***}<br /><br />&nbsp; &nbsp; Runtime := Runtime + Timer1.Interval;<br />&nbsp; &nbsp; M := Runtime div 1000;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //X Axis<br />&nbsp; &nbsp; EdtTgt2.text := FloatToStr(Chart.AxisList[0].Range.Max);<br />&nbsp; &nbsp; EdtRmp2.text := FloatToStr(Chart.AxisList[2].Range.Max);<br />&nbsp; &nbsp; if M &gt;= Chart.AxisList[1].Range.Max then<br />&nbsp; &nbsp; &nbsp; Chart.AxisList[1].Range.Max := M * 2;<br />&nbsp; &nbsp; N := M * 10;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Temp<br />&nbsp; &nbsp; SeriesTemp.AddXY(M,N);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //LH Axis<br />&nbsp; &nbsp; if N &gt;= Chart.AxisList[0].Range.Max then<br />&nbsp; &nbsp; &nbsp; Chart.AxisList[0].Range.Max := Chart.AxisList[0].Range.Max * 2;<br /><br />&nbsp; &nbsp; P := N * 11 Div 10;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//Volts<br />&nbsp; &nbsp; SeriesVolts.AddXY(M,P);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//RH Axis<br />&nbsp; &nbsp; if P &gt;= Chart.AxisList[2].Range.Max then<br />&nbsp; &nbsp; &nbsp; Chart.AxisList[2].Range.Max := Chart.AxisList[2].Range.Max * 2;<br /><br />&nbsp; &nbsp; Memo1.lines.add(Format(&#039;%8S :&nbsp; %4d°C :&nbsp; %4dmV&#039;, [TimeToStr(Time2), N, P]));<br />{*** End of Simulation ***}<br /><br />How do I get the axis scale and grid lines to change to the new axis.range.max value?<br /><br />Thanks<br /><br /></div>
+							</div>
+							<div id="msg_154217_footer" class="attachments smalltext">
+								<div style="overflow: auto;">
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9407;image" id="link_9407" onclick="return expandThumb(9407);"><img src="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9408;image" alt="" id="thumb_9407" /></a><br />
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9407"><img src="/Themes/default/images/icons/clip.gif" align="middle" alt="*" />&nbsp;Chart_01.jpg</a> 
+										(158.33 kB, 1035x725 - viewed 681 times.)<br />
+								</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_154217">
+								&#171; <em>Last Edit: August 05, 2014, 05:59:39 pm by Hopestation</em> &#187;
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				<a id="msg154225"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=45589" title="View the profile of wp">wp</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_154225_extra_info">
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 12513</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/clip.gif" alt="" />
+									</div>
+									<h5 id="subject_154225">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg154225.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg154225" rel="nofollow">Re: Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong>Reply #1 on:</strong> August 05, 2014, 03:24:48 pm &#187;</div>
+									<div id="msg_154225_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_154225">At first sight, your approach seems to be correct, but since you don&#039;t show the other properties it is difficult to say what&#039;s wrong.<br /><br />Have a look at attached demo which seems to behave in the way that you want.<br /><br /><br /></div>
+							</div>
+							<div id="msg_154225_footer" class="attachments smalltext">
+								<div style="overflow: auto;">
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9409"><img src="/Themes/default/images/icons/clip.gif" align="middle" alt="*" />&nbsp;two-axis chart.zip</a> 
+										(2.9 kB - downloaded 227 times.)<br />
+								</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_154225">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				<a id="msg154234"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=42637" title="View the profile of Hopestation">Hopestation</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_154234_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 181</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/xx.gif" alt="" />
+									</div>
+									<h5 id="subject_154234">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg154234.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg154234" rel="nofollow">Re: Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong>Reply #2 on:</strong> August 05, 2014, 05:27:51 pm &#187;</div>
+									<div id="msg_154234_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_154234">Thanks WP.<br /><br />It does exactly what I was hoping to do.<br /><br />I notice that you added to the series after changing the range.<br /><br />I will have to find the difference between our codes.<br /><br />Thanks</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_154234">
+								&#171; <em>Last Edit: August 05, 2014, 06:11:26 pm by Hopestation</em> &#187;
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				<a id="msg154241"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=42637" title="View the profile of Hopestation">Hopestation</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_154241_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 181</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/clip.gif" alt="" />
+									</div>
+									<h5 id="subject_154241">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg154241.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg154241" rel="nofollow">Re: Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong>Reply #3 on:</strong> August 05, 2014, 05:57:21 pm &#187;</div>
+									<div id="msg_154241_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_154241">Hi.<br /><br />I have possibly found the answer.<br /><br />There are 2 Range properties and I have only changed 1.<br /><br />The attached picture shows the Object inspector for the form.<br /><br />The upper Range is in the Marks property has a Maximum of 1600<br /><br />The Lower Range is in the Axis property has a Maximum of 250.<br /><br />I have only changed the 250 value.<br /><br />Thanks</div>
+							</div>
+							<div id="msg_154241_footer" class="attachments smalltext">
+								<div style="overflow: auto;">
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9421;image" id="link_9421" onclick="return expandThumb(9421);"><img src="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9422;image" alt="" id="thumb_9421" /></a><br />
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9421"><img src="/Themes/default/images/icons/clip.gif" align="middle" alt="*" />&nbsp;Object Inspector_01.jpg</a> 
+										(67.69 kB, 403x835 - viewed 710 times.)<br />
+								</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_154241">
+								&#171; <em>Last Edit: August 05, 2014, 06:03:10 pm by Hopestation</em> &#187;
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				<a id="msg154249"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=45589" title="View the profile of wp">wp</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_154249_extra_info">
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 12513</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/xx.gif" alt="" />
+									</div>
+									<h5 id="subject_154249">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg154249.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg154249" rel="nofollow">Re: Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong>Reply #4 on:</strong> August 05, 2014, 08:41:14 pm &#187;</div>
+									<div id="msg_154249_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_154249">The upper Range property is a subproperty of Marks, i.e. it determines the range which is labelled by ticks and marks - you see that when you scroll up a bit. This feature is useful when you overlay several axes on the same line and offset them by means of AutoscaleTransformations (like in the tutorial <a href="http://wiki.lazarus.freepascal.org/TAChart_Tutorial:_Multiple_Panes_in_one_Chart" class="bbc_link" target="_blank" rel="noopener noreferrer">http://wiki.lazarus.freepascal.org/TAChart_Tutorial:_Multiple_Panes_in_one_Chart</a>).<br /><br />The other Range property is a direct property of the axis and determines axis scaling, i.e. the value corresponding to the upper and lower end of the axis.<br /><br />In order to change the color of an axis you have to modify several properties:<br /><ul class="bbc_list"><li> <strong>AxisPen.Color</strong> AND <strong>AxisPen.Visible</strong> for the axis line (yes - the axis line is hidden by default. The box that you see around the chart area is the &quot;Frame&quot;).</li><li> <strong>Marks.LabelFont.Color</strong> for the axis labels</li><li> <strong>TickColor</strong> for the axis ticks. If you have a minor axis, don&#039;t forget the <strong>Minors&#91;].TickColor</strong></li><li> <strong>Title.LabelFont.Color</strong> for the axis caption. Again you have to turn on <strong>Title.Visible</strong> to show the caption.</li></ul></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_154249">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				<a id="msg154501"></a>
+				<div class="windowbg2">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=42637" title="View the profile of Hopestation">Hopestation</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_154501_extra_info">
+								<li class="postgroup">Full Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 181</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/clip.gif" alt="" />
+									</div>
+									<h5 id="subject_154501">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg154501.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg154501" rel="nofollow">Re: Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong>Reply #5 on:</strong> August 09, 2014, 06:58:50 pm &#187;</div>
+									<div id="msg_154501_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_154501">Thanks for your help.<br /><br />One further problem with scales.<br /><br />I always double the scale when the data reaches the top.<br /><br />The attached picture shows that the right axis changes from integers values to floating point on the 2000 scale, only. Te 500, 1000, 4000 and 8000 are all good, but I get values of 167.770419 and 2013.24503 on the 2000µV scale.<br /><br />I am using the Mark Format &quot;%0:.9gµV&quot; which is the same as your example, with &quot;µV&quot; added.<br /><br />I noticed that in your example you left the Mark range as 0,0 and both false, so I did the same, but it made no difference.<br /><br />Is there a reason for this anomaly?<br /><br />Is there somewhere that lists all the properties of the Chart component and their uses?<br />I have looked at various WIKI examples and tutorials, but they only explain those properties that are relevant to the example.<br />For example, how is Nice Steps used? Changing it to 0.25 on one axis worked, but 0.2 on the other axis gave rubbish.<br /><br />Thanks again.<br /></div>
+							</div>
+							<div id="msg_154501_footer" class="attachments smalltext">
+								<div style="overflow: auto;">
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9440;image" id="link_9440" onclick="return expandThumb(9440);"><img src="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9441;image" alt="" id="thumb_9440" /></a><br />
+										<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=dlattach;topic=25404.0;attach=9440"><img src="/Themes/default/images/icons/clip.gif" align="middle" alt="*" />&nbsp;chart-2000.jpg</a> 
+										(162.57 kB, 911x692 - viewed 464 times.)<br />
+								</div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_154501">
+								&#171; <em>Last Edit: August 09, 2014, 07:10:43 pm by Hopestation</em> &#187;
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				<a id="msg164958"></a>
+				<div class="windowbg">
+					<span class="topslice"><span></span></span>
+					<div class="post_wrapper">
+						<div class="poster">
+							<h4>
+								<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=profile;u=45589" title="View the profile of wp">wp</a>
+							</h4>
+							<ul class="reset smalltext" id="msg_164958_extra_info">
+								<li class="postgroup">Hero Member</li>
+								<li class="stars"><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /><img src="/Themes/default/images/star.gif" alt="*" /></li>
+								<li class="postcount">Posts: 12513</li>
+								<li class="profile">
+									<ul>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="postarea">
+							<div class="flow_hidden">
+								<div class="keyinfo">
+									<div class="messageicon">
+										<img src="/Themes/default/images/post/xx.gif" alt="" />
+									</div>
+									<h5 id="subject_164958">
+										<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.msg164958.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#msg164958" rel="nofollow">Re: Changing Y Axies Scales in run time.</a>
+									</h5>
+									<div class="smalltext">&#171; <strong>Reply #6 on:</strong> December 16, 2014, 10:16:35 am &#187;</div>
+									<div id="msg_164958_quick_mod"></div>
+								</div>
+							</div>
+							<div dir="auto" class="post">
+								<div class="inner" id="msg_164958">Sorry I did not see this one, but I think it is not good to leave it without an answer...<br /><br />Having such irregular labels at the right axis is not normal. You probably fiddled around with the Intervals property and forgot something to set back to its original value. The default settings of Intervals are:<ul class="bbc_list"><li>Count = 5</li><li>MaxLength = 50</li><li>MinLength = 10</li><li>NiceSteps = 0.2|0.5|1.0</li><li>Options = [aipUseMaxLength,aipUseMinLength,aipUseNiceSteps]</li><li>Tolerance = 0</li></ul>NiceSteps means that the label-finding algorithms tries to set the label marks at the values shown, i.e., 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10 etc. For this to work the corresponding option must be set.<br />If you have aipUseCount in the Options the labeller will put priority on the label count which normally produces weird label values, like in your case.<br />If labels overlap you may increase the MinLength and MaxLength values - these parameters (along with their corresponding options) control the density of labels along the axis.<br />Tolerance helps in connection with rounding errors, I often get &quot;nicer&quot; labels when this property is increase moderately (such as 3 or 5).<br /><br /><div class="quoteheader"><div class="topslice_quote">Quote</div></div><blockquote class="bbc_standard_quote">Is there somewhere that lists all the properties of the Chart component and their uses?</blockquote><div class="quotefooter"><div class="botslice_quote"></div></div>In addition to the tutorials, there is the <a href="http://wiki.lazarus.freepascal.org/TAChart_documentation" class="bbc_link" target="_blank" rel="noopener noreferrer">TAChart documentation</a> and the <a href="http://wiki.lazarus.freepascal.org/TAChart_User_Guide" class="bbc_link" target="_blank" rel="noopener noreferrer">TAChart User Guide</a>. Moreover, don&#039;t forget the bunch of demo projects in the folder components/tachart/demo of your Lazarus installation (they are described in <a href="http://wiki.lazarus.freepascal.org/TAChart_Demos" class="bbc_link" target="_blank" rel="noopener noreferrer">http://wiki.lazarus.freepascal.org/TAChart_Demos</a>).<br /></div>
+							</div>
+						</div>
+						<div class="moderatorbar">
+							<div class="smalltext modified" id="modified_164958">
+							</div>
+							<div class="smalltext reportlinks">
+								<img src="/Themes/default/images/ip.gif" alt="" />
+								Logged
+							</div>
+						</div>
+					</div>
+					<span class="botslice"><span></span></span>
+				</div>
+				<hr class="post_separator" />
+				</form>
+			</div>
+			<a id="lastPost"></a>
+			<div class="pagesection">
+				
+		<div class="buttonlist floatright">
+			<ul>
+				<li><a class="button_strip_print" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=printpage;topic=25404.0" rel="new_win nofollow"><span class="last">Print</span></a></li>
+			</ul>
+		</div>
+				<div class="pagelinks floatleft">Pages: [<strong>1</strong>] </div>
+				<div class="nextlinks_bottom"><a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.0/prev_next,prev.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new">&laquo; previous</a> <a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.0/prev_next,next.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1#new">next &raquo;</a></div>
+			</div>
+	<div class="navigate_section">
+		<ul>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;"><span>Lazarus</span></a> &#187;
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=forum"><span>Forum</span></a> &#187;
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=forum#c9"><span>Programming</span></a> &#187;
+			</li>
+			<li>
+				<a href="https://forum.lazarus.freepascal.org/index.php/board,31.0.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1"><span>LCL</span></a> &#187;
+			</li>
+			<li class="last">
+				<a href="https://forum.lazarus.freepascal.org/index.php/topic,25404.0.html?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1"><span>Changing Y Axies Scales in run time.</span></a>
+			</li>
+		</ul>
+	</div>
+			<div id="moderationbuttons"></div>
+			<div class="plainbox" id="display_jump_to">&nbsp;</div>
+		<br class="clear" />
+				<script type="text/javascript" src="/Themes/default/scripts/topic.js"></script>
+				<script type="text/javascript"><!-- // --><![CDATA[
+					if ('XMLHttpRequest' in window)
+					{
+						var oQuickModify = new QuickModify({
+							sScriptUrl: smf_scripturl,
+							bShowModify: true,
+							iTopicId: 25404,
+							sTemplateBodyEdit: '\n\t\t\t\t\t\t\t\t<div id="quick_edit_body_container" style="width: 90%">\n\t\t\t\t\t\t\t\t\t<div id="error_box" style="padding: 4px;" class="error"><' + '/div>\n\t\t\t\t\t\t\t\t\t<textarea class="editor" name="message" rows="12" style="width: 100%; margin-bottom: 10px;" tabindex="1">%body%<' + '/textarea><br />\n\t\t\t\t\t\t\t\t\t<input type="hidden" name="a7c1fb0caa9" value="e4de5aed543f1f90ebd49936f0da7c9e" />\n\t\t\t\t\t\t\t\t\t<input type="hidden" name="topic" value="25404" />\n\t\t\t\t\t\t\t\t\t<input type="hidden" name="msg" value="%msg_id%" />\n\t\t\t\t\t\t\t\t\t<div class="righttext">\n\t\t\t\t\t\t\t\t\t\t<input type="submit" name="post" value="Save" tabindex="2" onclick="return oQuickModify.modifySave(\'e4de5aed543f1f90ebd49936f0da7c9e\', \'a7c1fb0caa9\');" accesskey="s" class="button_submit" />&nbsp;&nbsp;<input type="submit" name="cancel" value="Cancel" tabindex="3" onclick="return oQuickModify.modifyCancel();" class="button_submit" />\n\t\t\t\t\t\t\t\t\t<' + '/div>\n\t\t\t\t\t\t\t\t<' + '/div>',
+							sTemplateSubjectEdit: '<input type="text" style="width: 90%;" name="subject" value="%subject%" size="80" maxlength="80" tabindex="4" class="input_text" />',
+							sTemplateBodyNormal: '%body%',
+							sTemplateSubjectNormal: '<a hr'+'ef="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;'+'?topic=25404.msg%msg_id%#msg%msg_id%" rel="nofollow">%subject%<' + '/a>',
+							sTemplateTopSubject: 'Topic: %subject% &nbsp;(Read 7496 times)',
+							sErrorBorderStyle: '1px solid red'
+						});
+
+						aJumpTo[aJumpTo.length] = new JumpTo({
+							sContainerId: "display_jump_to",
+							sJumpToTemplate: "<label class=\"smalltext\" for=\"%select_id%\">Jump to:<" + "/label> %dropdown_list%",
+							iCurBoardId: 31,
+							iCurBoardChildLevel: 0,
+							sCurBoardName: "LCL",
+							sBoardChildLevelIndicator: "==",
+							sBoardPrefix: "=> ",
+							sCatSeparator: "-----------------------------",
+							sCatPrefix: "",
+							sGoButtonLabel: "go"
+						});
+
+						aIconLists[aIconLists.length] = new IconList({
+							sBackReference: "aIconLists[" + aIconLists.length + "]",
+							sIconIdPrefix: "msg_icon_",
+							sScriptUrl: smf_scripturl,
+							bShowModify: true,
+							iBoardId: 31,
+							iTopicId: 25404,
+							sSessionId: "e4de5aed543f1f90ebd49936f0da7c9e",
+							sSessionVar: "a7c1fb0caa9",
+							sLabelIconList: "Message Icon",
+							sBoxBackground: "transparent",
+							sBoxBackgroundHover: "#ffffff",
+							iBoxBorderWidthHover: 1,
+							sBoxBorderColorHover: "#adadad" ,
+							sContainerBackground: "#ffffff",
+							sContainerBorder: "1px solid #adadad",
+							sItemBorder: "1px solid #ffffff",
+							sItemBorderHover: "1px dotted gray",
+							sItemBackground: "transparent",
+							sItemBackgroundHover: "#e0e0f0"
+						});
+					}
+				// ]]></script>
+			<script type="text/javascript"><!-- // --><![CDATA[
+				var verificationpostHandle = new smfCaptcha("https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=verificationcode;vid=post;rand=92e8c63a0ea076ef59393ccc0e8dcfd9", "post", 1);
+			// ]]></script></div><p class="clearthefloat" style="padding:0px;margin:0px;"></p>
+	</div>
+		<div id="tpbottombarHeader" style="clear: both;">
+				<div class="block_bottomcontainer htmlbox" id="htmlbox_links">
+	<div class="tp_bottomblock_noframe">
+		<div class="" id="block12"><div class="blockbody" style="overflow: auto;"><div style="text-align:center"><a href="http://www.freepascal.org"><img src="/fpclogo.gif" height="31"></a> <a href="http://sourceforge.net/projects/lazarus"><img src="https://sflogo.sourceforge.net/sflogo.php?group_id=89339&type=9" width="80" height="15" border="0" alt="Get Lazarus at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a> <a target="_blank" href="https://www.openhub.net/p/lazarus?ref=sample"><img border="0" src="https://www.openhub.net/p/lazarus/widgets/project_thin_badge.gif" alt="Open Hub project report for Lazarus"></a></div></div>
+		</div>
+	</div>
+	</div><script type="text/javascript"><!-- // --><![CDATA[
+				function toggle( targetId )
+				{
+					var state = 0;
+					var blockname = "block" + targetId;
+					var blockimage = "blockcollapse" + targetId;
+
+					if ( document.getElementById ) {
+						target = document.getElementById( blockname );
+						if ( target.style.display == "none" ) {
+							target.style.display = "";
+							state = 1;
+						}
+						else {
+							target.style.display = "none";
+							state = 0;
+						}
+
+						document.getElementById( blockimage ).src = "/Themes/default/images/tinyportal" + (state ? "/TPcollapse.png" : "/TPexpand.png");
+						var tempImage = new Image();
+						tempImage.src = "https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=tpmod;upshrink=" + targetId + ";state=" + state + ";" + (new Date().getTime());
+
+					}
+				}
+			// ]]></script>
+		<p class="clearthefloat"></p></div></div>
+		</div>
+	</div></div>
+	<div id="footer_section"><div class="frame">
+		<ul class="reset">
+			<li class="copyright">
+			<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana, Arial, sans-serif;"><a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=credits" title="Simple Machines Forum" target="_blank" class="new_win">SMF 2.0.19</a> |
+ <a href="https://www.simplemachines.org/about/smf/license.php" title="License" target="_blank" class="new_win">SMF &copy; 2021</a>, <a href="https://www.simplemachines.org" title="Simple Machines" target="_blank" class="new_win">Simple Machines</a> | <a id="button_agreement" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=agreement"><span>Terms and Policies</span></a>
+			</span></li>
+			<li><a id="button_xhtml" href="http://validator.w3.org/check?uri=referer" target="_blank" class="new_win" title="Valid XHTML 1.0!"><span>XHTML</span></a></li>
+			<li><a id="button_rss" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=.xml;type=rss" class="new_win"><span>RSS</span></a></li>
+			<li class="last"><a id="button_wap2" href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;wap2" class="new_win"><span>WAP2</span></a></li>
+		</ul>
+	</div></div>
+</div>
+<div style="text-align: center; width: 100%; font-size: x-small; margin-bottom: 5px;"><a target="_blank" href="http://www.tinyportal.net" title="TinyPortal">TinyPortal</a> <a href="https://forum.lazarus.freepascal.org/index.php?PHPSESSID=roijbstp486qpa6pf1j3u4i5b1&amp;action=tpmod;sa=credits" title="TP 1.6.1">&copy; 2005-2018</a></div></body></html>
