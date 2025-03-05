@@ -32,9 +32,6 @@
 //10.02 +more params  +ioresult
 //11.02 fixed LoadFile(blockread(^buf)) +SaveFile
 //12.02 SaveFile ok?; checkbox cal restore fix; LoadFile fix; CurrentPlotNum fix; +spineditmaxys11/s21;
-//21.02 +save IPaddr; edit ip planar/witch fix; ipport str->int
-//23.02 debug - DebugLn GetPlotNum SwitchParams ok?s
-//25.02 gui reaction time fixes; refactoring; fix SpinEditMarkerChartNumChange
 
 unit planar8x8a;
 
@@ -44,6 +41,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, ComCtrls,
+  Math, DateUtils,
   StdCtrls, Menus, PairSplitter, Spin, TAGraph,
   TASeries, TACustomSeries, TATransformations, blcksock,  //synapse/blcksock
   synaip,  //synapse/isip()
@@ -57,9 +55,9 @@ type
     ButtonConnect: TButton;
     CheckBoxCalibrationApply: TCheckBox;
     CheckBoxMarkerEnabled: TCheckBox;
-    EditIPAddressSwitch: TEdit;
     EditIPAddressPlanar: TEdit;
-    FloatSpinEditMarkerFrequency: TFloatSpinEdit;
+    EditIPAddressSwitch: TEdit;
+    FloatSpinEditMarkerFrrequency: TFloatSpinEdit;
     FloatSpinEditFStart: TFloatSpinEdit;
     FloatSpinEditFStop: TFloatSpinEdit;
     Label1: TLabel;
@@ -81,6 +79,7 @@ type
     ListBox1: TListBox;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
     MenuItemTest: TMenuItem;
     MenuItemCopy: TMenuItem;
     MenuItemEdit: TMenuItem;
@@ -93,6 +92,7 @@ type
     RadioGroupSwitchInNum: TRadioGroup;
     RadioGroupS11S21: TRadioGroup;
     RadioGroupMagPhase: TRadioGroup;
+    SaveDialog: TSaveDialog;
     SpinEditYMinS11: TSpinEdit;
     SpinEditMarkerNum: TSpinEdit;
     SpinEditMarkerChartNum: TSpinEdit;
@@ -119,13 +119,14 @@ type
     procedure ButtonConnectClick(Sender: TObject);
     procedure CheckBoxCalibrationApplyChange(Sender: TObject);
     procedure CheckBoxMarkerEnabledChange(Sender: TObject);
-    procedure EditIPAddressSwitchEditingDone(Sender: TObject);
     procedure EditIPAddressPlanarEditingDone(Sender: TObject);
+    procedure EditIPAddressSwitchEditingDone(Sender: TObject);
     procedure FloatSpinEditFStartEditingDone(Sender: TObject);
     procedure FloatSpinEditFStopEditingDone(Sender: TObject);
-    procedure FloatSpinEditMarkerFrequencyEditingDone(Sender: TObject);
+    procedure FloatSpinEditMarkerFrrequencyEditingDone(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure MenuItem2Click(Sender: TObject);
     procedure MenuItemCopyClick(Sender: TObject);
     procedure MenuItemTestClick(Sender: TObject);
     procedure PairSplitter1Resize(Sender: TObject);
@@ -168,6 +169,16 @@ type
     procedure SetAxisMinMax(const ii, jj: integer; Min, Max: Double);
     procedure LoadFile(const FileName: String; const FileSize: Integer; Target: Pointer);
     procedure SaveFile(const FileName: String; const FileSize: Integer; Target: Pointer);
+    // S2P Save
+    procedure SaveS2P(Sender: TObject);
+    function FormatS2PString(PlotIndex, PointIndex: Integer): string;
+    procedure SaveDataToS2P(const FileName: string; const SaveFormat:Integer);
+
+    //Send switch POST request
+    //function SendPostRequest(const IPAddr, IPPort: string; const Switch1, Switch2: Integer): Boolean;
+    function ConnectToServer(const IPAddr, IPPort: string; out Socket: TTCPBlockSocket): Boolean;
+    procedure DisconnectFromServer(var Socket: TTCPBlockSocket);
+    function SendSwitchState(Socket: TTCPBlockSocket; const Switch1, Switch2: Integer): Boolean;
 
   private
     PrivateTest: Boolean;
@@ -184,11 +195,6 @@ Parameters = record   //save/recall params
   SweepPoints: Integer;
   CalibrationApply: array[1..32] of Boolean;  //32>PlotsNumMax; array[1..PlotsNumMax]
   PlotExtentYMinS11, PlotExtentYMaxS11, PlotExtentYMinS21, PlotExtentYMaxS21: Single;
-  IPAddressPlanar: ShortString;  // ShortString = String[255];
-  IPPortPlanar: Integer;
-  IPAddressSwitch: ShortString;  // ShortString = String[255];
-  IPPortSwitch:  Integer;
-
 end;  //record
 
 PlotParameters = record
@@ -212,10 +218,10 @@ const
   PlotsNumMaxY = 4;
   PlotsNumMax = PlotsNumMaxX*PlotsNumMaxY;
   MarkersNumMax = 6;
-  dt = 1;  //time delay ms
-  Timeout = 800; //If no data is received within TIMEOUT (in milliseconds)
+  dt = 100;  //time delay ms
+  Timeout = 700; //If no data is received within TIMEOUT (in milliseconds)
   //FileNameBase: String = 'planar8x8.';
-  FileNameCalibration: String = 'planar8x8' + '.cal';
+  FileNameCalibration: String = 'planar8x8.' + 'cal';
   FileNameParameters: String = 'planar8x8.param';
   FileNameMarkers: String = 'planar8x8.mark';
   FileNamePlotParameters: String = 'planar8x8.plot';
@@ -229,15 +235,17 @@ var
   err: Integer;
   StringList: TStringList;
 
+  switchSocket: TTCPBlockSocket;
+
   Chart: array[1..PlotsNumMaxX, 1..PlotsNumMaxY] of TChart;
   ChartLineSeries:  array[1..PlotsNumMaxX, 1..PlotsNumMaxY] of TLineSeries;
   DataRe, DataIm, CalibrationDataRe, CalibrationDataIm: array[1..PlotsNumMax, 0..DataSizeMax-1] of Single;
   //type CalibrationDataRePtr = ^CalibrationDataRe;
 
   IPAddressPlanar: String = '127.0.0.1';
-  IPPortPlanar: Integer = 5025;
-  IPAddressSwitch: String = '192.168.2.2';
-  IPPortSwitch: Integer = 80;
+  IPPortPlanar: String = '5025';
+  IPAddressSwitch: String = '172.16.22.251';
+  IPPortSwitch: String = '80';
 
   TimerEnable: Boolean = False;
   //FStart, FStartOld, FStop, FStopOld, FStep, FStepOld: Double;
@@ -263,7 +271,6 @@ var
   CalibrationGetData : Boolean = False;
   //CalibrationApply: array[1..PlotsNumMax] of Boolean;
   //FileNameCalibration: String = FileNameBase + 'cal';
-  ChartsVisible : Boolean = True;
 
 implementation
 
@@ -480,35 +487,23 @@ procedure TForm1.SetFrequency(const F1, F2: Double);
 begin
 DebugLn('SetFrequency');
 
-//if Fstart changed
-if ( (abs(Params.FStart-FStartOld)>1e-1) )
-then
-begin
 //s := 'SENS1:FREQ:STARt ' + IntToStr(FStart) + #10;
 s := 'SENS1:FREQ:STARt ' + FloatToStr(F1);
 //c.SendString (s);
 //DebugLn(['FStart = ', FStart]);
 SendStringTerminatedAndCheck(s, 'send SENS1:FREQ:STARt', True);
-end;  //if fstart
 
 Sleep(dt);
 
-//if Fstop changed
-if ( (abs(Params.FStop-FStopOld) > 1e-1) )
-then
-begin
 s := 'SENS1:FREQ:STOP ' + FloatToStr(F2) + #10;
 //c.SendString (s);
 SendStringTerminatedAndCheck(s, 'send SENS1:FREQ:STOP', True);
-end;  //if fstop
 
 //FStep:= (FStop - FStart) / (nos-1);
 
 //c.SendString ('SENS1:SWEEP:POINTS?'#10);
 
-GetFrequency; //!get actual Fstart/fstop
-
-end;  //procedure TForm1.SetFrequency
+end;  //procedure TForm1.GetFrequency
 
 
 
@@ -518,18 +513,12 @@ procedure TForm1.SetSweepPoints(const NumPoints: Integer);
 begin
 DebugLn('SetSweepPoints');
 
-if (abs(Params.SweepPoints-SweepPointsOld)=0) then Exit;  //no change
-
-s := 'SENSe1:SWEep:POINts ' + IntToStr(NumPoints);
+s := 'SENSe1:SWEep:POINts?' + IntToStr(NumPoints);
 //DebugLn(['FStart = ', FStart]);
-SendStringTerminatedAndCheck(s, 'send SENSe1:SWEep:POINts', True);
+SendStringTerminatedAndCheck(s, 'send SENSe1:SWEep:POINts?', True);
+SendStringTerminatedAndCheck(s, 'receive SENSe1:SWEep:POINts?', True);
 
-//s := 'SENSe1:SWEep:POINts?' + IntToStr(NumPoints);
-//SendStringTerminatedAndCheck(s, 'receive SENSe1:SWEep:POINts?', True);
-
-GetSweepPoints;  //get actual number of points
-
-//Sleep(dt);
+Sleep(dt);
 end; //SetSweepPoints
 
 
@@ -757,13 +746,9 @@ end;  //SpinEditPlotsNumChange
 
 procedure TForm1.SpinEditSweepPointsEditingDone(Sender: TObject);
 begin
-  SweepPointsOld:=Params.SweepPoints;
-  Params.SweepPoints:=SpinEditSweepPoints.Value;
-
-  SetSweepPoints(Params.SweepPoints);
+SweepPointsOld:=Params.SweepPoints;
+Params.SweepPoints:=SpinEditSweepPoints.Value;
 end; //SpinEditSweepPointsEditingDone
-
-
 
 procedure TForm1.SpinEditYMinS21Change(Sender: TObject);
 begin
@@ -788,11 +773,10 @@ begin
 //TimerEnable := False;
 
 NumPlot := GetPlotNum(NumPlotX, NumPlotY);
-DebugLn( ['PLOT1 - NumPlot = ', NumPlot]);
 
 ChartLineSeries[NumPlotX, NumPlotY].BeginUpdate;
 
-ChartLineSeries[NumPlotX, NumPlotY].Marks.AutoMargins := False;  //autosize for markers off
+ChartLineSeries[NumPlotX, NumPlotY].Marks.AutoMargins := False;
 
 ChartLineSeries[NumPlotX, NumPlotY].Clear;
 
@@ -828,31 +812,28 @@ ChartLineSeries[NumPlotX, NumPlotY].EndUpdate;  //ok
 //DebugLn( 'sv=', FloatToStr(ChartLineSeries[1].YValue[SweepPoints div 4]) );
 //DebugLn( 'svf=', FloatToStrF( ChartLineSeries[1].YValue[SweepPoints div 4], fffixed, 3, 2 ) );
 
-for ii:=1 to MarkersNumMax do   //show markers
+for ii:=1 to MarkersNumMax do
 begin
-DebugLn([ 'MarkerParams[ii].MarkerChartNum = ', MarkerParams[ii].MarkerChartNum]);
-if ( (MarkerParams[ii].MarkerChartNum = NumPlot) and (MarkerParams[ii].MarkerEnabled = True)
-      and (MarkerParams[ii].MarkerFrequency > Params.FStart) and (MarkerParams[ii].MarkerFrequency < Params.FStop) )
+if ((MarkerParams[ii].MarkerChartNum = NumPlot) and (MarkerParams[ii].MarkerEnabled = True)
+     and (MarkerParams[ii].MarkerFrequency > Params.FStart) and (MarkerParams[ii].MarkerFrequency < Params.FStop))
 then
 begin
-  DebugLn([ 'PLOT2 - NumPlot = ', NumPlot]);
-//DebugLn([ 'FStart = ', FStart, ',   FStop = ', FStop]);
+//DebugLn( ['FStart = ', FStart, ',   FStop = ', FStop]);
 //ChartLineSeries[NumPlotX, NumPlotY].Source.Item[Markers[ii,2]]^.Text := IntToStr(NumPlot) + '/' + FloatToStrF( ChartLineSeries[NumPlotX, NumPlotY].YValue[Markers[ii,2]], fffixed, 3, 2 );
-//MarkerIndex := trunc(((MarkerParams[ii].MarkerFrequency-Params.FStart)/(Params.FStop-Params.FStart))*(Params.SweepPoints - 1));
-MarkerIndex := round( ((MarkerParams[ii].MarkerFrequency-Params.FStart)/(Params.FStop-Params.FStart))*(Params.SweepPoints - 1) );
+MarkerIndex := trunc(((MarkerParams[ii].MarkerFrequency-Params.FStart)/(Params.FStop-Params.FStart))*(Params.SweepPoints - 1));
 //DebugLn( ['MarkerIndexF=', ((Markers[ii].MarkerFrequency-FStart)/(FStop-FStart))]);
 //DebugLn( ['Marker ii = ', ii]);
 //DebugLn( ['MarkerF = ', Markers[ii].MarkerFrequency]);
 //DebugLn( ['MarkerIndex = ', MarkerIndex]);
 
-if MarkerIndex > (Params.SweepPoints-1)
-then MarkerIndex := Params.SweepPoints-1
-else if MarkerIndex < 0 then MarkerIndex:=0;
+if MarkerIndex>Params.SweepPoints-1
+then MarkerIndex:=Params.SweepPoints-1
+else if MarkerIndex<0 then MarkerIndex:=0;
 
 //ChartLineSeries[NumPlotX, NumPlotY].Source.Item[MarkerIndex]^.Text := IntToStr(ii) + '/' + FloatToStrF( ChartLineSeries[NumPlotX, NumPlotY].YValue[MarkerIndex], fffixed, 3, 2 ); //ok
 ChartLineSeries[NumPlotX, NumPlotY].SetText(MarkerIndex, IntToStr(ii) + '/' + FloatToStrF( ChartLineSeries[NumPlotX, NumPlotY].YValue[MarkerIndex], fffixed, 3, 2 ));  //ok
 
-end; //if show markers
+end; //if
 end;  //for ii:=1 to MarkersNumMax
 
 //ChartLineSeries[NumPlotX, NumPlotY].EndUpdate;  //?series indexing err
@@ -867,31 +848,22 @@ end;  //procedure TForm1.PlotData
 procedure TForm1.Timer1Timer(Sender: TObject);
 var ii, jj: Integer;
 begin
-Application.ProcessMessages;
-
-if (TabSheetMain.Visible = False) then Exit; //charts are invisible, no need to update them
-
 //DebugLn(['enter Timer1Timer : TimerEnable = ', TimerEnable]);
-//if (not TimerEnable) then Exit; //prevent preliminary re-entering
-if (TimerEnable = False) then Exit; //prevent preliminary re-entering
+if (not TimerEnable) then Exit; //prevent preliminary re-entering
 
 TimerEnable := False;
 
-//Application.ProcessMessages;
-
-//if (abs(Params.SweepPoints-SweepPointsOld)>0) then
+if (abs(Params.SweepPoints-SweepPointsOld)>0) then
 begin
 SetSweepPoints(Params.SweepPoints);
-//GetSweepPoints;  //!get actual number
+GetSweepPoints;  //!get actual number
 end; //if
 
-//if Fstart/Fstop changed
-//if ( (abs(Params.FStart-FStartOld)>1) or (abs(Params.FStop-FStopOld)>1) )
 //if Fstart/Fstop changed
 if ( (abs(Params.FStart-FStartOld)>1) or (abs(Params.FStop-FStopOld)>1) ) then
 begin
 SetFrequency(Params.FStart, Params.FStop);
-//GetFrequency; //!get actual F
+GetFrequency; //!get actual F
 end;  //if
 
 for ii:=1 to PlotsNumY do
@@ -987,23 +959,66 @@ else  //s21
 
 end;  //else phase
 
+SendSwitchState(switchSocket, SwitchParams[GetPlotNum(ii,jj)].OutputNum, SwitchParams[GetPlotNum(ii,jj)].InputNum);
 //SendPostRequest(IPAddressSwitch, IPPortSwitch, SwitchParams[GetPlotNum(ii,jj)].InputNum, SwitchParams[GetPlotNum(ii,jj)].OutputNum);
-//DebugLn(['plt  ',ii , ' / ', jj, '  /  ', GetPlotNum(ii,jj),
-//         '    sw  ', SwitchParams[GetPlotNum(ii,jj)].InputNum, ' / ', SwitchParams[GetPlotNum(ii,jj)].OutputNum]);
-//Sleep(1000);  //simulated Planar delay
+DebugLn(['plt ',ii , ' / ', jj, ' / ', GetPlotNum(ii,jj),
+                ' sw ', SwitchParams[GetPlotNum(ii,jj)].InputNum, ' / ', SwitchParams[GetPlotNum(ii,jj)].OutputNum]);
+Sleep(500);
+
 
 GetData(ii,jj);
-Application.ProcessMessages;
-
 PlotData(ii,jj);
-Application.ProcessMessages;
 
 end;  //for jj
 end;  //for ii
 
 TimerEnable := True;
 
-end;  //OnTimer
+end;  //timer
+
+function TForm1.ConnectToServer(const IPAddr, IPPort: string; out Socket: TTCPBlockSocket): Boolean;
+begin
+  Result := False;
+  if (IPAddr = '') or (IPPort = '') then Exit;
+
+  Socket := TTCPBlockSocket.Create;
+  Socket.Connect(IPAddr, IPPort);
+
+  if Socket.LastError = 0 then
+    Result := True
+  else
+    FreeAndNil(Socket);
+end;
+
+procedure TForm1.DisconnectFromServer(var Socket: TTCPBlockSocket);
+begin
+  if Assigned(Socket) then
+  begin
+    Socket.Free;
+    Socket := nil;
+  end;
+end;
+
+function TForm1.SendSwitchState(Socket: TTCPBlockSocket; const Switch1, Switch2: Integer): Boolean;
+var
+  PostData, Response: string;
+begin
+  Result := False;
+  if not Assigned(Socket) then Exit;
+
+  PostData := Format('sw1=%d&sw2=%d', [Switch1 + 1, Switch2 + 1]);
+
+  Socket.SendString('POST / HTTP/1.1' + #13#10);
+  Socket.SendString('Host: ' + Socket.GetRemoteSinIP + #13#10);
+  Socket.SendString('Content-Type: application/x-www-form-urlencoded' + #13#10);
+  Socket.SendString('Content-Length: ' + IntToStr(Length(PostData)) + #13#10);
+  Socket.SendString(#13#10);
+  Socket.SendString(PostData);
+
+  Response := Socket.RecvTerminated(1000, #10);
+  if Pos('200 OK', Response) > 0 then
+    Result := True;
+end;
 
 
 
@@ -1103,6 +1118,92 @@ end;  //try
 
 end;  //SaveFile
 
+  
+//TODO
+// обработка нажатия на подменюшку "Сохранить .s2p"
+procedure TForm1.SaveS2P(Sender: TObject);
+begin
+  if not Assigned(SaveDialog) then
+    SaveDialog := TSaveDialog.Create(Self);
+
+  SaveDialog.FileName := Format('Plot_%d.s2p', [Params.CurrentPlotNum]); // дефолтное имя файла
+
+  if SaveDialog.Execute then
+    SaveDataToS2P(SaveDialog.FileName, 1); // 1 - dB формат, dB в первом столбце, угол во втором
+end;
+
+
+// процедура сохранения
+procedure TForm1.SaveDataToS2P(const FileName: string; const SaveFormat:Integer);
+var
+  F: TextFile;
+  i: Integer;
+  Header, TimeStamp, CalStatus: string;
+begin
+  AssignFile(F, FileName);
+  Rewrite(F);
+  try
+    TimeStamp := FormatDateTime('yyyy-mm-dd hh:nn', Now);
+    if Params.CalibrationApply[Params.CurrentPlotNum] then
+      CalStatus := 'ON'
+    else
+      CalStatus := 'OFF';
+
+    Writeln(F, '!Calibration ' + CalStatus);
+    Writeln(F, '!Measurements: S11 S21 S12 S22');
+    Writeln(F, Format('!Switch from port %d to port %d', [SwitchParams[Params.CurrentPlotNum].InputNum + 1, SwitchParams[Params.CurrentPlotNum].OutputNum + 1]));
+    Writeln(F, '!' + TimeStamp);
+    // Запись заголовка
+    case SaveFormat of
+      0: Header := '# Hz  S  RI  R 50';  // Real + Imag
+      1: Header := '# Hz  S  dB  R 50';  // dB + angle
+    end;
+    Writeln(F, Header);
+
+    for i := 0 to Params.SweepPoints - 1 do
+      Writeln(F, FormatS2PString(Params.CurrentPlotNum, i));
+
+  finally
+    CloseFile(F);
+  end;
+end;
+
+
+// создание строки, которая записывается в файл
+function TForm1.FormatS2PString(PlotIndex, PointIndex: Integer): string;
+var
+  Frequency, Re, Im, Mag, Phase, dB: Double;
+  S11_Re, S11_Im, S21_Re, S21_Im, S12_Re, S12_Im, S22_Re, S22_Im: Double;
+begin
+  Frequency := Params.FStart + PointIndex * FStep;
+
+  S11_Re := 0; S11_Im := 0;
+  S21_Re := 0; S21_Im := 0;
+  S12_Re := 0; S12_Im := 0;
+  S22_Re := 0; S22_Im := 0;
+
+  Re := DataRe[PlotIndex, PointIndex];
+  Im := DataIm[PlotIndex, PointIndex];
+
+  case PlotParams[PlotIndex].SName of
+    0: begin S11_Re := Re; S11_Im := Im; end;
+    1: begin S21_Re := Re; S21_Im := Im; end;
+  end;
+
+  if PlotParams[PlotIndex].SFormat = 1 then
+  begin
+    Mag := Hypot(Re, Im);
+    dB := 20 * Log10(Mag);
+    Phase := RadToDeg(ArcTan2(Im, Re));
+    Re := dB;
+    Im := Phase;
+  end;
+
+  Result := Format('%.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e',
+    [Frequency, S11_Re, S11_Im, S21_Re, S21_Im, S12_Re, S12_Im, S22_Re, S22_Im]);
+end;
+
+
 
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -1131,11 +1232,6 @@ Params.PlotExtentYMaxS11 := 10;
 Params.PlotExtentYMinS21 := -50;
 Params.PlotExtentYMaxS21 := 10;
 
-Params.IPAddressPlanar := IPAddressPlanar;
-Params.IPPortPlanar := (IPPortPlanar);
-Params.IPAddressSwitch := IPAddressSwitch;
-Params.IPPortSwitch := (IPPortSwitch);
-
 //set s params
 for ii:=1 to PlotsNumMax do
 begin
@@ -1146,11 +1242,11 @@ begin
   RadioGroupMagPhase.ItemIndex:=0;
 end;  //ii
 
-EditIPAddressSwitch.Text := IPAddressPlanar;
-SpinEditIPPortPlanar.Value := (IPPortPlanar);
+EditIPAddressPlanar.Text := IPAddressPlanar;
+SpinEditIPPortPlanar.Value := StrToInt(IPPortPlanar);
 
-EditIPAddressPlanar.Text := IPAddressSwitch;
-SpinEditIPPortSwitch.Value := (IPPortSwitch);
+EditIPAddressSwitch.Text := IPAddressSwitch;
+SpinEditIPPortSwitch.Value := StrToInt(IPPortSwitch);
 
 ////create test markers
 //for ii:=1 to MarkersNumMax do
@@ -1188,28 +1284,11 @@ SpinEditYMaxS11.Value  := Params.PlotExtentYMaxS11;
 SpinEditYMinS21.Value  := Params.PlotExtentYMinS21;
 SpinEditYMaxS11.Value  := Params.PlotExtentYMaxS21;
 
-//update IP addr/port
-IPAddressPlanar := Params.IPAddressPlanar;
-EditIPAddressPlanar.Text := IPAddressPlanar;
-
-IPPortPlanar := (Params.IPPortPlanar);
-SpinEditIPPortPlanar.Value := Params.IPPortPlanar;
-
-IPAddressSwitch := Params.IPAddressSwitch;
-EditIPAddressSwitch.Text := IPAddressSwitch;
-
-IPPortSwitch := (Params.IPPortSwitch);
-SpinEditIPPortSwitch.Value := Params.IPPortSwitch;
-
-
 GetCurrentPlotIJ;
 
 PlotsSetParams;
 
 SpinEditCurrentPlotNumChange(nil);  //set CheckBoxCalibrationApply.State
-
-ChartsVisible:=True;
-DebugLn(['FormCreate - ChartsVisible = ', ChartsVisible]);
 
 end;  //create
 
@@ -1219,8 +1298,6 @@ procedure TForm1.FloatSpinEditFStartEditingDone(Sender: TObject);
 begin
  FStartOld := Params.FStart;
  Params.FStart := FloatSpinEditFStart.Value;
-
- SetFrequency(Params.FStart, Params.FStop);
 end; //FloatSpinEditFStartEditingDone
 
 
@@ -1232,12 +1309,21 @@ c := TTCPBlockSocket.Create;
 DebugLn('Connecting');
 try
 //c.Connect ('127.0.0.1', '5025');
-c.Connect ( IPAddressPlanar, IntToStr(IPPortPlanar) );
+c.Connect (IPAddressPlanar, IPPortPlanar);
 except  //!!!no exception
 //  DebugLn('Error: cannot connect');
 //  ListBox1.Items.Add('Error: cannot connect');
 //  Exit;
 end;
+
+
+  if ConnectToServer(IPAddressSwitch, IPPortSwitch, switchSocket) then
+      begin
+        ShowMessage('Подключение успешно!');
+      end
+  else
+        ShowMessage('Ошибка при попытке подключения. Проверьте данные.');
+
 
 CheckSocketError('TTCPBlockSocket.Create', true);
 
@@ -1315,13 +1401,9 @@ end;
 
 procedure TForm1.EditIPAddressPlanarEditingDone(Sender: TObject);
 begin
-  if IsIP(EditIPAddressPlanar.Text) = True
-  then
-  begin
-    IPAddressPlanar := EditIPAddressPlanar.Text;
-    Params.IPAddressPlanar := IPAddressPlanar;
-  end
-  else EditIPAddressPlanar.Text := IPAddressPlanar;
+   if IsIP(EditIPAddressPlanar.Text)=True
+   then IPAddressPlanar := EditIPAddressPlanar.Text
+   else EditIPAddressPlanar.Text := IPAddressPlanar;
 
    DebugLn('IPAddressPlanar = ', IPAddressPlanar);
 end;  //EditIPAddressPlanarEditingDone
@@ -1330,13 +1412,9 @@ end;  //EditIPAddressPlanarEditingDone
 
 procedure TForm1.EditIPAddressSwitchEditingDone(Sender: TObject);
 begin
-  if IsIP(EditIPAddressSwitch.Text) = True
-  then
-  begin
-    IPAddressSwitch := EditIPAddressSwitch.Text;
-    Params.IPAddressSwitch := IPAddressSwitch;
-  end
-  else EditIPAddressSwitch.Text := IPAddressSwitch;
+   if IsIP(EditIPAddressSwitch.Text)=True
+   then IPAddressSwitch := EditIPAddressSwitch.Text
+   else EditIPAddressSwitch.Text := IPAddressSwitch;
 
    DebugLn('IPAddressSwitch = ', IPAddressSwitch);
 end;   //EditIPAddressSwitchEditingDone
@@ -1345,21 +1423,34 @@ end;   //EditIPAddressSwitchEditingDone
 
 procedure TForm1.SpinEditIPPortPlanarChange(Sender: TObject);
 begin
-  IPPortPlanar := (SpinEditIPPortPlanar.Value);
-  Params.IPPortPlanar := SpinEditIPPortPlanar.Value;
-
-  DebugLn(['IPPortPlanar = ', IPPortPlanar]);
+  IPPortPlanar := IntToStr(SpinEditIPPortPlanar.Value);
+  DebugLn('IPPortPlanar = ', IPPortPlanar);
 end;  //SpinEditIPPortPlanarChange
 
 
 
 procedure TForm1.SpinEditIPPortSwitchChange(Sender: TObject);
 begin
-  IPPortSwitch := (SpinEditIPPortSwitch.Value);
-  Params.IPPortSwitch := SpinEditIPPortSwitch.Value;
-
-  DebugLn(['IPPortSwitch = ', IPPortSwitch]);
+IPPortSwitch := IntToStr(SpinEditIPPortSwitch.Value);
+DebugLn('IPPortSwitch = ', IPPortSwitch);
 end;  //SpinEditIPPortSwitchChange
+
+
+
+procedure TForm1.SpinEditMarkerChartNumChange(Sender: TObject);
+begin
+ MarkerParams[MarkerNum].MarkerChartNum := SpinEditMarkerChartNum.Value;
+end;
+
+
+
+procedure TForm1.SpinEditMarkerNumChange(Sender: TObject);
+begin
+  MarkerNum := SpinEditMarkerNum.Value;
+  SpinEditMarkerChartNum.Value := MarkerParams[MarkerNum].MarkerChartNum;
+  FloatSpinEditMarkerFrrequency.Value := MarkerParams[MarkerNum].MarkerFrequency;
+  CheckBoxMarkerEnabled.Checked := MarkerParams[MarkerNum].MarkerEnabled;
+end;
 
 
 
@@ -1383,29 +1474,9 @@ end;
 
 
 
-procedure TForm1.FloatSpinEditMarkerFrequencyEditingDone(Sender: TObject);
+procedure TForm1.FloatSpinEditMarkerFrrequencyEditingDone(Sender: TObject);
 begin
-  MarkerParams[MarkerNum].MarkerFrequency := FloatSpinEditMarkerFrequency.Value;
-end;
-
-
-
-procedure TForm1.SpinEditMarkerChartNumChange(Sender: TObject);
-begin
- //MarkerNum := SpinEditMarkerNum.Value;
- MarkerParams[MarkerNum].MarkerChartNum := SpinEditMarkerChartNum.Value;
- DebugLn(['SpinEdit - MarkerParams[MarkerNum].MarkerChartNum = ', MarkerParams[MarkerNum].MarkerChartNum]);
-end;
-
-
-
-procedure TForm1.SpinEditMarkerNumChange(Sender: TObject);
-begin
-  MarkerNum := SpinEditMarkerNum.Value;
-  SpinEditMarkerChartNum.Value := MarkerParams[MarkerNum].MarkerChartNum;
-  FloatSpinEditMarkerFrequency.Value := MarkerParams[MarkerNum].MarkerFrequency;
-  CheckBoxMarkerEnabled.Checked := MarkerParams[MarkerNum].MarkerEnabled;
-  SpinEditMarkerChartNumChange(nil);  //!
+  MarkerParams[MarkerNum].MarkerFrequency := FloatSpinEditMarkerFrrequency.Value;
 end;
 
 
@@ -1416,12 +1487,11 @@ begin
 end;
 
 
+
 procedure TForm1.FloatSpinEditFStopEditingDone(Sender: TObject);
 begin
   FStopOld := Params.FStop;
   Params.FStop := FloatSpinEditFStop.Value;
-
-  SetFrequency(Params.FStart, Params.FStop);
 end; //FloatSpinEditFStopEditingDone
 
 
@@ -1437,7 +1507,7 @@ Timer1.Enabled:=False;
 //BlockWrite(FileTemp, CalibrationDataRe, 1);
 //CloseFile(FileTemp);
 
-//if c<>nil then //if connected to Planar
+if c<>nil then //if connected to Planar
 begin
 
 //try
@@ -1454,6 +1524,7 @@ begin
 SaveFile(FileNameParameters, SizeOf(Params), addr(Params));
 
 SaveFile(FileNameCalibration, SizeOf(CalibrationDataRe), @CalibrationDataRe);
+//ShowMessage('saved?');
 
 SaveFile(FileNameMarkers, SizeOf(MarkerParams), addr(MarkerParams));
 
@@ -1461,7 +1532,6 @@ SaveFile(FileNameSwitchParameters, SizeOf(SwitchParams), @SwitchParams);
 
 SaveFile(FileNamePlotParameters, SizeOf(PlotParams), addr(PlotParams));
 
-//ShowMessage('params saved');
 
 end;  //if
 
@@ -1477,9 +1547,14 @@ end;  //if
 //FileCal.Free;
 
 sleep(100);
-
 if c<>nil then c.CloseSocket;
+if switchSocket<>nil then DisconnectFromServer(switchSocket);
 end; //destroy
+
+procedure TForm1.MenuItem2Click(Sender: TObject);
+begin
+
+end;
 
 
 
@@ -1494,28 +1569,27 @@ procedure TForm1.MenuItemTestClick(Sender: TObject);
 begin
 if c=nil then exit;  //not connected
 
-SpinEditCurrentPlotNum.Value :=2;
+SpinEditCurrentPlotNum.Value:=2;
 Application.ProcessMessages;
 sleep(2000);
 
-RadioGroupS11S21.ItemIndex :=1;  //s21
+RadioGroupS11S21.ItemIndex:=1;  //s21
 Application.ProcessMessages;
 sleep(2000);
 
-SpinEditPlotsNum.Value :=7;
+SpinEditPlotsNum.Value:=7;
 Application.ProcessMessages;
 sleep(2000);
 
-SpinEditCurrentPlotNum.Value :=7;
+SpinEditCurrentPlotNum.Value:=7;
 Application.ProcessMessages;
 sleep(2000);
 
-SpinEditPlotsNum.Value :=3;
+SpinEditPlotsNum.Value:=3;
 Application.ProcessMessages;
 sleep(2000);
 
 end;  //test
-
 
 
 procedure TForm1.PairSplitter1Resize(Sender: TObject);
