@@ -44,6 +44,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, ComCtrls,
+  Math, DateUtils,
   StdCtrls, Menus, PairSplitter, Spin, TAGraph,
   TASeries, TACustomSeries, TATransformations, blcksock,  //synapse/blcksock
   synaip,  //synapse/isip()
@@ -57,8 +58,8 @@ type
     ButtonConnect: TButton;
     CheckBoxCalibrationApply: TCheckBox;
     CheckBoxMarkerEnabled: TCheckBox;
-    EditIPAddressSwitch: TEdit;
     EditIPAddressPlanar: TEdit;
+    EditIPAddressSwitch: TEdit;
     FloatSpinEditMarkerFrequency: TFloatSpinEdit;
     FloatSpinEditFStart: TFloatSpinEdit;
     FloatSpinEditFStop: TFloatSpinEdit;
@@ -81,6 +82,7 @@ type
     ListBox1: TListBox;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
     MenuItemTest: TMenuItem;
     MenuItemCopy: TMenuItem;
     MenuItemEdit: TMenuItem;
@@ -93,6 +95,7 @@ type
     RadioGroupSwitchInNum: TRadioGroup;
     RadioGroupS11S21: TRadioGroup;
     RadioGroupMagPhase: TRadioGroup;
+    SaveDialog: TSaveDialog;
     SpinEditYMinS11: TSpinEdit;
     SpinEditMarkerNum: TSpinEdit;
     SpinEditMarkerChartNum: TSpinEdit;
@@ -168,6 +171,16 @@ type
     procedure SetAxisMinMax(const ii, jj: integer; Min, Max: Double);
     procedure LoadFile(const FileName: String; const FileSize: Integer; Target: Pointer);
     procedure SaveFile(const FileName: String; const FileSize: Integer; Target: Pointer);
+    // S2P Save
+    procedure SaveS2P(Sender: TObject);
+    function FormatS2PString(PlotIndex, PointIndex: Integer): string;
+    procedure SaveDataToS2P(const FileName: string; const SaveFormat:Integer);
+
+    //Send switch POST request
+    //function SendPostRequest(const IPAddr, IPPort: string; const Switch1, Switch2: Integer): Boolean;
+    function ConnectToServer(const IPAddr, IPPort: string; out Socket: TTCPBlockSocket): Boolean;
+    procedure DisconnectFromServer(var Socket: TTCPBlockSocket);
+    function SendSwitchState(Socket: TTCPBlockSocket; const Switch1, Switch2: Integer): Boolean;
 
   private
     PrivateTest: Boolean;
@@ -213,7 +226,7 @@ const
   PlotsNumMax = PlotsNumMaxX*PlotsNumMaxY;
   MarkersNumMax = 6;
   dt = 1;  //time delay ms
-  Timeout = 700; //If no data is received within TIMEOUT (in milliseconds)
+  Timeout = 800; //If no data is received within TIMEOUT (in milliseconds)
   //FileNameBase: String = 'planar8x8.';
   FileNameCalibration: String = 'planar8x8' + '.cal';
   FileNameParameters: String = 'planar8x8.param';
@@ -229,6 +242,8 @@ var
   err: Integer;
   StringList: TStringList;
 
+  switchSocket: TTCPBlockSocket;
+
   Chart: array[1..PlotsNumMaxX, 1..PlotsNumMaxY] of TChart;
   ChartLineSeries:  array[1..PlotsNumMaxX, 1..PlotsNumMaxY] of TLineSeries;
   DataRe, DataIm, CalibrationDataRe, CalibrationDataIm: array[1..PlotsNumMax, 0..DataSizeMax-1] of Single;
@@ -236,7 +251,7 @@ var
 
   IPAddressPlanar: String = '127.0.0.1';
   IPPortPlanar: Integer = 5025;
-  IPAddressSwitch: String = '192.168.2.2';
+  IPAddressSwitch: String = '172.16.22.251';
   IPPortSwitch: Integer = 80;
 
   TimerEnable: Boolean = False;
@@ -987,10 +1002,13 @@ else  //s21
 
 end;  //else phase
 
+
+
+SendSwitchState(switchSocket, SwitchParams[GetPlotNum(ii,jj)].OutputNum, SwitchParams[GetPlotNum(ii,jj)].InputNum);
 //SendPostRequest(IPAddressSwitch, IPPortSwitch, SwitchParams[GetPlotNum(ii,jj)].InputNum, SwitchParams[GetPlotNum(ii,jj)].OutputNum);
-//DebugLn(['plt  ',ii , ' / ', jj, '  /  ', GetPlotNum(ii,jj),
-//         '    sw  ', SwitchParams[GetPlotNum(ii,jj)].InputNum, ' / ', SwitchParams[GetPlotNum(ii,jj)].OutputNum]);
-//Sleep(1000);  //simulated Planar delay
+DebugLn(['plt ',ii , ' / ', jj, ' / ', GetPlotNum(ii,jj),
+                ' sw ', SwitchParams[GetPlotNum(ii,jj)].InputNum, ' / ', SwitchParams[GetPlotNum(ii,jj)].OutputNum]);
+Sleep(500);
 
 GetData(ii,jj);
 Application.ProcessMessages;
@@ -1004,6 +1022,51 @@ end;  //for ii
 TimerEnable := True;
 
 end;  //OnTimer
+
+function TForm1.ConnectToServer(const IPAddr, IPPort: string; out Socket: TTCPBlockSocket): Boolean;
+begin
+  Result := False;
+  if (IPAddr = '') or (IPPort = '') then Exit;
+
+  Socket := TTCPBlockSocket.Create;
+  Socket.Connect(IPAddr, IPPort);
+
+  if Socket.LastError = 0 then
+    Result := True
+  else
+    FreeAndNil(Socket);
+end;
+
+procedure TForm1.DisconnectFromServer(var Socket: TTCPBlockSocket);
+begin
+  if Assigned(Socket) then
+  begin
+    Socket.CloseSocket;
+    Socket.Free;
+    Socket := nil;
+  end;
+end;
+
+function TForm1.SendSwitchState(Socket: TTCPBlockSocket; const Switch1, Switch2: Integer): Boolean;
+var
+  PostData, Response: string;
+begin
+  Result := False;
+  if not Assigned(Socket) then Exit;
+
+  PostData := Format('sw1=%d&sw2=%d', [Switch1 + 1, Switch2 + 1]);
+
+  Socket.SendString('POST / HTTP/1.1' + #13#10);
+  Socket.SendString('Host: ' + Socket.GetRemoteSinIP + #13#10);
+  Socket.SendString('Content-Type: application/x-www-form-urlencoded' + #13#10);
+  Socket.SendString('Content-Length: ' + IntToStr(Length(PostData)) + #13#10);
+  Socket.SendString(#13#10);
+  Socket.SendString(PostData);
+
+  Response := Socket.RecvTerminated(1000, #10);
+  if Pos('200 OK', Response) > 0 then
+    Result := True;
+end;
 
 
 
@@ -1102,6 +1165,90 @@ end;  //try
 //DebugLn(['ERROR: SAVE - no file : ', FileName]);
 
 end;  //SaveFile
+
+//TODO
+// обработка нажатия на подменюшку "Сохранить .s2p"
+procedure TForm1.SaveS2P(Sender: TObject);
+begin
+if not Assigned(SaveDialog) then
+  SaveDialog := TSaveDialog.Create(Self);
+
+SaveDialog.FileName := Format('Plot_%d.s2p', [Params.CurrentPlotNum]); // дефолтное имя файла
+
+if SaveDialog.Execute then
+  SaveDataToS2P(SaveDialog.FileName, 0); // 1 - dB формат, dB в первом столбце, угол во втором
+end;
+
+
+// процедура сохранения
+procedure TForm1.SaveDataToS2P(const FileName: string; const SaveFormat:Integer);
+var
+F: TextFile;
+i: Integer;
+Header, TimeStamp, CalStatus: string;
+begin
+AssignFile(F, FileName);
+Rewrite(F);
+try
+  TimeStamp := FormatDateTime('yyyy-mm-dd hh:nn', Now);
+  if Params.CalibrationApply[Params.CurrentPlotNum] then
+    CalStatus := 'ON'
+  else
+    CalStatus := 'OFF';
+
+  Writeln(F, '!Calibration ' + CalStatus);
+  Writeln(F, '!Measurements: S11 S21 S12 S22');
+  Writeln(F, Format('!Switch from port %d to port %d', [SwitchParams[Params.CurrentPlotNum].InputNum + 1, SwitchParams[Params.CurrentPlotNum].OutputNum + 1]));
+  Writeln(F, '!' + TimeStamp);
+  // Запись заголовка
+  case SaveFormat of
+    0: Header := '# Hz  S  RI  R 50';  // Real + Imag
+    1: Header := '# Hz  S  dB  R 50';  // dB + angle
+  end;
+  Writeln(F, Header);
+
+  for i := 0 to Params.SweepPoints - 1 do
+    Writeln(F, FormatS2PString(Params.CurrentPlotNum, i));
+
+finally
+  CloseFile(F);
+end;
+end;
+
+
+// создание строки, которая записывается в файл
+function TForm1.FormatS2PString(PlotIndex, PointIndex: Integer): string;
+var
+Frequency, Re, Im, Mag, Phase, dB: Double;
+S11_Re, S11_Im, S21_Re, S21_Im, S12_Re, S12_Im, S22_Re, S22_Im: Double;
+begin
+Frequency := Params.FStart + PointIndex * FStep;
+
+S11_Re := 0; S11_Im := 0;
+S21_Re := 0; S21_Im := 0;
+S12_Re := 0; S12_Im := 0;
+S22_Re := 0; S22_Im := 0;
+
+Re := DataRe[PlotIndex, PointIndex];
+Im := DataIm[PlotIndex, PointIndex];
+
+case PlotParams[PlotIndex].SName of
+  0: begin S11_Re := Re; S11_Im := Im; end;
+  1: begin S21_Re := Re; S21_Im := Im; end;
+end;
+
+if PlotParams[PlotIndex].SFormat = 1 then
+begin
+  Mag := Hypot(Re, Im);
+  dB := 20 * Log10(Mag);
+  Phase := RadToDeg(ArcTan2(Im, Re));
+  Re := dB;
+  Im := Phase;
+end;
+
+Result := Format('%.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e %.6e',
+  [Frequency, S11_Re, S11_Im, S21_Re, S21_Im, S12_Re, S12_Im, S22_Re, S22_Im]);
+end;
 
 
 
@@ -1238,6 +1385,17 @@ except  //!!!no exception
 //  ListBox1.Items.Add('Error: cannot connect');
 //  Exit;
 end;
+
+
+
+  if ConnectToServer(IPAddressSwitch, IPPortSwitch, switchSocket) then
+      begin
+        ShowMessage('Подключение успешно!');
+      end
+  else
+        ShowMessage('Ошибка при попытке подключения. Проверьте данные.');
+
+
 
 CheckSocketError('TTCPBlockSocket.Create', true);
 
@@ -1479,6 +1637,8 @@ end;  //if
 sleep(100);
 
 if c<>nil then c.CloseSocket;
+
+if switchSocket<>nil then DisconnectFromServer(switchSocket);
 end; //destroy
 
 

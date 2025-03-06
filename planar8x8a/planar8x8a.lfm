@@ -400,12 +400,12 @@ object Form1: TForm1
         TabOrder = 1
         Value = 1
       end
-      object FloatSpinEditMarkerFrrequency: TFloatSpinEdit
+      object FloatSpinEditMarkerFrequency: TFloatSpinEdit
         Left = 70
         Height = 23
         Top = 128
         Width = 154
-        OnEditingDone = FloatSpinEditMarkerFrrequencyEditingDone
+        OnEditingDone = FloatSpinEditMarkerFrequencyEditingDone
         TabOrder = 2
       end
       object CheckBoxMarkerEnabled: TCheckBox
