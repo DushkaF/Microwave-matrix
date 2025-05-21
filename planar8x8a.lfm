@@ -52,13 +52,13 @@ object Form1: TForm1
             Height = 632
             Top = 0
             Width = 181
-            ActivePage = TabSheet5
+            ActivePage = TabSheetPLotNumber
             Align = alClient
             TabIndex = 0
             TabOrder = 0
             TabPosition = tpLeft
-            object TabSheet5: TTabSheet
-              Caption = 'TabSheet5'
+            object TabSheetPLotNumber: TTabSheet
+              Caption = 'PLot'
               ClientHeight = 624
               ClientWidth = 139
               object SpinEditPlotNum: TSpinEdit
@@ -95,13 +95,13 @@ object Form1: TForm1
                 TabOrder = 1
                 OnClick = RadioGroupMagPhaseClick
               end
-              object LabelPlot: TLabel
-                Left = 16
+              object LabelPlotNumber: TLabel
+                Left = 1
                 Height = 30
-                Top = 4
-                Width = 58
+                Top = 0
+                Width = 118
                 Alignment = taCenter
-                Caption = 'Plot N'
+                Caption = 'Plot Number'
               end
               object ButtonConnect: TButton
                 Left = 4
@@ -113,32 +113,29 @@ object Form1: TForm1
                 TabOrder = 2
                 OnClick = ButtonConnectClick
               end
-              object LabelMark1: TLabel
-                Left = 21
-                Height = 30
-                Top = 178
-                Width = 107
-                Caption = 'LabelMark1'
-              end
             end
-            object TabSheet6: TTabSheet
-              Caption = 'TabSheet6'
+            object TabSheetMarkerGrid: TTabSheet
+              Caption = 'Markers'
               ClientHeight = 624
               ClientWidth = 139
               object StringGridMarkers: TStringGrid
-                Left = 8
-                Height = 182
-                Top = 192
-                Width = 126
+                Left = 0
+                Height = 624
+                Top = 0
+                Width = 139
+                Align = alClient
                 AutoEdit = False
                 ColCount = 2
                 DefaultColWidth = 66
-                RowCount = 4
+                DefaultRowHeight = 30
+                Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect]
+                RowCount = 20
                 TabOrder = 0
               end
             end
             object TabSheet7: TTabSheet
               Caption = 'TabSheet7'
+              Enabled = False
             end
           end
         end
@@ -247,19 +244,19 @@ object Form1: TForm1
       object LabelIPPlanar: TLabel
         Left = 10
         Height = 30
-        Top = 448
+        Top = 438
         Width = 82
         Caption = 'IP Planar'
       end
       object LabelIPSwitch: TLabel
-        Left = 10
+        Left = 8
         Height = 30
-        Top = 363
+        Top = 349
         Width = 84
         Caption = 'IP Switch'
       end
       object SpinEditYMinS11: TSpinEdit
-        Left = 601
+        Left = 624
         Height = 38
         Top = 38
         Width = 146
@@ -278,7 +275,7 @@ object Form1: TForm1
         Caption = 'S11 Min, dB'
       end
       object SpinEditYMaxS11: TSpinEdit
-        Left = 601
+        Left = 624
         Height = 38
         Top = 99
         Width = 146
@@ -297,6 +294,7 @@ object Form1: TForm1
         MaxValue = 100
         MinValue = -200
         TabOrder = 9
+        Visible = False
         OnChange = SpinEditYMinS21Change
       end
       object SpinEditYMaxS21: TSpinEdit
@@ -308,6 +306,7 @@ object Form1: TForm1
         MaxValue = 100
         MinValue = -200
         TabOrder = 10
+        Visible = False
         OnChange = SpinEditYMaxS21Change
       end
       object LabelS11Max: TLabel
@@ -325,6 +324,7 @@ object Form1: TForm1
         Width = 110
         Anchors = [akTop, akRight]
         Caption = 'S21 Min, dB'
+        Visible = False
       end
       object LabelS21Max: TLabel
         Left = 500
@@ -333,6 +333,7 @@ object Form1: TForm1
         Width = 114
         Anchors = [akTop, akRight]
         Caption = 'S21 Max, dB'
+        Visible = False
       end
     end
     object TabSheetMarkers: TTabSheet
@@ -344,24 +345,24 @@ object Form1: TForm1
         Height = 38
         Top = 49
         Width = 88
-        MaxValue = 6
+        MaxValue = 4
         MinValue = 1
         TabOrder = 0
         Value = 1
         OnChange = SpinEditMarkerNumChange
       end
       object FloatSpinEditMarkerFrequency: TFloatSpinEdit
-        Left = 122
+        Left = 125
         Height = 38
-        Top = 224
+        Top = 152
         Width = 270
         TabOrder = 1
         OnEditingDone = FloatSpinEditMarkerFrequencyEditingDone
       end
       object CheckBoxMarkerEnabled: TCheckBox
-        Left = 125
+        Left = 128
         Height = 34
-        Top = 308
+        Top = 248
         Width = 173
         Caption = 'Marker Enabled'
         TabOrder = 2
@@ -375,11 +376,19 @@ object Form1: TForm1
         Caption = 'Marker N'
       end
       object LabelMarkerFrequency: TLabel
-        Left = 14
+        Left = 8
         Height = 30
-        Top = 234
+        Top = 162
         Width = 81
         Caption = 'Marker F'
+      end
+      object CheckBoxShowtMarksOnChart: TCheckBox
+        Left = 125
+        Height = 34
+        Top = 416
+        Width = 140
+        Caption = 'Show Marks'
+        TabOrder = 3
       end
     end
     object TabSheetSwitch: TTabSheet
@@ -508,7 +517,7 @@ object Form1: TForm1
         OnClick = RadioGroupS11S21Click
       end
       object CheckBoxCalibrationApply: TCheckBox
-        Left = 16
+        Left = 15
         Height = 34
         Top = 496
         Width = 128
@@ -517,7 +526,7 @@ object Form1: TForm1
         OnChange = CheckBoxCalibrationApplyChange
       end
       object ButtonCalibrate: TButton
-        Left = 632
+        Left = 631
         Height = 43
         Top = 472
         Width = 132
