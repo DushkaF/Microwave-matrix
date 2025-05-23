@@ -20,9 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="1013"/>
-        <CursorPos X="15" Y="1017"/>
-        <FoldState Value=" T3/K0C241L piGw607 TM H%601j"/>
+        <TopLine Value="49"/>
+        <CursorPos X="38" Y="55"/>
+        <FoldState Value=" T3/T0C241L piGw807 TM H%F01S"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -43,23 +43,22 @@
         <TopLine Value="8"/>
         <CursorPos Y="297"/>
         <FoldState Value=" T3lE04332 pl3mC0Mq"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="95"/>
       </Unit>
       <Unit>
         <Filename Value="synapse\blcksock.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4382"/>
         <CursorPos X="47" Y="4396"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tacustomsource.pas"/>
         <UnitName Value="TACustomSource"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1906"/>
         <CursorPos Y="1913"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
@@ -67,7 +66,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="953"/>
         <CursorPos X="14" Y="958"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\graphics.pp"/>
@@ -75,7 +74,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="67"/>
         <CursorPos X="3" Y="75"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tachartaxis.pas"/>
@@ -83,7 +82,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1211"/>
         <CursorPos X="3" Y="1215"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\xmlpropstorage.pas"/>
@@ -91,7 +90,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="329"/>
         <CursorPos X="46" Y="320"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\inipropstorage.pas"/>
@@ -99,14 +98,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="35"/>
         <CursorPos X="14" Y="149"/>
-        <UsageCount Value="16"/>
+        <UsageCount Value="15"/>
       </Unit>
       <Unit>
         <Filename Value="D:\Desktop\planar8x8\planar8x8a.74\planar8x8a\planar8x8a.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="231"/>
         <CursorPos X="43" Y="247"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\math.pp"/>
@@ -114,7 +113,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="181"/>
         <CursorPos X="10" Y="188"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tagraph.pas"/>
@@ -122,15 +121,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2164"/>
         <CursorPos Y="2171"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="11"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
         <UnitName Value="TATextElements"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="256"/>
-        <CursorPos X="38" Y="262"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="20" Y="11"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tachartutils.pas"/>
@@ -138,127 +137,154 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="103"/>
         <CursorPos X="3" Y="103"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tacustomseries.pas"/>
         <UnitName Value="TACustomSeries"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1068"/>
         <CursorPos Y="1075"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
         <UnitName Value="Grids"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="10332"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2296"/>
         <CursorPos Y="10339"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\components\tachart\tachartaxisutils.pas"/>
+        <UnitName Value="TAChartAxisUtils"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="43"/>
+        <CursorPos X="22" Y="10"/>
+        <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="24">
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="466" Column="3" TopLine="459"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="467" Column="12" TopLine="327"/>
+        <Caret Line="1899" Column="34" TopLine="1879"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="465" TopLine="456"/>
+        <Caret Line="1585" Column="2" TopLine="1583"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="457" Column="36" TopLine="451"/>
+        <Caret Line="65" Column="27" TopLine="58"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="71" Column="16" TopLine="59"/>
+        <Caret Line="1585" Column="40" TopLine="1550"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="419" Column="47"/>
+        <Caret Line="1801" Column="45" TopLine="267"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="608" Column="25" TopLine="596"/>
+        <Caret Line="1586" Column="63" TopLine="1579"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="612" Column="17" TopLine="600"/>
+        <Caret Line="1801" Column="62" TopLine="1793"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="627" Column="15" TopLine="616"/>
+        <Caret Line="954" Column="79" TopLine="1830"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="884" Column="10" TopLine="872"/>
+        <Caret Line="1562" Column="43" TopLine="1549"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1043" TopLine="1037"/>
+        <Caret Line="432" Column="37" TopLine="422"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="465" Column="64" TopLine="460"/>
+        <Caret Line="615" Column="51" TopLine="604"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="468" Column="44" TopLine="462"/>
+        <Caret Line="574" Column="43" TopLine="561"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="468" Column="58" TopLine="462"/>
+        <Caret Line="1902" Column="3" TopLine="1896"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="214" Column="37" TopLine="211"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tacustomsource.pas"/>
-        <Caret Line="1913" TopLine="1906"/>
+        <Caret Line="571" Column="22" TopLine="554"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="995" TopLine="987"/>
+        <Caret Line="1902" Column="4" TopLine="1892"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1199" TopLine="1193"/>
+        <Caret Line="247" Column="31" TopLine="239"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="921" Column="32" TopLine="913"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\lcl\grids.pas"/>
-        <Caret Line="10339" TopLine="10332"/>
+        <Caret Line="243" Column="39" TopLine="300"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1000" Column="15" TopLine="991"/>
+        <Caret Line="432" Column="41" TopLine="425"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1003" TopLine="998"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tacustomsource.pas"/>
-        <Caret Line="1913" TopLine="1906"/>
+        <Caret Line="571" Column="26" TopLine="564"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1005" Column="28" TopLine="995"/>
+        <Caret Line="960" Column="29" TopLine="949"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="932" TopLine="925"/>
+        <Caret Line="433" Column="33" TopLine="427"/>
+      </Position>
+      <Position>
+        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
+        <Caret Line="121" Column="41" TopLine="114"/>
+      </Position>
+      <Position>
+        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
+        <Caret Line="30" Column="27" TopLine="23"/>
+      </Position>
+      <Position>
+        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
+        <Caret Line="57" Column="45" TopLine="45"/>
+      </Position>
+      <Position>
+        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
+        <Caret Line="66" Column="64" TopLine="56"/>
+      </Position>
+      <Position>
+        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
+        <Caret Line="110" Column="27" TopLine="104"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="438" Column="45" TopLine="427"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="433" TopLine="427"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="437" Column="33" TopLine="431"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="68" Column="62" TopLine="57"/>
       </Position>
     </JumpHistory>
     <RunParams>
