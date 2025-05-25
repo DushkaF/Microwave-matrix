@@ -20,9 +20,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="49"/>
-        <CursorPos X="38" Y="55"/>
-        <FoldState Value=" T3/T0C241L piGw807 TM H%F01S"/>
+        <TopLine Value="301"/>
+        <CursorPos X="11" Y="308"/>
+        <FoldState Value=" T3\20C241M piGwD07 TM H%V01H"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -126,10 +126,9 @@
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
         <UnitName Value="TATextElements"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="11"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="11"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tachartutils.pas"/>
@@ -158,126 +157,13 @@
       <Unit>
         <Filename Value="C:\lazarus\components\tachart\tachartaxisutils.pas"/>
         <UnitName Value="TAChartAxisUtils"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="22" Y="10"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="11"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1899" Column="34" TopLine="1879"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1585" Column="2" TopLine="1583"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="65" Column="27" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1585" Column="40" TopLine="1550"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1801" Column="45" TopLine="267"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1586" Column="63" TopLine="1579"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1801" Column="62" TopLine="1793"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="954" Column="79" TopLine="1830"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1562" Column="43" TopLine="1549"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="432" Column="37" TopLine="422"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="615" Column="51" TopLine="604"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="574" Column="43" TopLine="561"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1902" Column="3" TopLine="1896"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="571" Column="22" TopLine="554"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1902" Column="4" TopLine="1892"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="247" Column="31" TopLine="239"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="243" Column="39" TopLine="300"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="432" Column="41" TopLine="425"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="571" Column="26" TopLine="564"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="960" Column="29" TopLine="949"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="433" Column="33" TopLine="427"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
-        <Caret Line="121" Column="41" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
-        <Caret Line="30" Column="27" TopLine="23"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
-        <Caret Line="57" Column="45" TopLine="45"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
-        <Caret Line="66" Column="64" TopLine="56"/>
-      </Position>
-      <Position>
-        <Filename Value="C:\lazarus\components\tachart\tatextelements.pas"/>
-        <Caret Line="110" Column="27" TopLine="104"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="438" Column="45" TopLine="427"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="433" TopLine="427"/>
-      </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
         <Caret Line="437" Column="33" TopLine="431"/>
@@ -285,6 +171,118 @@
       <Position>
         <Filename Value="planar8x8a.pas"/>
         <Caret Line="68" Column="62" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="212" Column="26" TopLine="177"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="428" TopLine="413"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="441" Column="32" TopLine="415"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1867" Column="24" TopLine="1859"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1861" Column="24" TopLine="1811"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1776" Column="57" TopLine="1776"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1794" Column="12" TopLine="1790"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="324" Column="19" TopLine="317"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1794" Column="19" TopLine="1790"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1919" Column="91" TopLine="1911"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1916" Column="58" TopLine="1909"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1919" Column="98" TopLine="1913"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="298" Column="137" TopLine="290"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="760" Column="8" TopLine="753"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="298" Column="27" TopLine="291"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="306" Column="64" TopLine="299"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="303" Column="12" TopLine="296"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="281" Column="7" TopLine="274"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="766" Column="88" TopLine="330"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="241" TopLine="234"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="951" Column="5" TopLine="944"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1005" Column="19" TopLine="997"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1012" Column="32" TopLine="1006"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1790" Column="10" TopLine="1784"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1798" Column="74" TopLine="1791"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1807" Column="43" TopLine="1800"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1815" Column="10" TopLine="1808"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="308" Column="11" TopLine="304"/>
       </Position>
     </JumpHistory>
     <RunParams>
