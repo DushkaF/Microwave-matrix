@@ -88,6 +88,7 @@ object Form1: TForm1
                 ChildSizing.ControlsPerLine = 1
                 ClientHeight = 67
                 ClientWidth = 81
+                ItemIndex = 0
                 Items.Strings = (
                   'Mag'
                   'Phi'
@@ -407,13 +408,14 @@ object Form1: TForm1
         Width = 81
         Caption = 'Marker F'
       end
-      object CheckBoxShowtMarksOnChart: TCheckBox
+      object CheckBoxShowMarksOnChart: TCheckBox
         Left = 125
         Height = 34
         Top = 416
         Width = 235
         Caption = 'Show Marks on Charts'
         TabOrder = 3
+        OnChange = CheckBoxShowMarksOnChartChange
       end
     end
     object TabSheetSwitch: TTabSheet
@@ -532,6 +534,7 @@ object Form1: TForm1
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 136
         ClientWidth = 93
+        ItemIndex = 1
         Items.Strings = (
           'none'
           'S11'
@@ -558,6 +561,13 @@ object Form1: TForm1
         Caption = 'Calibrate'
         TabOrder = 5
         OnClick = ButtonCalibrateClick
+      end
+      object PanelLineColor: TPanel
+        Left = 8
+        Height = 32
+        Top = 104
+        Width = 88
+        TabOrder = 6
       end
     end
     object TabSheetLog: TTabSheet
