@@ -125,13 +125,19 @@ object Form1: TForm1
                 Top = 0
                 Width = 139
                 Align = alClient
+                AutoAdvance = aaNone
                 AutoEdit = False
+                AutoFillColumns = True
                 ColCount = 2
                 DefaultColWidth = 66
                 DefaultRowHeight = 29
                 Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect]
                 RowCount = 20
                 TabOrder = 0
+                ColWidths = (
+                  66
+                  69
+                )
               end
             end
             object TabSheet7: TTabSheet
@@ -142,10 +148,10 @@ object Form1: TForm1
         end
         object PairSplitterSide2: TPairSplitterSide
           Cursor = crArrow
-          Left = 186
+          Left = 188
           Height = 632
           Top = 0
-          Width = 870
+          Width = 868
           OnResize = PairSplitter1Resize
         end
       end
@@ -337,9 +343,9 @@ object Form1: TForm1
         Visible = False
       end
       object RadioGroupFreqUnits: TRadioGroup
-        Left = 568
+        Left = 560
         Height = 235
-        Top = 38
+        Top = 34
         Width = 88
         AutoFill = True
         Caption = 'F'
@@ -366,6 +372,7 @@ object Form1: TForm1
       Caption = 'Markers'
       ClientHeight = 632
       ClientWidth = 1056
+      OnEnter = TabSheetMarkersEnter
       object SpinEditMarkerNum: TSpinEdit
         Left = 125
         Height = 38
@@ -378,9 +385,9 @@ object Form1: TForm1
         OnChange = SpinEditMarkerNumChange
       end
       object FloatSpinEditMarkerFrequency: TFloatSpinEdit
-        Left = 125
+        Left = 123
         Height = 38
-        Top = 153
+        Top = 151
         Width = 270
         TabOrder = 1
         OnEditingDone = FloatSpinEditMarkerFrequencyEditingDone
@@ -416,6 +423,12 @@ object Form1: TForm1
         Caption = 'Show Marks on Charts'
         TabOrder = 3
         OnChange = CheckBoxShowMarksOnChartChange
+      end
+      object LabelMarkerFreqUnits: TLabel
+        Left = 414
+        Height = 1
+        Top = 162
+        Width = 1
       end
     end
     object TabSheetSwitch: TTabSheet
