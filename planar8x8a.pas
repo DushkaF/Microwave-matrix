@@ -211,7 +211,7 @@ type
 
     //Send switch POST request
     //function SendPostRequest(const IPAddr, IPPort: string; const Switch1, Switch2: Integer): Boolean;
-    function ConnectToServer(const IPAddr, IPPort: string; out Socket: TTCPBlockSocket): Boolean;
+    function ConnectToServer(const IPAddr, IPPort: ShortString; out Socket: TTCPBlockSocket): Boolean;
     procedure DisconnectFromServer(var Socket: TTCPBlockSocket);
     function SendSwitchState(Socket: TTCPBlockSocket; const Switch1, Switch2: Integer): Boolean;
 
@@ -319,11 +319,6 @@ var
   DataCal: array[1..8, 1..10] of DataReImCal;  //sxy,s11,s22
 
   //type CalibrationDataRePtr = ^CalibrationDataRe;
-
-  //IPAddressPlanar: String = '127.0.0.1';
-  //IPPortPlanar: Integer = 5025;
-  //IPAddressSwitch: String = '172.16.22.251';
-  //IPPortSwitch: Integer = 80;
 
   TimerEnable: Boolean = False;
   //FStart, FStartOld, FStop, FStopOld, FStep, FStepOld: Double;
@@ -1260,10 +1255,9 @@ end;  //else / phase
 
 if switchSocket<>nil then //if switch is connected
 begin
-//SendSwitchState(switchSocket, SwitchParams[GetPlotNum(ii,jj)].OutputNum, SwitchParams[GetPlotNum(ii,jj)].InputNum);
-//SendPostRequest(IPAddressSwitch, IPPortSwitch, SwitchParams[GetPlotNum(ii,jj)].InputNum, SwitchParams[GetPlotNum(ii,jj)].OutputNum);
+SendSwitchState(switchSocket, Params.PlotParams[Params.PlotsNumStart+ii].SP[jj].SwitchParams.OutputNum, Params.PlotParams[Params.PlotsNumStart+ii].SP[jj].SwitchParams.InputNum);
 //DebugLn(['plt ',Params.PlotsNumStart+ii , ' / ', 'sw ', SwitchParams[GetPlotNum(ii,tchlsn)].InputNum, ' / ', SwitchParams[GetPlotNum(ii,jj)].OutputNum]);
-//Sleep(500);
+Sleep(10);
 end;
 
 GetData(Params.PlotsNumStart+ii, jj);
@@ -1284,19 +1278,26 @@ TimerEnable := True;
 end;  //OnTimer
 
 
-
-function TForm1.ConnectToServer(const IPAddr, IPPort: string; out Socket: TTCPBlockSocket): Boolean;
+function TForm1.ConnectToServer(const IPAddr, IPPort: ShortString; out Socket: TTCPBlockSocket): Boolean;
 begin
   Result := False;
   if (IPAddr = '') or (IPPort = '') then Exit;
 
+  DebugLn(['Matrix address ', IPAddr, ':', IPPort]);
   Socket := TTCPBlockSocket.Create;
+  Socket.ConnectionTimeout := 2000;
+  DebugLn('Connecting...');
+
   Socket.Connect(IPAddr, IPPort);
 
-  if Socket.LastError = 0 then
-    Result := True
-  else
+  if Socket.LastError <> 0 then
+  begin
+    DebugLn(['Error: cannot connect, LastError=', Socket.LastError, ', Reason=', Socket.LastErrorDesc]);
     FreeAndNil(Socket);
+    Exit;
+  end;
+
+  Result := True;
 end;
 
 
@@ -1481,7 +1482,7 @@ try
     1: Header := '# Hz  S  dB  R 50';  // dB + angle
   end;
   Writeln(F, Header);
-
+  DebugLn(['Seriaes format ', Params.PlotParams[Params.CurrentPlotNum].SP[Params.CurrentSeriesNum].SName]);
   for i := 0 to Params.SweepPoints - 1 do
     Writeln(F, FormatS2PString(Params.CurrentPlotNum, i));
 
@@ -1504,12 +1505,13 @@ S21_Re := 0; S21_Im := 0;
 S12_Re := 0; S12_Im := 0;
 S22_Re := 0; S22_Im := 0;
 
-//Re := DataRe[PlotIndex, 1, PointIndex];
-//Im := DataIm[PlotIndex, 1, PointIndex];
+Re := Data[Params.CurrentPlotNum, Params.CurrentSeriesNum].Re[PointIndex];
+Im := Data[Params.CurrentPlotNum, Params.CurrentSeriesNum].Im[PointIndex];
 
-case Params.PlotParams[PlotIndex].SP[1].SName of
-  0: begin S11_Re := Re; S11_Im := Im; end;
-  1: begin S21_Re := Re; S21_Im := Im; end;
+case Params.PlotParams[PlotIndex].SP[Params.CurrentSeriesNum].SName of
+  1: begin S11_Re := Re; S11_Im := Im; end;
+  2: begin S22_Re := Re; S22_Im := Im; end;
+  3: begin S21_Re := Re; S21_Im := Im; end;
 end;
 
 if Params.PlotParams[PlotIndex].SFormat = 1 then
@@ -1667,7 +1669,6 @@ DebugLn('TTCPBlockSocket.Create');
 c := TTCPBlockSocket.Create;
 DebugLn('Connecting');
 try
-//c.Connect ('127.0.0.1', '5025');
 c.Connect ( Params.IPAddressPlanar, IntToStr(Params.IPPortPlanar) );
 except  //!!!no exception
 //  DebugLn('Error: cannot connect');
@@ -1675,12 +1676,13 @@ except  //!!!no exception
 //  Exit;
 end;
 
-//  if ConnectToServer(IPAddressSwitch, IntToStr(IPPortSwitch), switchSocket) then
-//      begin
-//        ShowMessage('Подключение успешно!');
-//      end
-//  else
-//        ShowMessage('Ошибка при попытке подключения. Проверьте данные.');
+// Подключение к матрице
+  if ConnectToServer(Params.IPAddressSwitch, IntToStr(Params.IPPortSwitch), switchSocket) then
+      begin
+        ShowMessage('Подключение к матрице успешно!');
+      end
+  else
+        ShowMessage('Ошибка при попытке подключения к матрице. Проверьте данные. Работа без матрицы');
 
 
 CheckSocketError('TTCPBlockSocket.Create', true);
