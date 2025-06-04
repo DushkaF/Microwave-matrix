@@ -1,57 +1,57 @@
 object Form1: TForm1
-  Left = 676
-  Height = 513
-  Top = 205
-  Width = 760
+  Left = 666
+  Height = 718
+  Top = 171
+  Width = 1064
   Caption = 'planar8x8'
-  ClientHeight = 513
-  ClientWidth = 760
-  DesignTimePPI = 120
+  ClientHeight = 718
+  ClientWidth = 1064
+  DesignTimePPI = 168
   Menu = MainMenu1
   LCLVersion = '4.0.0.4'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 29
-    Top = 484
-    Width = 760
+    Height = 43
+    Top = 675
+    Width = 1064
     Panels = <>
   end
   object PageControl1: TPageControl
     Left = 0
-    Height = 484
+    Height = 675
     Top = 0
-    Width = 760
-    ActivePage = TabSheetSwitch
+    Width = 1064
+    ActivePage = TabSheetMain
     Align = alClient
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 1
     object TabSheetMain: TTabSheet
       Caption = 'Main'
-      ClientHeight = 451
-      ClientWidth = 752
+      ClientHeight = 632
+      ClientWidth = 1056
       object PairSplitter1: TPairSplitter
         Left = 0
-        Height = 451
+        Height = 632
         Top = 0
-        Width = 752
+        Width = 1056
         Align = alClient
-        Position = 129
+        Position = 181
         OnResize = PairSplitter1Resize
         object PairSplitterSide1: TPairSplitterSide
           Cursor = crArrow
           Left = 0
-          Height = 451
+          Height = 632
           Top = 0
-          Width = 129
-          ClientWidth = 129
-          ClientHeight = 451
+          Width = 181
+          ClientWidth = 181
+          ClientHeight = 632
           object PageControl2: TPageControl
             Left = 0
-            Height = 451
+            Height = 632
             Top = 0
-            Width = 129
+            Width = 181
             ActivePage = TabSheetPLotNumber
             Align = alClient
             TabIndex = 0
@@ -59,13 +59,13 @@ object Form1: TForm1
             TabPosition = tpLeft
             object TabSheetPLotNumber: TTabSheet
               Caption = 'PLot'
-              ClientHeight = 443
-              ClientWidth = 95
+              ClientHeight = 624
+              ClientWidth = 139
               object SpinEditPlotNum: TSpinEdit
-                Left = 4
-                Height = 28
-                Top = 26
-                Width = 63
+                Left = 6
+                Height = 38
+                Top = 36
+                Width = 88
                 MaxValue = 80
                 MinValue = 1
                 TabOrder = 0
@@ -74,9 +74,9 @@ object Form1: TForm1
               end
               object RadioGroupMagPhase: TRadioGroup
                 Left = 1
-                Height = 73
-                Top = 217
-                Width = 61
+                Height = 102
+                Top = 304
+                Width = 85
                 AutoFill = True
                 Caption = 'Mag/Phi'
                 ChildSizing.LeftRightSpacing = 6
@@ -86,8 +86,8 @@ object Form1: TForm1
                 ChildSizing.ShrinkVertical = crsScaleChilds
                 ChildSizing.Layout = cclLeftToRightThenTopToBottom
                 ChildSizing.ControlsPerLine = 1
-                ClientHeight = 48
-                ClientWidth = 57
+                ClientHeight = 67
+                ClientWidth = 81
                 ItemIndex = 0
                 Items.Strings = (
                   'Mag'
@@ -98,17 +98,17 @@ object Form1: TForm1
               end
               object LabelPlotNumber: TLabel
                 Left = 1
-                Height = 20
+                Height = 30
                 Top = 0
-                Width = 84
+                Width = 118
                 Alignment = taCenter
                 Caption = 'Plot Number'
               end
               object ButtonConnect: TButton
-                Left = 3
-                Height = 31
-                Top = 391
-                Width = 94
+                Left = 4
+                Height = 43
+                Top = 552
+                Width = 132
                 Anchors = [akLeft, akBottom]
                 Caption = 'Connect'
                 TabOrder = 2
@@ -117,26 +117,26 @@ object Form1: TForm1
             end
             object TabSheetMarkerGrid: TTabSheet
               Caption = 'Markers'
-              ClientHeight = 443
-              ClientWidth = 95
+              ClientHeight = 624
+              ClientWidth = 139
               object StringGridMarkers: TStringGrid
                 Left = 0
-                Height = 443
+                Height = 624
                 Top = 0
-                Width = 95
+                Width = 139
                 Align = alClient
                 AutoAdvance = aaNone
                 AutoEdit = False
                 AutoFillColumns = True
                 ColCount = 2
-                DefaultColWidth = 47
-                DefaultRowHeight = 21
+                DefaultColWidth = 66
+                DefaultRowHeight = 29
                 Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect]
                 RowCount = 20
                 TabOrder = 0
                 ColWidths = (
-                  47
-                  44
+                  66
+                  69
                 )
               end
             end
@@ -148,205 +148,167 @@ object Form1: TForm1
         end
         object PairSplitterSide2: TPairSplitterSide
           Cursor = crArrow
-          Left = 133
-          Height = 451
+          Left = 186
+          Height = 632
           Top = 0
-          Width = 619
+          Width = 870
           OnResize = PairSplitter1Resize
         end
       end
     end
     object TabSheetSettings: TTabSheet
       Caption = 'Settings'
-      ClientHeight = 451
-      ClientWidth = 752
+      ClientHeight = 632
+      ClientWidth = 1056
       object FloatSpinEditFStart: TFloatSpinEdit
-        Left = 83
-        Height = 28
-        Top = 27
-        Width = 243
+        Left = 116
+        Height = 38
+        Top = 38
+        Width = 340
         DecimalPlaces = 6
         Increment = 1000
         TabOrder = 0
         OnEditingDone = FloatSpinEditFStartEditingDone
       end
       object FloatSpinEditFStop: TFloatSpinEdit
-        Left = 83
-        Height = 28
-        Top = 86
-        Width = 243
+        Left = 116
+        Height = 38
+        Top = 120
+        Width = 340
         DecimalPlaces = 6
         Increment = 1000
         TabOrder = 1
         OnEditingDone = FloatSpinEditFStopEditingDone
       end
       object SpinEditSweepPoints: TSpinEdit
-        Left = 83
-        Height = 28
-        Top = 145
-        Width = 149
+        Left = 116
+        Height = 38
+        Top = 203
+        Width = 209
         MaxValue = 100000
         MinValue = 1
         TabOrder = 2
         Value = 1
+        Visible = False
         OnEditingDone = SpinEditSweepPointsEditingDone
       end
       object LabelFStart: TLabel
-        Left = 4
-        Height = 20
-        Top = 29
-        Width = 42
+        Left = 6
+        Height = 30
+        Top = 41
+        Width = 58
         Caption = 'F Start'
       end
       object LabelFStop: TLabel
-        Left = 4
-        Height = 20
-        Top = 86
-        Width = 42
+        Left = 6
+        Height = 30
+        Top = 120
+        Width = 57
         Caption = 'F Stop'
       end
       object LabelPoints: TLabel
-        Left = 4
-        Height = 20
-        Top = 145
-        Width = 50
+        Left = 6
+        Height = 30
+        Top = 203
+        Width = 72
         Caption = 'F Points'
+        Visible = False
       end
       object SpinEditIPPortPlanar: TSpinEdit
-        Left = 279
-        Height = 28
-        Top = 313
-        Width = 120
+        Left = 825
+        Height = 38
+        Top = 519
+        Width = 168
+        Anchors = [akRight, akBottom]
         MinValue = 65535
         TabOrder = 3
         OnChange = SpinEditIPPortPlanarChange
       end
       object EditIPAddressPlanar: TEdit
-        Left = 81
-        Height = 28
-        Top = 313
-        Width = 149
+        Left = 586
+        Height = 38
+        Top = 519
+        Width = 209
+        Anchors = [akRight, akBottom]
         TabOrder = 4
         Text = 'IPAddressPlanar'
         OnEditingDone = EditIPAddressPlanarEditingDone
       end
       object EditIPAddressSwitch: TEdit
-        Left = 81
-        Height = 28
-        Top = 249
-        Width = 153
+        Left = 586
+        Height = 38
+        Top = 430
+        Width = 214
+        Anchors = [akRight, akBottom]
         TabOrder = 5
         Text = 'IPAddressSwtch'
         OnEditingDone = EditIPAddressSwitchEditingDone
       end
       object SpinEditIPPortSwitch: TSpinEdit
-        Left = 279
-        Height = 28
-        Top = 250
-        Width = 120
+        Left = 825
+        Height = 38
+        Top = 431
+        Width = 168
+        Anchors = [akRight, akBottom]
         MinValue = 65535
         TabOrder = 6
         OnChange = SpinEditIPPortSwitchChange
       end
       object LabelIPPlanar: TLabel
-        Left = 7
-        Height = 20
-        Top = 313
-        Width = 57
+        Left = 483
+        Height = 30
+        Top = 519
+        Width = 82
+        Anchors = [akRight, akBottom]
         Caption = 'IP Planar'
       end
       object LabelIPSwitch: TLabel
-        Left = 6
-        Height = 20
-        Top = 249
-        Width = 59
+        Left = 481
+        Height = 30
+        Top = 430
+        Width = 84
+        Anchors = [akRight, akBottom]
         Caption = 'IP Switch'
       end
       object SpinEditYMinS11: TSpinEdit
-        Left = 622
-        Height = 28
-        Top = 27
-        Width = 104
-        Anchors = [akTop, akRight]
+        Left = 134
+        Height = 38
+        Top = 269
+        Width = 146
         MaxValue = 100
         MinValue = -200
         TabOrder = 7
         OnChange = SpinEditYMinS11Change
       end
       object LabelS11Min: TLabel
-        Left = 533
-        Height = 20
-        Top = 29
-        Width = 78
-        Anchors = [akTop, akRight]
+        Left = 9
+        Height = 30
+        Top = 271
+        Width = 110
         Caption = 'S11 Min, dB'
       end
       object SpinEditYMaxS11: TSpinEdit
-        Left = 622
-        Height = 28
-        Top = 71
-        Width = 104
-        Anchors = [akTop, akRight]
+        Left = 134
+        Height = 38
+        Top = 330
+        Width = 146
         MaxValue = 100
         MinValue = -200
         TabOrder = 8
         OnChange = SpinEditYMaxS11Change
       end
-      object SpinEditYMinS21: TSpinEdit
-        Left = 626
-        Height = 28
-        Top = 130
-        Width = 99
-        Anchors = [akTop, akRight]
-        MaxValue = 100
-        MinValue = -200
-        TabOrder = 9
-        Visible = False
-        OnChange = SpinEditYMinS21Change
-      end
-      object SpinEditYMaxS21: TSpinEdit
-        Left = 626
-        Height = 28
-        Top = 170
-        Width = 99
-        Anchors = [akTop, akRight]
-        MaxValue = 100
-        MinValue = -200
-        TabOrder = 10
-        Visible = False
-        OnChange = SpinEditYMaxS21Change
-      end
       object LabelS11Max: TLabel
-        Left = 533
-        Height = 20
-        Top = 71
-        Width = 81
-        Anchors = [akTop, akRight]
+        Left = 9
+        Height = 30
+        Top = 330
+        Width = 114
         Caption = 'S11 Max, dB'
       end
-      object LabelS21Min: TLabel
-        Left = 578
-        Height = 20
-        Top = 130
-        Width = 78
-        Anchors = [akTop, akRight]
-        Caption = 'S21 Min, dB'
-        Visible = False
-      end
-      object LabelS21Max: TLabel
-        Left = 577
-        Height = 20
-        Top = 170
-        Width = 81
-        Anchors = [akTop, akRight]
-        Caption = 'S21 Max, dB'
-        Visible = False
-      end
       object RadioGroupFreqUnits: TRadioGroup
-        Left = 400
-        Height = 168
-        Top = 24
-        Width = 63
+        Left = 507
+        Height = 235
+        Top = 22
+        Width = 88
         AutoFill = True
         Caption = 'F'
         ChildSizing.LeftRightSpacing = 6
@@ -356,28 +318,28 @@ object Form1: TForm1
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 143
-        ClientWidth = 59
+        ClientHeight = 200
+        ClientWidth = 84
         ItemIndex = 1
         Items.Strings = (
           'kHz'
           'MHz'
           'GHz'
         )
-        TabOrder = 11
+        TabOrder = 9
         OnClick = RadioGroupFreqUnitsClick
       end
     end
     object TabSheetMarkers: TTabSheet
       Caption = 'Markers'
-      ClientHeight = 451
-      ClientWidth = 752
+      ClientHeight = 632
+      ClientWidth = 1056
       OnEnter = TabSheetMarkersEnter
       object SpinEditMarkerNum: TSpinEdit
-        Left = 89
-        Height = 28
-        Top = 35
-        Width = 63
+        Left = 125
+        Height = 38
+        Top = 49
+        Width = 88
         MaxValue = 4
         MinValue = 1
         TabOrder = 0
@@ -385,64 +347,64 @@ object Form1: TForm1
         OnChange = SpinEditMarkerNumChange
       end
       object FloatSpinEditMarkerFrequency: TFloatSpinEdit
-        Left = 88
-        Height = 28
-        Top = 108
-        Width = 193
+        Left = 123
+        Height = 38
+        Top = 151
+        Width = 270
         TabOrder = 1
         OnEditingDone = FloatSpinEditMarkerFrequencyEditingDone
       end
       object CheckBoxMarkerEnabled: TCheckBox
-        Left = 91
-        Height = 24
-        Top = 177
-        Width = 125
+        Left = 127
+        Height = 34
+        Top = 248
+        Width = 173
         Caption = 'Marker Enabled'
         TabOrder = 2
         OnChange = CheckBoxMarkerEnabledChange
       end
       object LabelMarkerNum: TLabel
-        Left = 6
-        Height = 20
-        Top = 35
-        Width = 61
+        Left = 8
+        Height = 30
+        Top = 49
+        Width = 87
         Caption = 'Marker N'
       end
       object LabelMarkerFrequency: TLabel
-        Left = 6
-        Height = 20
-        Top = 116
-        Width = 57
+        Left = 8
+        Height = 30
+        Top = 162
+        Width = 81
         Caption = 'Marker F'
       end
       object CheckBoxShowMarksOnChart: TCheckBox
-        Left = 89
-        Height = 24
-        Top = 297
-        Width = 166
+        Left = 125
+        Height = 34
+        Top = 416
+        Width = 235
         Caption = 'Show Marks on Charts'
         TabOrder = 3
         OnChange = CheckBoxShowMarksOnChartChange
       end
       object LabelMarkerFreqUnits: TLabel
-        Left = 296
+        Left = 414
         Height = 1
-        Top = 116
+        Top = 162
         Width = 1
       end
     end
     object TabSheetSwitch: TTabSheet
       Caption = 'Switch'
-      ClientHeight = 451
-      ClientWidth = 752
+      ClientHeight = 632
+      ClientWidth = 1056
       OnEnter = TabSheetSwitchEnter
       object RadioGroupSwitchInNum: TRadioGroup
-        Left = 366
-        Height = 244
-        Top = 62
-        Width = 85
+        Left = 512
+        Height = 342
+        Top = 87
+        Width = 119
         AutoFill = True
-        Caption = 'Switch IN'
+        Caption = 'VNA Port 1'
         ChildSizing.LeftRightSpacing = 6
         ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
         ChildSizing.EnlargeVertical = crsHomogenousChildResize
@@ -450,8 +412,8 @@ object Form1: TForm1
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclTopToBottomThenLeftToRight
         ChildSizing.ControlsPerLine = 8
-        ClientHeight = 219
-        ClientWidth = 81
+        ClientHeight = 307
+        ClientWidth = 115
         ColumnLayout = clVerticalThenHorizontal
         ItemIndex = 0
         Items.Strings = (
@@ -468,12 +430,12 @@ object Form1: TForm1
         OnClick = RadioGroupSwitchInNumClick
       end
       object RadioGroupSwitchOutNum: TRadioGroup
-        Left = 559
-        Height = 244
-        Top = 62
-        Width = 119
+        Left = 783
+        Height = 342
+        Top = 87
+        Width = 167
         AutoFill = True
-        Caption = 'Switch OUT'
+        Caption = 'VNA Port 2'
         ChildSizing.LeftRightSpacing = 6
         ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
         ChildSizing.EnlargeVertical = crsHomogenousChildResize
@@ -481,8 +443,8 @@ object Form1: TForm1
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclTopToBottomThenLeftToRight
         ChildSizing.ControlsPerLine = 8
-        ClientHeight = 219
-        ClientWidth = 115
+        ClientHeight = 307
+        ClientWidth = 163
         ColumnLayout = clVerticalThenHorizontal
         ItemIndex = 0
         Items.Strings = (
@@ -499,24 +461,24 @@ object Form1: TForm1
         OnClick = RadioGroupSwitchOutNumClick
       end
       object LabelArrow: TLabel
-        Left = 480
-        Height = 20
-        Top = 160
-        Width = 64
+        Left = 672
+        Height = 30
+        Top = 224
+        Width = 86
         Caption = '--------->'
       end
       object LabelSwitchChartNum: TLabel
-        Left = 454
-        Height = 20
-        Top = 34
-        Width = 133
-        Caption = 'SwitchPlottLineNum'
+        Left = 636
+        Height = 30
+        Top = 48
+        Width = 95
+        Caption = 'VNA Ports'
       end
       object SpinEditCurrentSeriesNum: TSpinEdit
-        Left = 6
-        Height = 28
-        Top = 34
-        Width = 63
+        Left = 8
+        Height = 38
+        Top = 48
+        Width = 88
         MaxValue = 4
         MinValue = 1
         TabOrder = 2
@@ -524,18 +486,18 @@ object Form1: TForm1
         OnChange = SpinEditCurrentSeriesNumChange
       end
       object LabelLine: TLabel
-        Left = 6
-        Height = 20
+        Left = 8
+        Height = 30
         Top = 0
-        Width = 42
+        Width = 60
         Alignment = taCenter
         Caption = 'Line N'
       end
       object RadioGroupS11S21: TRadioGroup
-        Left = 6
-        Height = 122
-        Top = 129
-        Width = 69
+        Left = 8
+        Height = 171
+        Top = 181
+        Width = 97
         AutoFill = True
         Caption = 'Sxx'
         ChildSizing.LeftRightSpacing = 6
@@ -545,8 +507,8 @@ object Form1: TForm1
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 97
-        ClientWidth = 65
+        ClientHeight = 136
+        ClientWidth = 93
         ItemIndex = 1
         Items.Strings = (
           'none'
@@ -558,40 +520,40 @@ object Form1: TForm1
         OnClick = RadioGroupS11S21Click
       end
       object CheckBoxCalibrationApply: TCheckBox
-        Left = 11
-        Height = 24
-        Top = 354
-        Width = 94
+        Left = 15
+        Height = 34
+        Top = 496
+        Width = 128
         Caption = 'Calibration'
         TabOrder = 4
         OnChange = CheckBoxCalibrationApplyChange
       end
       object ButtonCalibrate: TButton
-        Left = 451
-        Height = 31
-        Top = 337
-        Width = 94
+        Left = 631
+        Height = 43
+        Top = 472
+        Width = 132
         Caption = 'Calibrate'
         TabOrder = 5
         OnClick = ButtonCalibrateClick
       end
       object PanelLineColor: TPanel
-        Left = 6
-        Height = 23
-        Top = 74
-        Width = 63
+        Left = 8
+        Height = 32
+        Top = 104
+        Width = 88
         TabOrder = 6
       end
     end
     object TabSheetLog: TTabSheet
       Caption = 'Log'
-      ClientHeight = 451
-      ClientWidth = 752
+      ClientHeight = 632
+      ClientWidth = 1056
       object ListBox1: TListBox
-        Left = 11
-        Height = 274
-        Top = 6
-        Width = 319
+        Left = 15
+        Height = 385
+        Top = 8
+        Width = 447
         Anchors = [akTop, akLeft, akBottom]
         ItemHeight = 0
         TabOrder = 0
@@ -601,12 +563,12 @@ object Form1: TForm1
   object Timer1: TTimer
     Enabled = False
     OnTimer = Timer1Timer
-    Left = 154
-    Top = 429
+    Left = 216
+    Top = 601
   end
   object MainMenu1: TMainMenu
-    Left = 216
-    Top = 429
+    Left = 302
+    Top = 601
     object MenuItem1: TMenuItem
       Caption = '&File'
       object MenuItemSaveS2p: TMenuItem
@@ -631,7 +593,7 @@ object Form1: TForm1
     end
   end
   object SaveDialog: TSaveDialog
-    Left = 275
-    Top = 429
+    Left = 385
+    Top = 601
   end
 end
