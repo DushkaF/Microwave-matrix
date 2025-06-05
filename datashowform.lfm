@@ -1,0 +1,76 @@
+object FormDataShow: TFormDataShow
+  Left = 554
+  Height = 712
+  Top = 171
+  Width = 1044
+  Caption = 'FormDataShow'
+  ClientHeight = 712
+  ClientWidth = 1044
+  DesignTimePPI = 168
+  Menu = MainMenu1
+  LCLVersion = '4.0.0.4'
+  object StatusBarFormDataShow: TStatusBar
+    Left = 0
+    Height = 43
+    Top = 669
+    Width = 1044
+    Panels = <>
+  end
+  object PageControlData: TPageControl
+    Left = 0
+    Height = 669
+    Top = 0
+    Width = 1044
+    ActivePage = Markers
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 1
+    object Markers: TTabSheet
+      Caption = 'Markers'
+      ClientHeight = 626
+      ClientWidth = 1036
+      object StringGridMarkers2: TStringGrid
+        Left = 0
+        Height = 626
+        Top = 0
+        Width = 1036
+        Align = alClient
+        AutoAdvance = aaNone
+        AutoEdit = False
+        AutoFillColumns = True
+        ColCount = 14
+        DefaultColWidth = 66
+        DefaultRowHeight = 29
+        ExtendedSelect = False
+        FixedCols = 0
+        FixedRows = 0
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect]
+        RowCount = 20
+        TabOrder = 0
+        ColWidths = (
+          74
+          74
+          74
+          74
+          74
+          74
+          74
+          74
+          74
+          74
+          73
+          73
+          73
+          73
+        )
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TabSheet2'
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 144
+    Top = 200
+  end
+end

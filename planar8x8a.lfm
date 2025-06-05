@@ -37,21 +37,22 @@ object Form1: TForm1
         Top = 0
         Width = 1056
         Align = alClient
-        Position = 181
+        Position = 200
         OnResize = PairSplitter1Resize
+        OnChangeBounds = PairSplitter1ChangeBounds
         object PairSplitterSide1: TPairSplitterSide
           Cursor = crArrow
           Left = 0
           Height = 632
           Top = 0
-          Width = 181
-          ClientWidth = 181
+          Width = 200
+          ClientWidth = 200
           ClientHeight = 632
           object PageControl2: TPageControl
             Left = 0
             Height = 632
             Top = 0
-            Width = 181
+            Width = 200
             ActivePage = TabSheetPLotNumber
             Align = alClient
             TabIndex = 0
@@ -60,9 +61,9 @@ object Form1: TForm1
             object TabSheetPLotNumber: TTabSheet
               Caption = 'PLot'
               ClientHeight = 624
-              ClientWidth = 139
+              ClientWidth = 158
               object SpinEditPlotNum: TSpinEdit
-                Left = 6
+                Left = 8
                 Height = 38
                 Top = 36
                 Width = 88
@@ -114,29 +115,40 @@ object Form1: TForm1
                 TabOrder = 2
                 OnClick = ButtonConnectClick
               end
+              object CheckBoxMarkersShowGlobal: TCheckBox
+                Left = 17
+                Height = 34
+                Top = 464
+                Width = 102
+                Caption = 'Markers'
+                TabOrder = 3
+                OnChange = CheckBoxMarkersShowGlobalChange
+              end
             end
             object TabSheetMarkerGrid: TTabSheet
               Caption = 'Markers'
               ClientHeight = 624
-              ClientWidth = 139
-              object StringGridMarkers: TStringGrid
+              ClientWidth = 158
+              object StringGridMarkers1: TStringGrid
                 Left = 0
                 Height = 624
                 Top = 0
-                Width = 139
+                Width = 158
                 Align = alClient
                 AutoAdvance = aaNone
                 AutoEdit = False
                 AutoFillColumns = True
                 ColCount = 2
-                DefaultColWidth = 66
+                DefaultColWidth = 80
                 DefaultRowHeight = 29
+                FixedCols = 0
+                FixedRows = 0
                 Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect]
                 RowCount = 20
                 TabOrder = 0
                 ColWidths = (
-                  66
-                  69
+                  77
+                  77
                 )
               end
             end
@@ -148,10 +160,10 @@ object Form1: TForm1
         end
         object PairSplitterSide2: TPairSplitterSide
           Cursor = crArrow
-          Left = 186
+          Left = 205
           Height = 632
           Top = 0
-          Width = 870
+          Width = 851
           OnResize = PairSplitter1Resize
         end
       end
@@ -475,7 +487,7 @@ object Form1: TForm1
         Caption = 'VNA Ports'
       end
       object SpinEditCurrentSeriesNum: TSpinEdit
-        Left = 8
+        Left = 149
         Height = 38
         Top = 48
         Width = 88
@@ -486,9 +498,9 @@ object Form1: TForm1
         OnChange = SpinEditCurrentSeriesNumChange
       end
       object LabelLine: TLabel
-        Left = 8
+        Left = 185
         Height = 30
-        Top = 0
+        Top = 7
         Width = 60
         Alignment = taCenter
         Caption = 'Line N'
@@ -538,11 +550,30 @@ object Form1: TForm1
         OnClick = ButtonCalibrateClick
       end
       object PanelLineColor: TPanel
-        Left = 8
+        Left = 149
         Height = 32
         Top = 104
         Width = 88
         TabOrder = 6
+      end
+      object SpinEditPlotNumSwitch: TSpinEdit
+        Left = 24
+        Height = 38
+        Top = 48
+        Width = 88
+        MaxValue = 80
+        MinValue = 1
+        TabOrder = 7
+        Value = 1
+        OnChange = SpinEditPlotNumSwitchChange
+      end
+      object LabelPlotSw: TLabel
+        Left = 40
+        Height = 30
+        Top = 7
+        Width = 58
+        Alignment = taCenter
+        Caption = 'Plot N'
       end
     end
     object TabSheetLog: TTabSheet
@@ -567,7 +598,7 @@ object Form1: TForm1
     Top = 601
   end
   object MainMenu1: TMainMenu
-    Left = 302
+    Left = 304
     Top = 601
     object MenuItem1: TMenuItem
       Caption = '&File'
@@ -585,6 +616,13 @@ object Form1: TForm1
       object MenuItemCopy: TMenuItem
         Caption = '&Copy'
         OnClick = MenuItemCopyClick
+      end
+    end
+    object MenuItemView: TMenuItem
+      Caption = '&View'
+      object MenuItemShowHide: TMenuItem
+        Caption = '&Show/Hide'
+        OnClick = MenuItemShowHideClick
       end
     end
     object MenuItemTest: TMenuItem

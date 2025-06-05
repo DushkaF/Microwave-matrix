@@ -44,6 +44,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
+      <Unit>
+        <Filename Value="datashowform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormDataShow"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DataShowForm"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
