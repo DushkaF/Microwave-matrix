@@ -20,8 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="1047"/>
-        <CursorPos X="54" Y="1067"/>
+        <TopLine Value="1176"/>
+        <CursorPos X="50" Y="1127"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -30,6 +30,20 @@
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="datashowform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormDataShow"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DataShowForm"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="76" Y="4"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -74,7 +88,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1211"/>
         <CursorPos X="3" Y="1215"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\xmlpropstorage.pas"/>
@@ -148,25 +162,8 @@
         <CursorPos X="3" Y="223"/>
         <UsageCount Value="36"/>
       </Unit>
-      <Unit>
-        <Filename Value="datashowform.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="FormDataShow"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="DataShowForm"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="5"/>
-        <CursorPos X="76" Y="4"/>
-        <UsageCount Value="27"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
-      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="68" Column="52" TopLine="73"/>
-      </Position>
+    <JumpHistory HistoryIndex="26">
       <Position>
         <Filename Value="planar8x8a.pas"/>
         <Caret Line="1029" Column="25" TopLine="1029"/>
@@ -174,10 +171,6 @@
       <Position>
         <Filename Value="planar8x8a.pas"/>
         <Caret Line="1961" Column="66" TopLine="1948"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1683" Column="29" TopLine="1688"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
@@ -249,14 +242,6 @@
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1694" Column="27" TopLine="1710"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1637" Column="37" TopLine="1653"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
         <Caret Line="1067" Column="20" TopLine="1059"/>
       </Position>
       <Position>
@@ -273,15 +258,19 @@
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
-        <Caret Line="1167" Column="7" TopLine="1341"/>
-      </Position>
-      <Position>
-        <Filename Value="planar8x8a.pas"/>
         <Caret Line="1067" Column="45" TopLine="1064"/>
       </Position>
       <Position>
         <Filename Value="planar8x8a.pas"/>
         <Caret Line="1066" Column="129" TopLine="1060"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="1067" Column="54" TopLine="1048"/>
+      </Position>
+      <Position>
+        <Filename Value="planar8x8a.pas"/>
+        <Caret Line="69" Column="14" TopLine="57"/>
       </Position>
     </JumpHistory>
     <RunParams>
